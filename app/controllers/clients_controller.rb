@@ -1,3 +1,3 @@
-class ClientController < ApplicationController
-  
+class ClientsController < ApplicationController
+
 end
