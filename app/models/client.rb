@@ -16,9 +16,4 @@ class Client < ApplicationRecord
   #                   :format => { :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
 
   # validates :address, :presence => true
-
-
-
-
-
 end
