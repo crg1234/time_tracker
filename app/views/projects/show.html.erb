@@ -1,0 +1,18 @@
+<h1>Name: <%= @project.name %></h1>
+<h2>Client: <%= @client.first_name  %> <%= @client.last_name %></h2>
+<h2>Deadline: <%= @project.deadline %></h2>
+<h2>Time spent: <%= @project.time_counter %></h2>
+
+<div style="border: 1px solid black; padding: 10px;">
+  <h2>Tasks:</h2>
+  <% if @tasks.first.nil? %>
+    <p>No tasks yet!</p>
+    <% else %>
+    <ul>
+      <% @project.tasks.each do |task| %>
+        <li><%= task.title %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <button type="button" class="btn btn-light">Add task</button>
+</div>
