@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "home#index"
 
+  get "dashboard", to: "pages#dashboard"
+
   resources :tasks, only: [:show]
   resources :invoices, only: [:show]
 end
