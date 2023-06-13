@@ -12,7 +12,6 @@
               <% @clients.each do |client| %>
 
                     <tr>
-                      <%# <%= link_to client_path(client) do %> %>
                         <td><%= link_to client.first_name, client_path(client) %></td>
                         <td><%= client.last_name %></td>
                         <td><%= client.email %></td>
