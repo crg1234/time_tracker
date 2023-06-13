@@ -29,6 +29,9 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Adding a timer gem [https://github.com/socketry/timers]
+gem 'timers'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

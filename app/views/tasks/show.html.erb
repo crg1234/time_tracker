@@ -4,3 +4,8 @@
 <p><%= @task.start_time %></p>
 <p><%= @task.end_time %></p>
 <p><%= @task.project_id %></p>
+
+<p>Time right now:<%= Time.now %></p>
+
+<% time_difference_in_sec = (@task.end_time.to_time.to_i - @task.start_time.to_time.to_i).abs %>
+<%= time_difference_in_sec / 60 %> minutes
