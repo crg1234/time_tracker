@@ -15,5 +15,5 @@ class Client < ApplicationRecord
   validates :email, presence: true
   validates :email, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
 
-  validates :address, presence: true
+  validates :billing_address, presence: true
 end
