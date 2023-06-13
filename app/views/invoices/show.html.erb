@@ -1,4 +1,15 @@
-<h1><%= @invoice.invoice_number %></h1>
-<h2><%= @invoice.billing_amount %></h2>
-<p><%= @invoice.payment_deadline %></p>
-<p><%= @invoice.project_id %></p>
+<h2>Invoice Number:  <%= @invoice.invoice_number %></h2>
+<h2>Billing Amount: <%= @invoice.billing_amount %></h2>
+<h2>Payment Deadline: <%= @invoice.payment_deadline %></h2>
+
+<h2>Project Name: <%= @project.name  %></h2>
+<h2>Project Deadline: <%= @project.deadline %></h2>
+<h2>Time Counter: <%= @project.time_counter %></h2>
+
+<h2>Client First Name: <%= @client.first_name  %></h2>
+<h2>Client Last Name: <%= @client.last_name  %></h2>
+<h2>Client Email: <%= @client.email %></h2>
+<h2>Client: <%= @client.billing_address %></h2>
+
+<h2>User First Name:<%= @user.first_name %></h2>
+<h2>User Last Name:<%= @user.last_name %></h2>
