@@ -17,7 +17,7 @@ nurra = User.create!(email: "happy.tracker@gmail.com", password: "secret", first
 
 puts "Create new database.."
 
-num_dummy_clients = 20
+num_dummy_clients = 30
 clients = []
 users = [juliette, tom, chris, safia, nurra]
 num_dummy_clients.times do
@@ -32,7 +32,7 @@ num_dummy_clients.times do
   )
 end
 
-num_dummy_projects = 20
+num_dummy_projects = 40
 projects = []
 num_dummy_projects.times do
   projects << Project.create!(
@@ -43,7 +43,7 @@ num_dummy_projects.times do
   )
 end
 
-num_dummy_tasks = 30
+num_dummy_tasks = 40
 tasks = []
 tasks_title = ["Update database", "send a new invoice", "finish the project", "call the supplier"]
 billing_rates = [1.5, 2.4, 3.5]
@@ -59,7 +59,7 @@ num_dummy_tasks.times do
   )
 end
 
-num_dummy_invoices = 40
+num_dummy_invoices = 80
 invoices = []
 num_dummy_invoices.times do
   invoices << Invoice.create!(
