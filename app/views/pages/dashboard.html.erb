@@ -1,6 +1,7 @@
+
 <h1>This is Time Traker dashboard</h1>
 <div class="container">
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs tabs">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#clients">Clients</a>
     </li>
@@ -12,7 +13,16 @@
     </li>
   </ul>
 
-   <%= render partial: 'client' %>
+  <div class="tab-content">
+    <div id="clients" class="tab-pane fade show active">
+      <%= render partial: 'client' %>
+    </div>
+    <div id="projects" class="tab-pane fade">
+      <!-- Projects tab content goes here -->
 
-
+    </div>
+    <div id="invoices" class="tab-pane fade">
+      <%= render partial: 'invoices' %>
+    </div>
+  </div>
 </div>

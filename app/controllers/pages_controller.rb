@@ -7,7 +7,6 @@ class PagesController < ApplicationController
   def dashboard
     @clients = current_user.clients
     @projects = current_user.projects
-    @invoices = current_user.invoices
-    puts @clients
+    @my_invoices = Invoice.where(project: current_user.projects)
   end
 end
