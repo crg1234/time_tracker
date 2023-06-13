@@ -1,0 +1,27 @@
+<div class="tab-content">
+  <table class="table mb-2 mt-2 table-hover">
+            <thead>
+              <tr>
+                <%# <th scope="col">Client</th>
+                <th scope="col">Date</th>
+                <th scope="col">From</th>
+                <th scope="col">Walker's infos</th>
+                <th scope="col">Request's status</th> %>
+              </tr>
+            <tbody>
+              <% @clients.each do |client| %>
+
+                    <tr>
+                        <td><%= link_to client.first_name, client_path(client) %></td>
+                        <td><%= client.last_name %></td>
+                        <td><%= client.email %></td>
+                        <td><%= client.company_name %></td>
+                        <td><%= client.billing_address %></td>
+                        <td><%= client.phone_number %></td>
+                        <td>
+                        </td>
+                    </tr>
+
+              <% end %>
+            </tbody>
+          </table>
