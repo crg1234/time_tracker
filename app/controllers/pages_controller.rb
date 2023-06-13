@@ -8,5 +8,6 @@ class PagesController < ApplicationController
     @clients = current_user.clients
     @projects = current_user.projects
     @invoices = current_user.invoices
+    puts @clients
   end
 end

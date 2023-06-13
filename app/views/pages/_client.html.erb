@@ -10,16 +10,19 @@
               </tr>
             <tbody>
               <% @clients.each do |client| %>
-                <tr>
-                  <td><%= client.first_name %></td>
-                  <td><%= client.last_name %></td>
-                  <td><%= client.email %></td>
-                  <td><%= client.company_name %></td>
-                  <td><%= client.billing_address %></td>
-                  <td><%= client.phone_number %></td>
-                  <td>
-                  </td>
-                </tr>
+
+                    <tr>
+                      <%# <%= link_to client_path(client) do %> %>
+                        <td><%= link_to client.first_name, client_path(client) %></td>
+                        <td><%= client.last_name %></td>
+                        <td><%= client.email %></td>
+                        <td><%= client.company_name %></td>
+                        <td><%= client.billing_address %></td>
+                        <td><%= client.phone_number %></td>
+                        <td>
+                        </td>
+                    </tr>
+
               <% end %>
             </tbody>
           </table>
