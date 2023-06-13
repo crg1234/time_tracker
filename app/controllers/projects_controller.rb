@@ -22,6 +22,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @tasks = @project.tasks
     @invoices = @project.invoices
+    @client = @project.client
   end
 
   private
