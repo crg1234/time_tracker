@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @task = Task.new
     @tasks = @project.tasks
     @invoices = @project.invoices
     @client = @project.client

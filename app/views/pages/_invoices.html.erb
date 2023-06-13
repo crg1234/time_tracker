@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">INVOICES ID</th>
+      <th scope="col">COMPANY CLIENT</th>
+      <th scope="col">PROJECT</th>
+      <th scope="col">PAYMENT DEADLINE</th>
+      <th scope="col">BILLING AMOUNT</th>
+      <th scope="col">STATUS</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @my_invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.invoice_number %></td>
+        <td><%= invoice.project.client.company_name %></td>
+        <td><%= invoice.project.name %></td>
+        <td><%= invoice.payment_deadline %></td>
+        <td><%= invoice.billing_amount %></td>
+        <td>Upcoming status button</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
