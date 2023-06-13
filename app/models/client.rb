@@ -9,7 +9,7 @@ class Client < ApplicationRecord
   validates :last_name, uniqueness: { scope: :first_name }
 
   validates :phone_number, presence: true
-  validates :phone_number, numericality: true
+  # validates :phone_number, numericality: true
   # validates :phone_number, length: { minimum: 10, maximum: 15 }
 
   validates :email, presence: true
