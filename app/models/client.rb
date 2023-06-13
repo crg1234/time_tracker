@@ -10,10 +10,10 @@ class Client < ApplicationRecord
 
   validates :phone, presence: true
   validates :phone, numericality: true
-  validates :phone, length: { :minimum => 10, :maximum => 15 }
+  validates :phone, length: { minimum: 10, maximum: 15 }
 
   validates :email, presence: true
-  validates :email, format: { :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
+  validates :email, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
 
   validates :address, presence: true
 end
