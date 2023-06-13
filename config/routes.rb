@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   # root "home#index"
 
   resources :tasks, only: [:show]
+  resources :invoices, only: [:show]
 end
