@@ -62,6 +62,15 @@ export default class extends Controller {
     const sec = Math.floor((ms / 1000) % 60);
 
     return `${min} : ${sec}`
+
+    // const hours = Math.floor(ms / 3_600_000);
+    // const minutes = Math.floor((ms - (hours * 3600000)) / 60);
+    // const seconds = ms - (hours * 3600000) - (minutes * 60);
+
+    // if (hours < 10) { hours = "0" + hours; }
+    // if (minutes < 10) { minutes = "0" + minutes; }
+    // if (seconds < 10) { seconds = "0" + seconds; }
+    // return `${hours} : ${minutes} : ${seconds}`;
   }
 
 

@@ -1,19 +1,21 @@
-<h1>Task Title: <%= @task.title %></h1>
-<h2>Task Description: <%= @task.description %></h2>
-<p>Task Billing Rate: €<%= @task.billing_rate %></p>
-
-<p>Time right now:<%= Time.now %></p>
-<% time_difference_in_sec = (@task.end_time.to_time.to_i - @task.start_time.to_time.to_i).abs %>
-<p>Time difference from end time to start time: <%= time_difference_in_sec / 60 %> minutes</p>
-
 <div class="container-fluid">
 
   <div data-controller="tracker" data-tracker-task-id-value="<%= @task.id %>" data-tracker-time-log-value="<%= @task.time_log %>" data-tracker-authenticity-token-value="<%= form_authenticity_token %>">
 
     <div class="row">
-      <div class="col-sm-8" id="watchAreaContainer">
+
+      <a href="/projects/<%= @task.project_id %>"> <- Back to Project</a>
+
+      <div class="col-sm-6">
+        <h1>Title: <%= @task.title %></h1>
+        <h2>Description: <%= @task.description %></h2>
+        <h2>Billing Rate: €<%= @task.billing_rate %></h2>
+        <h2>Total To Be Billed: €<%= @task.billing_rate %></h2>
+      </div>
+
+      <div class="col-sm-6">
         <h3 id="stopWatchIcon"><i class="fas fa-stopwatch fa-3x"></i></h3>
-        <div id="watchArea">
+        <div>
           <h1 id="timer" data-tracker-target="time" class="display-3">
             <%= @task.time_log %>
           </h1>
@@ -24,12 +26,8 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4" id="reportAreaContainer">
-        <div id="reportArea">
-          <ul class="list-group" id="lapReport">
-          </ul>
-        </div>
-      </div>
+
+
     </div>
   </div>
 
