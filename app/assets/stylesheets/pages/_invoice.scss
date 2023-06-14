@@ -1,0 +1,33 @@
+.card-invoice-task {
+  overflow: hidden;
+  height: 120px;
+  background: #2C3A47;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.757);
+  display: flex;
+  align-items: center;
+  margin: 0 0 16px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+}
+
+
+.card-invoice-task h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-invoice-task p {
+  font-size: 16px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-invoice-task-info {
+  padding: 16px;
+}
