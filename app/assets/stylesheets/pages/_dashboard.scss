@@ -1,22 +1,54 @@
-.nav-tabs {
-  background-color: #f8f9fa;
+.container-fluid {
+  position: relative;
+
+
+.create-client-link {
+  position: absolute;
+  top: 10px; /* Adjust the top position as needed */
+  right: 10px; /* Adjust the right position as needed */
+  margin-right: 40px;
+  // background-color: #f1f1f1;
+    color: black;
+    // padding: 1px;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      /* Styles for the button when hovered */
+      background-color: #f1f1f1;
+      border-radius: 50%;
+    }
+  }
+}
+.tab-content{
+  margin-top: 20px;
 }
 
-.nav-tabs .nav-link {
-  color: #000;
-  background-color: #f8f9fa;
-  border-color: #dee2e6;
-  border-bottom-color: transparent;
+
+table {
+  border-collapse: collapse;
+  background-color: #2C3A47;
+
 }
 
-.nav-tabs .nav-link.active {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+
+thead {
+	background-color: #333;
+	color: #2C3A47;
+	font-size: 0.875rem;
+	text-transform: uppercase;
+	letter-spacing: 2%;
 }
 
-.tab-pane {
-  padding: 10px;
-  border: 1px solid #dee2e6;
-  border-top: none;
+.cell-highlight {
+  background-color: gold;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #2C3A47;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #2C3A47;
 }
