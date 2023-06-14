@@ -1,5 +1,5 @@
 <div class="tab-content">
-  <table class="table mb-2 mt-2 table-hover">
+  <table class="table mb-2 mt-2 table-hover table-dark">
             <thead>
               <tr>
                 <%# <th scope="col">Client</th>
@@ -10,18 +10,14 @@
               </tr>
             <tbody>
               <% @clients.each do |client| %>
-
-                    <tr>
-                        <td><%= link_to client.first_name, client_path(client) %></td>
-                        <td><%= client.last_name %></td>
-                        <td><%= client.email %></td>
-                        <td><%= client.company_name %></td>
-                        <td><%= client.billing_address %></td>
-                        <td><%= client.phone_number %></td>
-                        <td>
-                        </td>
-                    </tr>
-
-              <% end %>
-            </tbody>
-          </table>
+          <tr>
+              <td><%= link_to client.first_name, client_path(client) %></td>
+              <td><%= client.last_name %></td>
+              <td><%= client.email %></td>
+              <td><%= client.company_name %></td>
+              <td><%= client.billing_address %></td>
+              <td><%= client.phone_number %></td>
+          </tr>
+    <% end %>
+  </tbody>
+</table>

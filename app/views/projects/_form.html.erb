@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="rounded p-1 w-100">
+    <%= simple_form_for @project do |f| %>
+      <%= f.input :name %>
+      <%= f.input :deadline %>
+      <%= f.input :time_counter %>
+      <%= f.submit class: 'btn btn-info' %>
+    <% end %>
+  </div>
+</div>
