@@ -4,14 +4,16 @@
 
     <div class="row">
 
-       <h1>Task Title: <%= @task.title %></h1>
-       <h2>Task Description: <%= @task.description %></h2>
-         <p>Task Billing Rate: €<%= @task.billing_rate %></p>
-         <p>Time right now:<%= Time.now %></p>
+      <div class="col-sm-6">
+        <h1>Title: <%= @task.title %></h1>
+        <h2>Description: <%= @task.description %></h2>
+        <h2>Billing Rate: €<%= @task.billing_rate %></h2>
+        <h2>Total To Be Billed: €<%= @task.billing_rate %></h2>
+      </div>
 
-      <div class="col-sm-8" id="watchAreaContainer">
+      <div class="col-sm-6">
         <h3 id="stopWatchIcon"><i class="fas fa-stopwatch fa-3x"></i></h3>
-        <div id="watchArea">
+        <div>
           <h1 id="timer" data-tracker-target="time" class="display-3">
             <%= @task.time_log %>
           </h1>
@@ -22,6 +24,8 @@
           </div>
         </div>
       </div>
+
+
     </div>
 
   </div>
