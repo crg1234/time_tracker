@@ -2,7 +2,6 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-    @task.amount_to_bill = @task.billing_rate * (@task.time_log / 1000) # to convert milliseconds to seconds
   end
 
   def new

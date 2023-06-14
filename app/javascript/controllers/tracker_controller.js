@@ -6,6 +6,7 @@ export default class extends Controller {
   static values = {
     taskId: Number,
     timeLog: Number,
+    billingRate: Number,
     amountToBill: Number,
     authenticityToken: String
   }
@@ -14,6 +15,7 @@ export default class extends Controller {
     this.running = false;
     this.timeTarget.innerText = this.timeFormatter(this.timeLogValue)
     this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue}`
+    // console.log(this.billingRateValue);
     // console.log(this.timeTarget);
     // console.log(this.taskIdValue);
     // console.log(this.timeLogValue);
@@ -37,6 +39,7 @@ export default class extends Controller {
     this.running = false
     this.buttonTarget.innerText = "START"
     clearInterval(this.interval)
+    this.updateBilling()
 
     const formData = new FormData()
     formData.append("task[time_log]", this.timeLogValue)
@@ -52,14 +55,12 @@ export default class extends Controller {
       .then((data) => {
         console.log(data)
       })
-
-    // this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue}`
   }
 
   updateBilling() {
-    console.log(task[billing_rate])
-    this.updatedBilling = task[billing_rate] * (this.timeLogValue / 1000) // to convert milliseconds to seconds
-    this.billingTarget.innerText = `Amount to Bill: €${this.updatedBilling}`
+    console.log(this.billingRateValue)
+    this.amountToBillValue = (this.billingRateValue * (this.timeLogValue / 1000)) // to convert milliseconds to seconds
+    this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue}`
   }
 
   timer = () => {
