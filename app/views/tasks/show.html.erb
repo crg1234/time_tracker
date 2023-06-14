@@ -3,7 +3,6 @@
 <p>Task Billing Rate: €<%= @task.billing_rate %></p>
 
 <p>Time right now:<%= Time.now %></p>
-
 <% time_difference_in_sec = (@task.end_time.to_time.to_i - @task.start_time.to_time.to_i).abs %>
 <p>Time difference from end time to start time: <%= time_difference_in_sec / 60 %> minutes</p>
 
@@ -32,7 +31,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
 </div>
