@@ -7,21 +7,22 @@ class ClientsController < ApplicationController
     @clients = Client.all
   end
 
-
   def new
-    @project = Project.find(params[:project_id])
-    @task = Task.new
+    @client = Client.new
   end
-
   def create
-    # @client = Client.find(params[:client_id]) MUST find a way to check if existing
-    @client = @client.create(client_params)
-    redirect_to client_path(@client)
+  
+    @client = Client.new(client_params)
+    @client.user = current_user
+    if @client.save
+      redirect_to client_path(@client)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
-  private
+  def client_params
 
-  def task_params
-    params.require(:client).permit(:company_name, :first_name, :last_name, :email, :phone_number, :billing_address)
+    params.require(:client).permit(:first_name, :last_name, :email, :phone_number, :company_name, :billing_address)
   end
-  end
+end
