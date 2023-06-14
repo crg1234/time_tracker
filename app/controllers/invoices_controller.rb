@@ -6,6 +6,17 @@ class InvoicesController < ApplicationController
     @tasks = @project.tasks
     @client = @project.client
     @user = current_user
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "My Invoice", # filename
+               template: "invoices/show_print_pdf",
+               formats: [:html],
+               disposition: :inline,
+               layout: 'pdf'
+      end
+    end
   end
 
   def new
