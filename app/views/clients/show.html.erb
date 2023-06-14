@@ -1,19 +1,6 @@
-<body cz-shortcut-listen="true">
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-  <div class="navbar-nav">
-    <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
-    </div>
-  </div>
-</header>
-    <div class="container-fluid">
+ <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-our-grey sidebar collapse">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -91,7 +78,7 @@
     </nav>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
+        <h1 class="h2">Clients</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -104,14 +91,11 @@
         </div>
       </div>
 <h1></h1>
-  <h2><b>Company: </b>Bogisich, VonRueden and West</h2>
-    <p><b>Full name:</b> Mario Waelchi</p>
-    <p><b>Email:</b> shemika@hyatt-schuster.test</p>
-    <p><b>Phone number:</b> +994 (881) 831-9806</p>
-    <p><b>Billing address:</b> Suite 964 32196 Petra Dale, Schmelerport, DE 39070</p>
-    <p><b>User ID:</b> 6</p>
-    <p><b>Created at:</b> 2023-06-13 14:23:30 UTC</p>
-    <p><b>Updated at:</b>2023-06-13 14:23:30 UTC</p>
+  <h2><b>Company: </b><%= @client.company_name %></h2>
+    <p><b>Full name: </b>  <%= @client.last_name %></p>
+    <p><b>Email: </b><%= @client.email %></p>
+    <p><b>Phone number: </b><%= @client.phone_number %></p>
+    <p><b>Billing address: </b><%= @client.billing_address %></p>
     </main>
   </div>
   
