@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="tracker"
 export default class extends Controller {
-  static targets = ["time", "button"]
+  static targets = ["time", "button", "billing"]
   static values = {
     taskId: Number,
     timeLog: Number,
@@ -13,6 +13,7 @@ export default class extends Controller {
   connect() {
     this.running = false;
     this.timeTarget.innerText = this.timeFormatter(this.timeLogValue)
+    this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue}`
     // console.log(this.timeTarget);
     // console.log(this.taskIdValue);
     // console.log(this.timeLogValue);
@@ -39,8 +40,8 @@ export default class extends Controller {
 
     const formData = new FormData()
     formData.append("task[time_log]", this.timeLogValue)
-    formData.append("authenticity_token", this.authenticityTokenValue)
     formData.append("task[amount_to_bill]", this.amountToBillValue)
+    formData.append("authenticity_token", this.authenticityTokenValue)
 
     fetch(`/tasks/${this.taskIdValue}`, {
       method: "PATCH",
@@ -51,12 +52,20 @@ export default class extends Controller {
       .then((data) => {
         console.log(data)
       })
+
+    // this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue}`
+  }
+
+  updateBilling() {
+    console.log(task[billing_rate])
+    this.updatedBilling = task[billing_rate] * (this.timeLogValue / 1000) // to convert milliseconds to seconds
+    this.billingTarget.innerText = `Amount to Bill: €${this.updatedBilling}`
   }
 
   timer = () => {
     this.timeLogValue += 1000
     this.timeTarget.innerText = this.timeFormatter(this.timeLogValue)
-
+    this.updateBilling()
   }
 
   timeFormatter(ms) {
