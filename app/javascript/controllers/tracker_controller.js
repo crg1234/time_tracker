@@ -2,29 +2,48 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="tracker"
 export default class extends Controller {
-  static targets = ["complete", "time", "form"]
-  static values = { task: Number }
+  static targets = ["time", "button"]
+  static values = {
+    taskId: Number,
+    timeLog: Number,
+    authenticityToken: String
+  }
+
   connect() {
-    console.log(this.timeTarget);
-    console.log(this.completeTarget);
-    console.log(this.formTarget);
+    this.running = false;
+    this.timeTarget.innerText = this.timeFormatter(this.timeLogValue)
+    // console.log(this.timeTarget);
+    // console.log(this.taskIdValue);
+    // console.log(this.timeLogValue);
   }
 
-  save(event) {
-    console.log(event)
-    console.log(this.taskValue)
-    console.log(this.timeTarget.innerHTML)
-
-
+  toggle() {
+    if (this.running) {
+      this.stop()
+    } else {
+      this.start()
+    }
   }
 
-  update(event) {
-    event.preventDefault()
-    const url = this.formTarget.action
-    fetch(url, {
+  start() {
+    this.running = true
+    this.buttonTarget.innerText = "STOP"
+    this.interval = setInterval(this.timer, 1000) // in milliseconds
+  }
+
+  stop() {
+    this.running = false
+    this.buttonTarget.innerText = "START"
+    clearInterval(this.interval)
+
+    const formData = new FormData()
+    formData.append("task[time_log]", this.timeLogValue)
+    formData.append("authenticity_token", this.authenticityTokenValue)
+
+    fetch(`/tasks/${this.taskIdValue}`, {
       method: "PATCH",
       headers: { "Accept": "text/plain" },
-      body: new FormData(this.formTarget)
+      body: formData
     })
       .then(response => response.text())
       .then((data) => {
@@ -32,6 +51,39 @@ export default class extends Controller {
       })
   }
 
+  timer = () => {
+    this.timeLogValue += 1000
+    this.timeTarget.innerText = this.timeFormatter(this.timeLogValue)
 
-// @task
-// => # < Task id: 6, title: "Update database", description: "Just do it right", billing_rate: 1.5, start_time: "2000-01-01 07:40:31.000000000 +0000", end_time: "2000-01-01 19:17:10.000000000 +0000", project_id: 17, created_at: "2023-06-13 13:01:27.593274000 +0000", updated_at: "2023-06-13 13:01:27.593274000 +0000" >
+  }
+
+  timeFormatter(ms) {
+    const min = Math.floor((ms / 1000 / 60) << 0);
+    const sec = Math.floor((ms / 1000) % 60);
+
+    return `${min} : ${sec}`
+  }
+
+
+
+  // save(event) {
+  //   console.log(event)
+  //   console.log(this.taskValue)
+  //   console.log(this.timeTarget.innerHTML)
+
+  // }
+
+  // update(event) {
+  //   event.preventDefault()
+  //   const url = this.formTarget.action
+  //   fetch(url, {
+  //     method: "PATCH",
+  //     headers: { "Accept": "text/plain" },
+  //     body: new FormData(this.formTarget)
+  //   })
+  //     .then(response => response.text())
+  //     .then((data) => {
+  //       console.log(data)
+  //     })
+  // }
+}

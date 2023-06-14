@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :tasks, only: [:show, :create]
+  resources :tasks, only: [:show, :create, :update]
   resources :invoices, only: [:show]
   resources :clients, only: [:show]
 end
