@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">COMPANY CLIENT</th>
+      <th scope="col">PROJECT'S NAME</th>
+      <th scope="col">DEADLINE</th>
+      <th scope="col">TIME COUNTER</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.client.company_name %></td>
+        <td><%= project.name %></td>
+        <td><%= project.deadline %></td>
+        <td><%= project.time_counter %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
