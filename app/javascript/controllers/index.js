@@ -12,3 +12,6 @@ application.register("stop-watch", StopWatchController)
 
 import TimerController from "./timer_controller"
 application.register("timer", TimerController)
+
+import TrackerController from "./tracker_controller"
+application.register("tracker", TrackerController)

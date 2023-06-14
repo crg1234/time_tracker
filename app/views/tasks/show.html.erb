@@ -7,7 +7,7 @@
 <% time_difference_in_sec = (@task.end_time.to_time.to_i - @task.start_time.to_time.to_i).abs %>
 <p>Time difference from end time to start time: <%= time_difference_in_sec / 60 %> minutes</p>
 
-<div class="container prose m-5">
+<%# <div class="container prose m-5">
   <div
     data-controller="timer"
     data-timer-from-value="2023-06-14T06:00:00.111Z"
@@ -32,7 +32,7 @@
         Timer Stopped At: <time data-timer-target="toTime"></time>
       </div>
   </div>
-</div>
+</div> %>
 
 <%# ATTEMPTING STOPWATCH INSTEAD OF TIME DIFFERENCE BELOW %>
 
@@ -41,10 +41,10 @@
   <div data-controller="stop_watch">
 
     <div class="row">
-      <div class="col-sm-8" id="watchAreaContainer">
+      <div class="col-sm-8" id="watchAreaContainer" data-controller="tracker" data-tracker-task-value="<%= @task.id %>">
         <h3 id="stopWatchIcon"><i class="fas fa-stopwatch fa-3x"></i></h3>
         <div id="watchArea">
-          <h1 id="timer" class="display-3">
+          <h1 id="timer" data-tracker-target="time" class="display-3">
             00 : 00. 000
           </h1>
           <div id="controls">
@@ -54,10 +54,10 @@
             <button class="btn btn-dark ml-2" id="lap">
               LAP
             </button>
-            <button class="btn btn-dark ml-2" id="reset">
+            <button class="btn btn-dark ml-2" id="reset" >
               RESET
             </button>
-            <button class="btn btn-dark" id="complete">Complete Task</button>
+            <button class="btn btn-dark" id="complete" data-tracker-target="complete" data-action="click->tracker#save">Complete Task</button>
           </div>
         </div>
       </div>
