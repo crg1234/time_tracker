@@ -14,7 +14,7 @@ export default class extends Controller {
   connect() {
     this.running = false;
     this.timeTarget.innerText = this.timeFormatter(this.timeLogValue)
-    this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue}`
+    this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue / 100}`
     // console.log(this.billingRateValue);
     // console.log(this.timeTarget);
     // console.log(this.taskIdValue);
@@ -60,7 +60,7 @@ export default class extends Controller {
   updateBilling() {
     console.log(this.billingRateValue)
     this.amountToBillValue = (this.billingRateValue * (this.timeLogValue / 1000)) // to convert milliseconds to seconds
-    this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue}`
+    this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue / 100}`
   }
 
   timer = () => {

@@ -14,7 +14,7 @@
       <div class="col-sm-6">
         <h1>Title: <%= @task.title %></h1>
         <h2>Description: <%= @task.description %></h2>
-        <h2>Billing Rate: €<%= @task.billing_rate %></h2>
+        <h2>Billing Rate: €<%= @task.billing_rate / 100 %></h2>
         <h2 data-tracker-target="billing">Amount to Bill: €<%= @task.amount_to_bill %></h2>
       </div>
 
