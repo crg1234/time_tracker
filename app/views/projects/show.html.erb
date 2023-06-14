@@ -8,9 +8,9 @@
   <% if @tasks.first.nil? %>
     <p>No tasks yet!</p>
     <% else %>
-    <ul>
+    <ul style="padding: 0; margin: 0;">
       <% @project.tasks.each do |task| %>
-        <li><%= task.title %></li>
+        <li style="list-style-type: none;"><%= link_to task.title, task_path(task) %></li>
       <% end %>
     </ul>
   <% end %>
@@ -31,10 +31,6 @@
           <%= f.input :billing_rate %>
           <%= f.button :submit %>
         <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
