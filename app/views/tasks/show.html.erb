@@ -1,6 +1,9 @@
 <div class="container-fluid">
 
-  <div data-controller="tracker" data-tracker-task-id-value="<%= @task.id %>" data-tracker-time-log-value="<%= @task.time_log %>" data-tracker-authenticity-token-value="<%= form_authenticity_token %>">
+  <div data-controller="tracker" data-tracker-task-id-value="<%= @task.id %>"
+    data-tracker-time-log-value="<%= @task.time_log %>"
+    data-tracker-authenticity-token-value="<%= form_authenticity_token %>"
+    data-tracker-amount-to-bill-value="<%= @task.amount_to_bill %>">
 
     <div class="row">
 
@@ -10,7 +13,7 @@
         <h1>Title: <%= @task.title %></h1>
         <h2>Description: <%= @task.description %></h2>
         <h2>Billing Rate: €<%= @task.billing_rate %></h2>
-        <h2>Total To Be Billed: €<%= @task.billing_rate %></h2>
+        <h2>Amount to Bill: €<%= @task.amount_to_bill %></h2>
       </div>
 
       <div class="col-sm-6">

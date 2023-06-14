@@ -6,6 +6,7 @@ export default class extends Controller {
   static values = {
     taskId: Number,
     timeLog: Number,
+    amountToBill: Number,
     authenticityToken: String
   }
 
@@ -39,6 +40,7 @@ export default class extends Controller {
     const formData = new FormData()
     formData.append("task[time_log]", this.timeLogValue)
     formData.append("authenticity_token", this.authenticityTokenValue)
+    formData.append("task[amount_to_bill]", this.amountToBillValue)
 
     fetch(`/tasks/${this.taskIdValue}`, {
       method: "PATCH",
