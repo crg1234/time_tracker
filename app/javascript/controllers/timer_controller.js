@@ -39,11 +39,11 @@ export default class extends Controller {
     console.log("Start Time", new Date())
     var startTimeTime = new Date().getTime();
     console.log(startTimeTime)
-    var incrementer = 0;
-    setInterval(() => {
-      incrementer += 1
-      console.log(incrementer)
-    }, 1000);
+    // var incrementer = 0;
+    // setInterval(() => {
+    //   incrementer += 1
+    //   console.log(incrementer)
+    // }, 1000);
     // var startTime = new Date();
     // console.log(startTime)
   }
