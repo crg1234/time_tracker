@@ -19,7 +19,7 @@
         <td><%= invoice.project.name %></td>
         <td><%= invoice.payment_deadline %></td>
         <td><%= invoice.billing_amount %></td>
-        <td><button>PDF</button></td>
+        <td><%= link_to "Print a PDF", invoice_path(invoice, format: :pdf) %></td>
       </tr>
     <% end %>
   </tbody>
