@@ -8,8 +8,12 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "pages#dashboard"
 
-  resources :projects, only: [:index, :new, :create, :show]
-  resources :tasks, only: [:show]
-  resources :invoices, only: [:show]
+  resources :projects, only: [:index, :new, :create, :show] do
+    resources :tasks, only: [:new, :create]
+  end
 
+
+  resources :tasks, only: [:show, :create]
+  resources :invoices, only: [:show]
+  resources :clients, only: [:show]
 end
