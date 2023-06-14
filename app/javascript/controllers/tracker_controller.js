@@ -2,11 +2,12 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="tracker"
 export default class extends Controller {
-  static targets = ["complete", "time"]
+  static targets = ["complete", "time", "form"]
   static values = { task: Number }
   connect() {
     console.log(this.timeTarget);
     console.log(this.completeTarget);
+    console.log(this.formTarget);
   }
 
   save(event) {
@@ -14,15 +15,22 @@ export default class extends Controller {
     console.log(this.taskValue)
     console.log(this.timeTarget.innerHTML)
 
-    // fetch("http://localhost:3000/tasks/6")
-    //   .then(response => response.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //   })
-
 
   }
-}
+
+  update(event) {
+    event.preventDefault()
+    const url = this.formTarget.action
+    fetch(url, {
+      method: "PATCH",
+      headers: { "Accept": "text/plain" },
+      body: new FormData(this.formTarget)
+    })
+      .then(response => response.text())
+      .then((data) => {
+        console.log(data)
+      })
+  }
 
 
 // @task

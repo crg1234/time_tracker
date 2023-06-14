@@ -73,6 +73,19 @@
 
 </div>
 
+<%= simple_form_for @task,
+  html: {
+    class: "d-none",
+    data: {
+      tracker_target: "form",
+      action: "submit->tracker#save"
+    }
+  } do |f|
+
+  end
+%>
+
+
 <script type="text/javascript">
 let laptime, lapcount = 0, firstClickOnStart = true;
 let startTime, endTime;
