@@ -15,9 +15,15 @@ class TasksController < ApplicationController
     redirect_to project_path(@project)
   end
 
+  def update
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    head :no_content
+  end
+
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :billing_rate, :start_time, :end_time)
+    params.require(:task).permit(:title, :description, :billing_rate, :start_time, :end_time, :time_log)
   end
 end

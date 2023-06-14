@@ -237,6 +237,7 @@ GEM
     thor (1.2.2)
     tilt (2.2.0)
     timeout (0.3.2)
+    timers (4.3.5)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -258,6 +259,10 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    wicked_pdf (2.6.3)
+      activesupport
+    wkhtmltopdf-binary (0.12.6.6)
+    wkhtmltopdf-heroku (2.12.6.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.8)
@@ -287,10 +292,14 @@ DEPENDENCIES
   simple_form!
   sprockets-rails
   stimulus-rails
+  timers
   turbo-rails
   tzinfo-data
   web-console
   webdrivers
+  wicked_pdf
+  wkhtmltopdf-binary
+  wkhtmltopdf-heroku
 
 RUBY VERSION
    ruby 3.1.2p20
