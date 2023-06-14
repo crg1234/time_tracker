@@ -22,10 +22,6 @@
       </div>
 
 
-
-
-
-
       <div style="display: none" data-timer-target="before">
         Timer Started At: <time data-timer-target="fromTime"></time>
       </div>
@@ -38,38 +34,186 @@
   </div>
 </div>
 
+<%# ATTEMPTING STOPWATCH INSTEAD OF TIME DIFFERENCE BELOW %>
 
-<%# <script>
-      // set the date we are counting down to
-      var countDown = new Date("jan 1, 2027 12:12:50").getTime();
-      console.log(countDown)
+<div class="container-fluid">
 
-      //update the count down in every 1 second
-      var update = setInterval(function () {
+  <div data-controller="stop_watch">
 
-         // get the today's date and time
-         var now = new Date().getTime();
-         console.log(now)
+    <div class="row">
+      <div class="col-sm-8" id="watchAreaContainer">
+        <h3 id="stopWatchIcon"><i class="fas fa-stopwatch fa-3x"></i></h3>
+        <div id="watchArea">
+          <h1 id="timer" class="display-3">
+            00 : 00. 000
+          </h1>
+          <div id="controls">
+            <button class="btn btn-dark" id="toggle" data-action="click->stop_watch#toggle">
+              START
+            </button>
+            <button class="btn btn-dark ml-2" id="lap">
+              LAP
+            </button>
+            <button class="btn btn-dark ml-2" id="reset">
+              RESET
+            </button>
+            <button class="btn btn-dark" id="complete">Complete Task</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4" id="reportAreaContainer">
+        <div id="reportArea">
+          <ul class="list-group" id="lapReport">
+          </ul>
+        </div>
+      </div>
+    </div>
 
-         //find the difference b/w countDown and now
-         var diff = countDown - now;
-         console.log(diff)
+  </div>
 
-         //now we are calculating time in days, hrs, minutes, and seconds.
-         var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-         var hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-         var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-         var seconds = Math.floor((diff % (1000 * 60)) / 1000);
-         console.log(seconds)
+</div>
 
-      })
+<script type="text/javascript">
+let laptime, lapcount = 0, firstClickOnStart = true;
+let startTime, endTime;
+let lapClick = [];
 
-      //    //now output the result in an element with id ="time"
-      //    document.getElementById("time").innerHTML =
-      //    days + "-D: " + hrs + "-H: " + minutes + "-M: " + seconds + "-S ";
-      //    if (diff < 0) {
-      //       clearInterval(update);
-      //       document.getElementById("time").innerHTML = "Expired";
-      //    }
-      // }, 1000);
-</script> %>
+function timeFormatter(timeInMilliSeconds) {
+  let time = new Date(timeInMilliSeconds);
+  let minutes = time.getMinutes().toString();
+  let seconds = time.getSeconds().toString();
+  let milliseconds = time.getMilliseconds().toString();
+
+  if( minutes.length < 2 ) {
+    minutes = "0" + minutes;
+  }
+  if( seconds.length < 2 ) {
+    seconds = "0" + seconds;
+  }
+  while( milliseconds.length < 3 ) {
+    milliseconds = "0" + milliseconds;
+  }
+
+  return minutes + " : " + seconds + ". " + milliseconds;
+}
+
+function stopWatch(ele){
+  let currentTime = 0;
+  let interval;
+  let offset;
+
+  function update() {
+    if(this.isOn){
+      currentTime += delta();
+    }
+    let formattedTime = timeFormatter(currentTime);
+    ele.textContent = formattedTime;
+    laptime = formattedTime;
+  }
+
+  function delta() {
+    const now = Date.now();
+    const timePassed = now - offset;
+    offset = now;
+    return timePassed;
+  }
+
+  this.isOn = false;
+  this.start = function() {
+    if(!this.isOn) {
+      interval = setInterval( update.bind(this), 10 );
+      offset = Date.now();
+      this.isOn = true;
+    }
+  }
+
+  this.stop = function() {
+    if(this.isOn) {
+      clearInterval(interval);
+      interval = null;
+      this.isOn = false;
+    }
+  }
+
+  this.reset = function(){
+    if(!this.isOn){
+      currentTime = 0;
+      update();
+      lapReport.innerText = "";
+      laptime = null;
+      lapcount = 0;
+      firstClickOnStart = true;
+      startTime = null;
+      endTime = null;
+      lapClick = [];
+    }
+  }
+
+}
+
+const timer = document.getElementById('timer');
+const toggleBtn = document.getElementById('toggle');
+const resetBtn = document.getElementById('reset');
+const lapBtn = document.getElementById('lap');
+const lapReport = document.getElementById('lapReport');
+
+
+const watch = new stopWatch(timer);
+
+
+toggleBtn.addEventListener('click', function(){
+  if(watch.isOn){
+    watch.stop();
+    resetBtn.style.display = 'inline-block';
+    lapBtn.style.display = 'none';
+    toggleBtn.textContent = 'START';
+  }else{
+    if(firstClickOnStart){
+      startTime = timeFormatter(Date.now());
+      firstClickOnStart = false;
+    }
+    watch.start();
+    resetBtn.style.display = 'none';
+    lapBtn.style.display = 'inline-block';
+    toggleBtn.textContent = 'STOP';
+  }
+});
+
+resetBtn.addEventListener('click', function(){
+  endTime = timeFormatter(Date.now());
+  records.create({start_time: startTime, end_time: endTime})
+          .then(newRecord => {
+          console.log(newRecord);
+          if(lapClick.length > 0){
+            for(let elem of lapClick){
+              laps.create({lap_time: elem, record_id: newRecord.id})
+                  .then(result => {
+                    console.log(result);
+                  })
+            }
+          }
+          })
+    setTimeout(function(){
+        watch.reset();
+    },100);
+    resetBtn.style.display = 'none';
+    lapBtn.style.display = 'none';
+});
+
+lapBtn.addEventListener('click', function(){
+  if(watch.isOn){
+    let tempLap = timeFormatter(Date.now());
+    lapClick.push(tempLap);
+    lapcount ++;
+    if(lapcount < 10){ lapcount = '0' + lapcount };
+    const newLapTime = document.createElement('li');
+    newLapTime.className = 'list-group-item';
+    const lapTimeTitle = `<strong>Lap ${lapcount}</strong> - `;
+    newLapTime.innerHTML = `${lapTimeTitle} ${laptime}`;
+    lapReport.appendChild(newLapTime);
+  }
+
+
+});
+
+</script>

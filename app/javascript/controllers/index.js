@@ -7,5 +7,8 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import StopWatchController from "./stop_watch_controller"
+application.register("stop-watch", StopWatchController)
+
 import TimerController from "./timer_controller"
 application.register("timer", TimerController)
