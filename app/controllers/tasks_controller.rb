@@ -2,7 +2,6 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-    @amount_to_bill = @task.billing_rate * (@task.time_log / 60000) # to convert milliseconds to minutes
   end
 
   def new
@@ -25,6 +24,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :billing_rate, :start_time, :end_time, :time_log)
+    params.require(:task).permit(:title, :description, :billing_rate, :start_time, :end_time, :time_log, :amount_to_bill)
   end
 end
