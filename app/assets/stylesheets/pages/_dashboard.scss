@@ -20,3 +20,31 @@
   border: 1px solid #dee2e6;
   border-top: none;
 }
+
+table {
+  border-collapse: collapse;
+  background-color: #2C3A47;
+
+}
+
+
+thead {
+	background-color: #333;
+	color: #2C3A47;
+	font-size: 0.875rem;
+	text-transform: uppercase;
+	letter-spacing: 2%;
+}
+
+.cell-highlight {
+  background-color: gold;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #2C3A47;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #2C3A47;
+}
