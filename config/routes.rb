@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:index, :new, :create, :show] do
     resources :tasks, only: [:new, :create]
-    resources :invoices, only: [:new, :create]
+    resources :invoices, only: [:new, :create, :show]
   end
 
 

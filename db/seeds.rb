@@ -1,4 +1,6 @@
+require 'open-uri'
 require 'faker'
+
 
 puts "Cleaning up database..."
 Invoice.destroy_all
@@ -9,11 +11,30 @@ User.destroy_all
 
 puts "Database cleaned"
 
-juliette = User.create!(email: "great.time@gmail.com", password: "secret", first_name: "Juliette", last_name: "Guillaume" )
-tom = User.create!(email: "peewie@gmail.com", password: "secret", first_name: "Tom", last_name: "Dennis")
-chris = User.create!(email: "showmustgoon@gmail.com", password: "secret", first_name: "Chris", last_name: "Grant")
-safia = User.create!(email: "good.day@gmail.com", password: "secret", first_name: "Safia", last_name: "Raza")
-nurra = User.create!(email: "happy.tracker@gmail.com", password: "secret", first_name:"Nurra", last_name: "Barry")
+juliette_file = URI.open("https://avatars.githubusercontent.com/u/131234422?v=4")
+juliette = User.create(email: "great.time@gmail.com", password: "secret", first_name: "Juliette", last_name: "Guillaume")
+juliette.photo.attach(io: juliette_file, filename: 'juliette.jpg', content_type: "image/png")
+juliette.save
+
+tom_file = URI.open("https://avatars.githubusercontent.com/u/131278560?v=4")
+tom = User.create(email: "peewie@gmail.com", password: "secret", first_name: "Tom", last_name: "Dennis")
+tom.photo.attach(io: tom_file, filename: "tom.png", content_type: "image/png")
+tom.save
+
+chris_file = URI.open("https://avatars.githubusercontent.com/u/6758646?v=4")
+chris = User.create(email: "showmustgoon@gmail.com", password: "secret", first_name: "Chris", last_name: "Grant")
+chris.photo.attach(io: chris_file, filename: "chris.png", content_type: "image/png")
+chris.save
+
+safia_file = URI.open("https://avatars.githubusercontent.com/u/122315676?v=4")
+safia = User.create(email: "good.day@gmail.com", password: "secret", first_name: "Safia", last_name: "Raza")
+safia.photo.attach(io: safia_file, filename: "safia.png", content_type: "image/png")
+safia.save
+
+nurra_file = URI.open("https://avatars.githubusercontent.com/u/110908022?v=4")
+nurra = User.create(email: "happy.tracker@gmail.com", password: "secret", first_name:"Nurra", last_name: "Barry")
+nurra.photo.attach(io: nurra_file, filename: "nurra.png", content_type: "image/png")
+nurra.save
 
 puts "Create new database.."
 
