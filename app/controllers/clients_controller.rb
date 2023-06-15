@@ -23,6 +23,25 @@ class ClientsController < ApplicationController
     end
   end
 
+  def edit
+    @client = Client.find(params[:id])
+  end
+
+  def update
+    @client = Client.find(params[:id])
+    if @client.update(client_params)
+      redirect_to client_path(@client)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+  def destroy
+
+    @client = Client.find(params[:id])
+    @client.destroy
+    redirect_to dashboard_path, notice: 'Client was successfully deleted.'
+  end
+
   def client_params
 
     params.require(:client).permit(:first_name, :last_name, :email, :phone_number, :company_name, :billing_address)
