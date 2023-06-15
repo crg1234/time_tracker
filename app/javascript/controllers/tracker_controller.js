@@ -14,8 +14,8 @@ export default class extends Controller {
   connect() {
     this.running = false;
     this.timeTarget.innerText = this.timeFormatter(this.timeLogValue)
-    this.billingTarget.innerText = `Amount to Bill: €${parseFloat(this.amountToBillValue / 100).toFixed(2)}`
-    this.billingButtonTarget.innerText = `${parseFloat(this.amountToBillValue / 100).toFixed(2)}`
+    this.billingTarget.innerText = `Amount to Bill: €${parseFloat(this.amountToBillValue / 3600).toFixed(2)}` // to bill hourly rate by second
+    this.billingButtonTarget.innerText = `${parseFloat(this.amountToBillValue / 3600).toFixed(2)}` // to bill hourly rate by second
     // console.log(this.billingRateValue);
     // console.log(this.timeTarget);
     // console.log(this.taskIdValue);
@@ -48,7 +48,7 @@ export default class extends Controller {
     formData.append("task[amount_to_bill]", this.amountToBillValue)
     formData.append("authenticity_token", this.authenticityTokenValue)
 
-    fetch(`/ tasks / ${this.taskIdValue}`, {
+    fetch(`/tasks/${this.taskIdValue}`, {
       method: "PATCH",
       headers: { "Accept": "text/plain" },
       body: formData
@@ -62,8 +62,8 @@ export default class extends Controller {
   updateBilling() {
     console.log(this.billingRateValue)
     this.amountToBillValue = (this.billingRateValue * (this.timeLogValue / 1000)) // to convert milliseconds to seconds
-    this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue / 100}`
-    this.billingButtonTarget.innerText = `${parseFloat(this.amountToBillValue / 100).toFixed(2)
+    this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue / 3600}` // to bill hourly rate by second
+    this.billingButtonTarget.innerText = `${parseFloat(this.amountToBillValue / 3600).toFixed(2) // to bill hourly rate by second
       }`
     // parseFloat(float_num.toFixed(2))
   }
