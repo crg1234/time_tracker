@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.client = Client.find(params[:project][:client_id])
+    @project.client = Client.find(params[:client_id])
     if @project.save
       redirect_to project_path(@project)
     else

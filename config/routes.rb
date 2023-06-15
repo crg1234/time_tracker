@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "pages#dashboard"
 
-  resources :projects, only: [:index, :new, :create, :show] do
+  resources :projects, only: [:index, :show] do
     resources :tasks, only: [:new, :create]
     resources :invoices, only: [:new, :create, :show]
   end
@@ -16,5 +16,8 @@ Rails.application.routes.draw do
 
   resources :tasks, only: [:show, :create, :update]
   resources :invoices, only: [:show]
-  resources :clients, only: [:show, :new, :create]
+
+  resources :clients, only: [:show, :new, :create] do
+    resources :projects, only: [:new, :create]
+  end
 end

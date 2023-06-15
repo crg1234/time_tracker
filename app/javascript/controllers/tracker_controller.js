@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="tracker"
 export default class extends Controller {
-  static targets = ["time", "button", "billing"]
+  static targets = ["time", "button", "billing", "billingButton"]
   static values = {
     taskId: Number,
     timeLog: Number,
@@ -14,11 +14,13 @@ export default class extends Controller {
   connect() {
     this.running = false;
     this.timeTarget.innerText = this.timeFormatter(this.timeLogValue)
-    this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue / 100}`
+    this.billingTarget.innerText = `Amount to Bill: €${parseFloat(this.amountToBillValue / 100).toFixed(2)}`
+    this.billingButtonTarget.innerText = `${parseFloat(this.amountToBillValue / 100).toFixed(2)}`
     // console.log(this.billingRateValue);
     // console.log(this.timeTarget);
     // console.log(this.taskIdValue);
     // console.log(this.timeLogValue);
+    // console.log(this.billingButtonTarget)
   }
 
   toggle() {
@@ -61,6 +63,8 @@ export default class extends Controller {
     console.log(this.billingRateValue)
     this.amountToBillValue = (this.billingRateValue * (this.timeLogValue / 1000)) // to convert milliseconds to seconds
     this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue / 100}`
+    this.billingButtonTarget.innerText = `${parseFloat(this.amountToBillValue / 100).toFixed(2)}`
+    // parseFloat(float_num.toFixed(2))
   }
 
   timer = () => {
@@ -69,42 +73,24 @@ export default class extends Controller {
     this.updateBilling()
   }
 
+  // timeFormatter(ms) {
+  //   const min = Math.floor((ms / 1000 / 60) << 0);
+  //   const sec = Math.floor((ms / 1000) % 60);
+
+  //   return `${min} : ${sec}`
+
+  // }
+
   timeFormatter(ms) {
-    const min = Math.floor((ms / 1000 / 60) << 0);
-    const sec = Math.floor((ms / 1000) % 60);
+    let seconds = Math.floor((ms / 1000) % 60);
+    let minutes = Math.floor((ms / (1000 * 60)) % 60);
+    let hours = Math.floor((ms / (1000 * 60 * 60)) % 24);
 
-    return `${min} : ${sec}`
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-    // const hours = Math.floor(ms / 3_600_000);
-    // const minutes = Math.floor((ms - (hours * 3600000)) / 60);
-    // const seconds = ms - (hours * 3600000) - (minutes * 60);
-
-    // if (hours < 10) { hours = "0" + hours; }
-    // if (minutes < 10) { minutes = "0" + minutes; }
-    // if (seconds < 10) { seconds = "0" + seconds; }
-    // return `${hours} : ${minutes} : ${seconds}`;
+    return hours + ":" + minutes + ":" + seconds
   }
 
-
-
-  // save(event) {
-  //   console.log(event)
-  //   console.log(this.taskValue)
-  //   console.log(this.timeTarget.innerHTML)
-
-  // }
-
-  // update(event) {
-  //   event.preventDefault()
-  //   const url = this.formTarget.action
-  //   fetch(url, {
-  //     method: "PATCH",
-  //     headers: { "Accept": "text/plain" },
-  //     body: new FormData(this.formTarget)
-  //   })
-  //     .then(response => response.text())
-  //     .then((data) => {
-  //       console.log(data)
-  //     })
-  // }
 }

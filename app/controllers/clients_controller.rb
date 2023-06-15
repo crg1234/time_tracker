@@ -1,6 +1,8 @@
 class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
+    @project = Project.new
+    @projects = @client.projects
   end
 
   def index
@@ -10,8 +12,8 @@ class ClientsController < ApplicationController
   def new
     @client = Client.new
   end
+
   def create
-  
     @client = Client.new(client_params)
     @client.user = current_user
     if @client.save
