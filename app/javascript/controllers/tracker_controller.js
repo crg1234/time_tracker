@@ -48,7 +48,7 @@ export default class extends Controller {
     formData.append("task[amount_to_bill]", this.amountToBillValue)
     formData.append("authenticity_token", this.authenticityTokenValue)
 
-    fetch(`/tasks/${this.taskIdValue}`, {
+    fetch(`/ tasks / ${this.taskIdValue}`, {
       method: "PATCH",
       headers: { "Accept": "text/plain" },
       body: formData
@@ -63,7 +63,8 @@ export default class extends Controller {
     console.log(this.billingRateValue)
     this.amountToBillValue = (this.billingRateValue * (this.timeLogValue / 1000)) // to convert milliseconds to seconds
     this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue / 100}`
-    this.billingButtonTarget.innerText = `${parseFloat(this.amountToBillValue / 100).toFixed(2)}`
+    this.billingButtonTarget.innerText = `${parseFloat(this.amountToBillValue / 100).toFixed(2)
+      }`
     // parseFloat(float_num.toFixed(2))
   }
 
@@ -77,7 +78,7 @@ export default class extends Controller {
   //   const min = Math.floor((ms / 1000 / 60) << 0);
   //   const sec = Math.floor((ms / 1000) % 60);
 
-  //   return `${min} : ${sec}`
+  //   return `${ min } : ${ sec } `
 
   // }
 
