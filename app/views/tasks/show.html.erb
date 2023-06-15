@@ -27,7 +27,7 @@
         <h1><%= @task.title.capitalize %></h1>
         <%# <h2>Description: <%= @task.description</h2> %>
         </br>
-        <h3>Billing Rate: €<%= @task.billing_rate %> per hour</h3>
+        <h3>Billing Rate: €<%= @task.billing_rate.round(0) %> per hour</h3>
           <p class="d-none" data-tracker-target="billing">Amount to Bill: €<%= @task.amount_to_bill %></p>
       </div>
 
