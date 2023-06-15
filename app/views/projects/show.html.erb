@@ -75,6 +75,10 @@
       </div>
     </nav>
 
+
+    <%# end of nav sidebar %>
+
+
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="chartjs-size-monitor">
         <div class="chartjs-size-monitor-expand">
@@ -108,7 +112,10 @@
           <% end %>
         <% end %>
       </div>
+        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newTaskPopUp">Add task</button>
+
     </main>
+
 </div>
 
 
@@ -119,6 +126,7 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">New Task</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+
       <div class="modal-body">
         <%= simple_form_for [@project, @task] do |f| %>
           <%= f.input :title %>
