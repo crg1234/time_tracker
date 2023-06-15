@@ -13,7 +13,7 @@ puts "Database cleaned"
 
 juliette_file = URI.open("https://avatars.githubusercontent.com/u/131234422?v=4")
 juliette = User.create(email: "great.time@gmail.com", password: "secret", first_name: "Juliette", last_name: "Guillaume")
-juliette.photo.attach(io: juliette_file, filename: 'juliette.jpg', content_type: "image/png")
+juliette.photo.attach(io: juliette_file, filename: "juliette.jpg", content_type: "image/png")
 juliette.save
 
 tom_file = URI.open("https://avatars.githubusercontent.com/u/131278560?v=4")
