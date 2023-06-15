@@ -38,7 +38,7 @@
                     <p class="text-center pb-5"><strong><%= task.title.capitalize %></strong></>
 
                     <p class="text-left d-none"><%= task.description.capitalize %></p>
-                    <p class="text-left">Hourly Rate: €<%= task.billing_rate.round(2) %></p>
+                    <p class="text-left">Hourly Rate: €<%= task.billing_rate.round(0) %></p>
                     <p class="text-left"><i class="fas fa-stopwatch fa-2x me-1"></i> <%= task.time_log %></p>
                     <p class="text-left"><i class="fas fa-euro-sign fa-2x me-3"></i><%= task.amount_to_bill %></p>
 
