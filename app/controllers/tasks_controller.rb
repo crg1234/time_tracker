@@ -21,9 +21,10 @@ class TasksController < ApplicationController
     head :no_content
   end
 
+
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :billing_rate, :start_time, :end_time, :time_log, :amount_to_bill)
+    params.require(:task).permit(:title, :description, :billing_rate, :start_time, :end_time, :time_log, :amount_to_bill, :completed)
   end
 end

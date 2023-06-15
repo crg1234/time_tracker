@@ -1,4 +1,18 @@
-<div class="container-fluid">
+<div class="ms-3">
+  <a href="/projects/<%= @task.project_id %>"> <- Back to Project</a>
+
+  <div data-controller="checkbox"
+      data-checkbox-task-completed-value="<%= @task.completed %>"
+      data-checkbox-task-id-value="<%= @task.id %>">
+    <div class="form-check mt-3 text-light">
+      <input id="checkbox-completed" type="checkbox" class="form-check-input" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+      <label for="checkbox-completed">Mark as completed</label>
+    </div>
+  </div>
+
+</div>
+
+<div class="container-fluid d-flex justify-content-center">
 
   <div data-controller="tracker" data-tracker-task-id-value="<%= @task.id %>"
     data-tracker-time-log-value="<%= @task.time_log %>"
@@ -7,33 +21,47 @@
     data-tracker-billing-rate-value="<%= @task.billing_rate %>"
   >
 
-    <div class="row">
+    <div class="row my-5">
 
-      <a href="/projects/<%= @task.project_id %>"> <- Back to Project</a>
-
-      <div class="col-sm-6">
-        <h1>Title: <%= @task.title %></h1>
-        <h2>Description: <%= @task.description %></h2>
-        <h2>Billing Rate: €<%= @task.billing_rate / 100 %></h2>
-        <h2 data-tracker-target="billing">Amount to Bill: €<%= @task.amount_to_bill %></h2>
+      <div class="col-sm-12 text-center mb-5">
+        <h1><%= @task.title.capitalize %></h1>
+        <%# <h2>Description: <%= @task.description</h2> %>
+        </br>
+        <h3>Billing Rate: €<%= @task.billing_rate %> per hour</h3>
+          <p class="d-none" data-tracker-target="billing">Amount to Bill: €<%= @task.amount_to_bill %></p>
       </div>
 
-      <div class="col-sm-6">
+      <div class="col-sm-6 text-center">
         <h3 id="stopWatchIcon"><i class="fas fa-stopwatch fa-3x"></i></h3>
         <div>
           <h1 id="timer" data-tracker-target="time" class="display-3">
             <%= @task.time_log %>
           </h1>
           <div id="controls">
-            <button class="btn btn-dark" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
+            <%# <button class="btn btn-light" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
               START
-            </button>
+            </button> %>
           </div>
         </div>
       </div>
 
+      <div class="col-sm-6 text-center">
+        <h3 id="euroIcon"><i class="fas fa-euro-sign fa-3x"></i></h3>
+        <div>
+          <h1 data-tracker-target="billingButton" class="display-3">
+            <%= @task.amount_to_bill %>
+          </h1>
+        </div>
+      </div>
+
+      <div class="col-sm-12 text-center">
+        <button class="btn btn-light" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
+          START
+        </button>
+      </div>
 
     </div>
+
   </div>
 
 </div>
