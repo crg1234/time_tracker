@@ -1,0 +1,17 @@
+<div class="col-md-3 p-3 card-project-task ">
+    <h3 class="text-center"><%= @tasks.first.title.capitalize %></h3>
+    <p class="text-left"><%= @tasks.first.description %></p>
+    <p class="text-left">Hourly Rate: €<%= @tasks.first.billing_rate %></p>
+    <p class="text-left"><i class="fas fa-stopwatch fa-2x"></i> <%= @tasks.first.time_log %></p>
+    <p class="text-left"><i class="fas fa-euro-sign fa-2x"></i> <%= @tasks.first.amount_to_bill %></p>
+
+    <div data-controller="checkbox"
+      data-checkbox-task-completed-value="<%= @task.completed %>"
+      data-checkbox-task-id-value="<%= @task.id %>"
+    >
+      <div class="form-check mt-3 text-light">
+        <input id="checkbox-completed" type="checkbox" class="form-check-input" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+        <label for="checkbox-completed">Mark as completed</label>
+      </div>
+    </div>
+</div>
