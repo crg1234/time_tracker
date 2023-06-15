@@ -1,6 +1,36 @@
 <div class="container-fluid">
   <div class="row">
-    <%= render 'shared/sidebarshowpages'%>
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-our-grey sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Customers
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              Tasks
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart" aria-hidden="true"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              Invoices
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
 
 
     <%# end of nav sidebar %>
@@ -20,8 +50,7 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div>
           <h1 class="h2" style="margin-bottom: 20px;"><%= @project.name %></h1>
-          <h3>Total time: <%= @project.time_counter %> hours</h3>
-          <p>Client: <%= @client.first_name  %> <%= @client.last_name %></p>
+          <h2><%= @client.first_name  %> <%= @client.last_name %></h2>
           <p>Deadline: <%= @project.deadline %> </p>
         </div>
       </div>
@@ -35,31 +64,11 @@
           <% @project.tasks.each do |task| %>
             <div class="col-3">
               <div><%= link_to task.title, task_path(task) %></div>
-
-                <div class="card-project-task p-3">
-                  <h3 class="text-center"><%= task.title.capitalize %></h3>
-                  </br>
-                  <p class="text-left"><%= task.description.capitalize %></p>
-                  <p class="text-left">Hourly Rate: €<%= task.billing_rate %></p>
-                  <p class="text-left"><i class="fas fa-stopwatch fa-2x me-1"></i> <%= task.time_log %></p>
-                  <p class="text-left"><i class="fas fa-euro-sign fa-2x me-3"></i><%= task.amount_to_bill %></p>
-
-                  <div data-controller="checkbox"
-                    data-checkbox-task-completed-value="<%= task.completed %>"
-                    data-checkbox-task-id-value="<%= task.id %>"
-                  >
-                    <div class="form-check mt-3 text-light">
-                      <input id="checkbox-completed" type="checkbox" class="form-check-input" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
-                      <label for="checkbox-completed">Mark as completed</label>
-                    </div>
-                    </div>
-                </div>
-
             </div>
           <% end %>
         <% end %>
       </div>
-
+        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newTaskPopUp">Add task</button>
 
     </main>
 
