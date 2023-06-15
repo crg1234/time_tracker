@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["checkbox"]
   static values = {
     taskCompleted: Boolean,
+    taskId: Number
   }
 
   connect() {
@@ -29,6 +30,7 @@ export default class extends Controller {
     this.status = true
     this.taskCompletedValue = true
     console.log("the box is checked")
+    console.log(`identifier ${this.taskIdValue}`)
 
     const formData = new FormData()
     formData.append("task[completed]", this.taskCompletedValue)
@@ -49,24 +51,24 @@ export default class extends Controller {
     console.log("the box is unchecked")
   }
 
-  // uncompleteTask() {
-  //   this.status = false
-  //   this.taskCompletedValue = false
+  uncompleteTask() {
+    this.status = false
+    this.taskCompletedValue = false
 
-  //   const formData = new FormData()
-  //   formData.append("task[completed]", this.taskCompletedValue)
-  //   formData.append("authenticity_token", this.authenticityTokenValue)
+    const formData = new FormData()
+    formData.append("task[completed]", this.taskCompletedValue)
+    formData.append("authenticity_token", this.authenticityTokenValue)
 
-  //   fetch(`/tasks/${this.taskIdValue}`, {
-  //     method: "PATCH",
-  //     headers: { "Accept": "text/plain" },
-  //     body: formData
-  //   })
-  //     .then(response => response.text())
-  //     .then((data) => {
-  //       console.log(data)
-  //     })
+    fetch(`/tasks/${this.taskIdValue}`, {
+      method: "PATCH",
+      headers: { "Accept": "text/plain" },
+      body: formData
+    })
+      .then(response => response.text())
+      .then((data) => {
+        console.log(data)
+      })
 
-  // }
+  }
 
 }

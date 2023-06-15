@@ -21,6 +21,7 @@ class TasksController < ApplicationController
     head :no_content
   end
 
+
   private
 
   def task_params

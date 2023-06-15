@@ -1,7 +1,9 @@
 <div class="ms-3">
   <a href="/projects/<%= @task.project_id %>"> <- Back to Project</a>
 
-  <div data-controller="checkbox" data-checkbox-task-completed-value="<%= @task.completed %>">
+  <div data-controller="checkbox"
+      data-checkbox-task-completed-value="<%= @task.completed %>"
+      data-checkbox-task-id-value="<%= @task.id %>">
     <div class="form-check mt-3 text-light">
       <input id="checkbox-completed" type="checkbox" class="form-check-input" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
       <label for="checkbox-completed">Mark as completed</label>
