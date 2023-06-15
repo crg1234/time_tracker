@@ -1,9 +1,7 @@
 <div class="container-fluid">
   <div class="row">
+
     <%= render 'shared/sidebarshowpages'%>
-
-
-    <%# end of nav sidebar %>
 
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -11,8 +9,8 @@
         <div>
           <h1 class="h2" style="margin-bottom: 20px;"><%= @project.name %></h1>
           <p>Total time: <%= @project.time_counter %> hours</p>
-          <p>Client: <%= @client.first_name  %> <%= @client.last_name %></p>
-          <p>Deadline: <%= @project.deadline.strftime("%d %B %Y") %> </p>
+          <h2><%= @client.first_name  %> <%= @client.last_name %></h2>
+          <p>Deadline: <%= @project.deadline %> </p>
         </div>
         <div>
           <div class="btn-toolbar mb-2 mb-md-0 d-flex justify-content-end">
@@ -33,31 +31,11 @@
           <% @project.tasks.each do |task| %>
             <div class="col-3">
               <div><%= link_to task.title, task_path(task) %></div>
-
-                <div class="card-project-task p-3">
-                  <h3 class="text-center"><%= task.title.capitalize %></h3>
-                  </br>
-                  <p class="text-left"><%= task.description.capitalize %></p>
-                  <p class="text-left">Hourly Rate: €<%= task.billing_rate %></p>
-                  <p class="text-left"><i class="fas fa-stopwatch fa-2x me-1"></i> <%= task.time_log %></p>
-                  <p class="text-left"><i class="fas fa-euro-sign fa-2x me-3"></i><%= task.amount_to_bill %></p>
-
-                  <div data-controller="checkbox"
-                    data-checkbox-task-completed-value="<%= task.completed %>"
-                    data-checkbox-task-id-value="<%= task.id %>"
-                  >
-                    <div class="form-check mt-3 text-light">
-                      <input id="checkbox-completed" type="checkbox" class="form-check-input" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
-                      <label for="checkbox-completed">Mark as completed</label>
-                    </div>
-                    </div>
-                </div>
-
             </div>
           <% end %>
         <% end %>
       </div>
-
+        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newTaskPopUp">Add task</button>
 
     </main>
 
