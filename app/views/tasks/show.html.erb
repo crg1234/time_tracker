@@ -1,4 +1,15 @@
-<a href="/projects/<%= @task.project_id %>"> <- Back to Project</a>
+<div class="ms-3">
+  <a href="/projects/<%= @task.project_id %>"> <- Back to Project</a>
+
+  <div data-controller="checkbox" data-checkbox-task-completed-value="<%= @task.completed %>">
+    <div class="form-check mt-3 text-light">
+      <input id="checkbox-completed" type="checkbox" class="form-check-input" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+      <label for="checkbox-completed">Mark as completed</label>
+    </div>
+  </div>
+
+</div>
+
 <div class="container-fluid d-flex justify-content-center">
 
   <div data-controller="tracker" data-tracker-task-id-value="<%= @task.id %>"
@@ -46,7 +57,6 @@
           START
         </button>
       </div>
-
 
     </div>
 
