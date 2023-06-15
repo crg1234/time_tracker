@@ -1,9 +1,5 @@
  <div class="container-fluid">
 
- <%= link_to new_project_path, class: "create-project-link" do %>
-  <span class="plus-symbol">➕</span>
-<% end %>
-
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-our-dark-grey sidebar collapse">
       <div class="position-sticky pt-3">
@@ -101,5 +97,30 @@
       <p><b>Email: </b><%= @client.email %></p>
       <p><b>Phone number: </b><%= @client.phone_number %></p>
       <p><b>Billing address: </b><%= @client.billing_address %></p>
+      <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newProjectPopUp">Add Project</button>
+
       </main>
   </div>
+
+
+<div class="modal fade" id="newProjectPopUp" tabindex="-1" aria-labelledby="newProjectPopUpLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New Project</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="rounded p-1 w-100">
+            <%= simple_form_for [@client, @project] do |f| %>
+              <%= f.input :name %>
+              <%= f.input :deadline %>
+              <%= f.submit class: 'btn btn-info' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
