@@ -1,9 +1,11 @@
  <div class="container-fluid">
+   <a href="/projects/<%= @invoice.project_id %>"> <- Back to Project</a>
+
   <div class="row">
 
     <%= render 'shared/sidebarshowpages'%>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div>
           <h1 class="h2">Invoice #<%= @invoice.invoice_number %></h1>
@@ -17,7 +19,7 @@
             </div>
           </div>
           <div style="margin-top: 20px;">
-            <p>Payment Deadline: <%= @invoice.payment_deadline %></p>
+            <p>Payment Deadline: <%= @invoice.payment_deadline.strftime("%d %B %Y") %></p>
           </div>
         </div>
       </div>
