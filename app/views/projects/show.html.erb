@@ -75,7 +75,9 @@
       </div>
     </nav>
 
+
     <%# end of nav sidebar %>
+
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="chartjs-size-monitor">
@@ -96,24 +98,21 @@
           <p>Deadline: <%= @project.deadline %> </p>
         </div>
       </div>
-      <div>
-        <% if @tasks.first.nil? %>
-          <p>No tasks yet!</p>
-          <% else %>
-          <ul style="padding: 0; margin: 0;">
-            <% @project.tasks.each do |task| %>
-              <li style="list-style-type: none;"><%= link_to task.title, task_path(task) %></li>
-            <% end %>
-          </ul>
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newTaskPopUp">Add task</button>
+          </div>
+        </div>
+        <% unless @tasks.first.nil? %>
+          <% @project.tasks.each do |task| %>
+            <div class="col-3">
+              <div><%= link_to task.title, task_path(task) %></div>
+            </div>
+          <% end %>
         <% end %>
       </div>
         <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newTaskPopUp">Add task</button>
-
-
-    <div class="py-3">
-      <%= render "tasks_card" %>
-    </div>
-
 
     </main>
 
