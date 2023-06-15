@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'json'
 require 'faker'
 
 
@@ -64,16 +65,19 @@ num_dummy_projects.times do
   )
 end
 
+
 num_dummy_tasks = 40
 tasks = []
-tasks_title = ["Update database", "send a new invoice", "finish the project", "call the supplier"]
-billing_rates = [1.5, 2.4, 3.5]
 start_time_defined = 0
+url = "https://dummyjson.com/todos"
+user_serialized = URI.open(url).read
+user_json = JSON.parse(user_serialized)
+
 num_dummy_tasks.times do
   tasks << Task.create!(
-    title:           tasks_title.sample,
-    description:     "Just do it right",
-    billing_rate: billing_rates.sample,
+    title: user_json["todos"].sample["todo"],
+    description: "Done",
+    billing_rate: rand(1.1..100.9),
     start_time: Faker::Time.forward(days: 1, period: :morning),
     end_time:   Faker::Time.forward(days: 1, period: :evening),
     project: projects.sample
