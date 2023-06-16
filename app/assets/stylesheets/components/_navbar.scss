@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #2C3A47;
+  background: #0f1318;
   text-decoration: none;
 }
 
@@ -9,5 +9,19 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 200px;
+}
+
+
+.nav-link {
+  color: #CAD3C8;
+}
+
+.nav-link:hover {
+  color: #2C3A47;
+}
+
+.nav-item dropdown {
+  background: #0f1318;
+  color: #CAD3C8;
 }
