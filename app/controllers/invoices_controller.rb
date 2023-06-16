@@ -29,7 +29,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new(invoice_params)
     @invoice.project = @project
     if @invoice.save
-      redirect_to project_path(@project)
+      redirect_to invoice_path(@invoice)
     else
       render :new, status: :unprocessable_entity
     end
