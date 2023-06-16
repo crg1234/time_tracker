@@ -16,12 +16,38 @@
           </div>
         </div>
       </div>
+      <div class="container border-bottom">
+        <h2><b>Company: </b><%= @client.company_name %></h2>
+        <p><b>Full name: </b>  <%= @client.last_name %></p>
+        <p><b>Email: </b><%= @client.email %></p>
+        <p><b>Phone number: </b><%= @client.phone_number %></p>
+        <p><b>Billing address: </b><%= @client.billing_address %></p>
+      </div>
+      <div>
+        <% unless @client.projects.empty? %>
+        <table class="table table-hover table-dark">
+          <thead>
+            <tr>
+              <th scope="col">PROJECT NAME</th>
+              <th scope="col">CLIENT</th>
+              <th scope="col">DEADLINE</th>
+              <th scope="col">TIME COUNTER</th>
+            </tr>
+          </thead>
 
-      <h2><b>Company: </b><%= @client.company_name %></h2>
-      <p><b>Full name: </b>  <%= @client.last_name %></p>
-      <p><b>Email: </b><%= @client.email %></p>
-      <p><b>Phone number: </b><%= @client.phone_number %></p>
-      <p><b>Billing address: </b><%= @client.billing_address %></p>
+          <tbody>
+            <% @projects.each do |project| %>
+              <tr>
+                <td><%= link_to project.name, project_path(project) %></td>
+                <td><%= project.client.company_name %></td>
+                <td><%= project.deadline %></td>
+                <td><%= project.time_counter %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+      </div>
 
     </main>
   </div>
@@ -75,6 +101,3 @@
     </div>
   </div>
 </div>
-
-
-
