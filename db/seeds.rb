@@ -68,14 +68,14 @@ end
 
 num_dummy_tasks = 40
 tasks = []
-start_time_defined = 0
+# start_time_defined = 0
 url = "https://dummyjson.com/todos"
-user_serialized = URI.open(url).read
-user_json = JSON.parse(user_serialized)
+task_serialized = URI.open(url).read
+task_json = JSON.parse(task_serialized)
 
 num_dummy_tasks.times do
   tasks << Task.create!(
-    title: user_json["todos"].sample["todo"],
+    title: task_json["todos"].sample["todo"],
     description: "Done",
     billing_rate: rand(1.1..100.9),
     start_time: Faker::Time.forward(days: 1, period: :morning),
