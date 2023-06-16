@@ -68,7 +68,7 @@ end
 
 num_dummy_tasks = 40
 tasks = []
-start_time_defined = 0
+# start_time_defined = 0
 url = "https://dummyjson.com/todos"
 task_serialized = URI.open(url).read
 task_json = JSON.parse(task_serialized)
