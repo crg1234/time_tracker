@@ -5,7 +5,6 @@
   <%# <span class="plus-symbol">➕</span> %>
 <%# <% end %>
 
-<button type="button" class="btn btn-light create-client-link " data-bs-toggle="modal" data-bs-target="#addPopUp" > <span class="plus-symbol" >➕</span></button>
 <div class="modal fade" id="addPopUp" tabindex="-1" aria-labelledby="addPopUpLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -46,9 +45,14 @@
             <div class="tenor-gif-embed" data-postid="18740708" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/the-best-is-yet-to-come-frank-sinatra-the-best-is-yet-to-come-song-something-best-lies-ahead-something-best-will-happen-gif-18740708">The Best Is Yet To Come Frank Sinatra GIF</a>from <a href="https://tenor.com/search/the+best+is+yet+to+come-gifs">The Best Is Yet To Come GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>        </div>
           </div>
 
-         <div class="tab-pane fade <%="active" if params[:tab] == "customers-tab" %>" id="customers" role="tabpanel" aria-labelledby="customers-tab">
-          <h1>Your clients</h1>
-          <%= render 'clients', clients: @clients%>
+        <div class="tab-pane fade <%="active" if params[:tab] == "customers-tab" %>" id="customers" role="tabpanel" aria-labelledby="customers-tab">
+          <div class="d-flex justify-content-between">
+            <h1>Your clients</h1>
+            <div>
+              <button type="button" class="btn btn-outline-secondary create-client-link " data-bs-toggle="modal" data-bs-target="#addPopUp" > ➕ &nbspAdd Client</button>
+            </div>
+          </div>
+            <%= render 'clients', clients: @clients%>
         </div>
 
         <div class="tab-pane fade <%="active" if params[:tab] == "projects-tab" %>" id="projects" role="tabpanel" aria-labelledby="projects-tab">

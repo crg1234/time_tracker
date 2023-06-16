@@ -12,11 +12,9 @@
   <tbody>
   <% clients.each do |client| %>
     <tr>
-        <td><%= client.company_name %></td>
-        <%# <td><%= link_to client.first_name, client_path(client) %>
-        <td><%= link_to client.first_name, client_path(client) %> <%= link_to client.last_name, client_path(client)%></td>
+        <td><%= link_to client.company_name, client_path(client) %></td>
+        <td><%= client.first_name %> <%= client.last_name %></td>
         <td><%= client.email %></td>
-
         <td><%= client.billing_address %></td>
         <td><%= client.phone_number %></td>
     </tr>
