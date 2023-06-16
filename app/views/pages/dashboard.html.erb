@@ -16,7 +16,8 @@
 
         <div class="tab-pane show <%="active" unless params.has_key?(:tab)%>" id="home" role="tabpanel" aria-labelledby="home-tab">
           <h1 class="h2">Hi <%= current_user.first_name.capitalize %>, welcome to your Dashboard</h1>
-          <p>CREATE A BOARD</p>
+          <div class="col-sm-6">
+            <div class="tenor-gif-embed" data-postid="18740708" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/the-best-is-yet-to-come-frank-sinatra-the-best-is-yet-to-come-song-something-best-lies-ahead-something-best-will-happen-gif-18740708">The Best Is Yet To Come Frank Sinatra GIF</a>from <a href="https://tenor.com/search/the+best+is+yet+to+come-gifs">The Best Is Yet To Come GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>        </div>
         </div>
 
          <div class="tab-pane fade <%="active" if params[:tab] == "customers-tab" %>" id="customers" role="tabpanel" aria-labelledby="customers-tab">
