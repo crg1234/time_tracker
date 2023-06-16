@@ -66,7 +66,7 @@ num_dummy_projects.times do
 end
 
 
-num_dummy_tasks = 40
+num_dummy_tasks = 70
 tasks = []
 # start_time_defined = 0
 url = "https://dummyjson.com/todos"
