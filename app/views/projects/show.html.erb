@@ -18,10 +18,10 @@
             <div class="btn-group me-2">
 
               <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#newTaskPopUp">Add task</button>
-              <% if @invoice.nil? %>
-              <%= link_to "Add invoice", new_project_invoice_path(@project), :class => "btn btn-outline-secondary" %>
+              <% if @latest_invoice.nil? %>
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#newInvoicePopUp">Add Invoice</button>
               <% else %>
-              <%= link_to "Invoice", invoice_path(@invoice), :class => "btn btn-outline-secondary" %>
+                <%= link_to "Invoice", invoice_path(@latest_invoice), :class => "btn btn-outline-secondary" %>
               <% end %>
             </div>
 
@@ -84,6 +84,26 @@
           <%= f.input :title %>
           <%= f.input :description %>
           <%= f.input :billing_rate %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="newInvoicePopUp" tabindex="-1" aria-labelledby="newInvoicePopUpLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New Invoice</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <%= simple_form_for [@project, @invoice] do |f| %>
+          <%= f.input :invoice_number %>
+          <%= f.input :billing_amount %>
+          <%= f.input :payment_deadline %>
           <%= f.button :submit %>
         <% end %>
       </div>

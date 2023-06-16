@@ -1,10 +1,38 @@
+<div class="modal fade" id="newInvoicePopUp" tabindex="-1" aria-labelledby="newInvoicePopUpLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New Invoice</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <%= simple_form_for [@project, @invoice] do |f| %>
+          <%= f.input :invoice_number %>
+          <%= f.input :billing_amount %>
+          <%= f.input :payment_deadline %>
+          <%= f.submit class: 'btn btn-info' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<%#
 <div class="row">
   <div class="rounded p-1 w-100">
     <%= simple_form_for([@project, @invoice]) do |f| %>
-      <%= f.input :invoice_number %>
-      <%= f.input :billing_amount %>
-      <%= f.input :payment_deadline %>
-      <%= f.submit class: 'btn btn-info' %>
-    <% end %>
-  </div>
-</div>
+      <%# <%= f.input :invoice_number %>
+      <%# <%= f.input :billing_amount %>
+      <%# <%= f.input :payment_deadline %>
+      <%# <%= f.submit class: 'btn btn-info' %>
+    <%# <% end %>
+  <%# </div>
+</div> %>
