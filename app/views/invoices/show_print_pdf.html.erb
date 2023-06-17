@@ -2,8 +2,8 @@
 <p>Billing Amount: €<%= @invoice.billing_amount ? @invoice.billing_amount.round(2) : "0" %></p>
 <p>Payment Deadline: <%= @invoice.payment_deadline.strftime("%d %B %Y") %></p>
 
-<p>Project Name: <%= @project.name  %></p>
-<p>Project Deadline: <%= @project.deadline.strftime("%d %B %Y") %></p>
+<p>Project Name: <%= @project.name ? @project.name : "" %></p>
+<p>Project Deadline: <%= @project.deadline ? @project.deadline.strftime("%d %B %Y") : "" %></p>
 <p>Time Counter: <%= @total_time_on_invoice ? Time.at(@total_time_on_invoice/1000).utc.strftime("%H:%M:%S") : "00:00:00" %></p>
 
 <p>Client First Name: <%= @client.first_name  %></p>

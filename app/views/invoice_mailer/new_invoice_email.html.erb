@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p><%= "You have new invoice from #{@user}" %></p>
+    <p>
+    Invoice For <%= @invoice.project.name.capitalize %><br>
+    --------------------------
+    </p>
+    <p>Total Amount Due: €<%= @invoice.billing_amount ? @invoice.billing_amount.round(2) : "0" %></p>
+    <p>Payment Deadline: <%= @invoice.payment_deadline.strftime("%d %B %Y") %></p>
+
+    <p>
+    Message:<br>
+    ----------
+    </p>
+    <p><%= "Thank you for your business 😀" %></p>
+  </body>
+</html>
