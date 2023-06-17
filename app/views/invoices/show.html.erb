@@ -46,7 +46,7 @@
                   <p><%= task.description %></p>
                 </div>
                 <div>
-                  <p>€<%= task.billing_rate %>&nbsp per hour</p>
+                  <p>€<%= task.billing_rate.round(2) %>&nbsp per hour</p>
                   <p>Time spent: <%= task.time_log ? Time.at(task.time_log/1000).utc.strftime("%H:%M:%S") : "00:00:00" %></p>
                   <p>Total: €<%= task.amount_to_bill ? task.amount_to_bill.round(2) : "0.00" %></p>
                 </div>
