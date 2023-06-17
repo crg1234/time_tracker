@@ -47,6 +47,7 @@ class InvoicesController < ApplicationController
     @invoice.project = @project
     if @invoice.save
       redirect_to invoice_path(@invoice)
+      InvoiceMailer.with(invoice: @invoice).new_invoice_email.deliver_later
     else
       render :new, status: :unprocessable_entity
     end

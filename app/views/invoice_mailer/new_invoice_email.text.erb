@@ -1,0 +1,12 @@
+<%= "You have new invoice from #{@user}" %>
+=============================================
+
+Invoice For <%= @project.name.capitalize %>
+---------------------------------------------
+
+Total Amount Due: €<%= @invoice.billing_amount ? @invoice.billing_amount.round(2) : "0" %>
+Payment Deadline: <%= @invoice.payment_deadline.strftime("%d %B %Y") %>
+
+Message:
+--------------------------------------------
+<%= "Thank you for your business 😀" %>
