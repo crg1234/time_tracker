@@ -104,8 +104,7 @@
 
       <div class="modal-body">
         <%= simple_form_for [@project, @invoice] do |f| %>
-          <%= f.input :invoice_number %>
-          <%= f.input :billing_amount %>
+          <%# <%= f.input :invoice_number %>
           <%= f.input :payment_deadline %>
           <%= f.button :submit %>
         <% end %>
