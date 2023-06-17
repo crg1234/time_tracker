@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/dashboard">
       <%= image_tag "logo2.png"%>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,8 +10,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", dashboard_path, class: "nav-link" %>
+          <li class="nav-item active d-none">
+            <%# <%= link_to "Home", dashboard_path, class: "nav-link" -> USED D-NONE TO HIDE HOME LINK. LOGO LINKS TO DASHBOARD%>
           </li>
           <li class="nav-item dropdown">
 
