@@ -9,9 +9,10 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div>
           <h1 class="h2" style="margin-bottom: 20px;"><%= @project.name %></h1>
-          <h4><%= @client.first_name  %> <%= @client.last_name %></h4>
-          <h6>Total time: <%= @project.time_counter %> hours</h6>
-          <h6>Deadline: <%= @project.deadline %> </h6>
+          <h3><%= @client.first_name  %> <%= @client.last_name %></h3>
+          <%# <p>Total time: <%= @project.time_counter hours %>
+            <%# </p> %>
+          <p>Deadline: <%= @project.deadline %> </p>
         </div>
         <div>
           <div class="btn-toolbar mb-2 mb-md-0 d-flex justify-content-end">
@@ -42,7 +43,9 @@
 
                     <p class="text-left d-none"><%= task.description.capitalize %></p>
                     <p class="text-left">Hourly Rate: €<%= task.billing_rate.round(0) %></p>
-                    <p class="text-left"><i class="fas fa-stopwatch fa-2x me-1"></i> <%= task.time_log %></p>
+                    <p class="text-left"><i class="fas fa-stopwatch fa-2x me-1"></i>
+                      <%= Time.at(task.time_log/1000).utc.strftime("%H:%M:%S") %>
+                    </p>
                     <p class="text-left"><i class="fas fa-euro-sign fa-2x me-3"></i>
                         <%= task.amount_to_bill ? task.amount_to_bill.round(2) : "0.00" %>
                     </p>
