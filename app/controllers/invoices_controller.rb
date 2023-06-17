@@ -7,6 +7,12 @@ class InvoicesController < ApplicationController
     @client = @project.client
     @user = current_user
 
+    @tasks.each do |task|
+      @invoice.billing_amount += task.amount_to_bill
+      @total_time_on_invoice = 0
+      @total_time_on_invoice += task.time_log
+    end
+
     respond_to do |format|
       format.html
       format.pdf do
@@ -17,6 +23,7 @@ class InvoicesController < ApplicationController
                layout: 'pdf'
       end
     end
+
   end
 
   def new
