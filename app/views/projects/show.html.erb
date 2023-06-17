@@ -9,7 +9,7 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div>
           <h1 class="h2" style="margin-bottom: 20px;"><%= @project.name %></h1>
-          <h3><%= @client.first_name  %> <%= @client.last_name %></h3>
+          <h3><%= @client.company_name %> - <%= @client.first_name  %> <%= @client.last_name %></h3>
           <%# <p>Total time: <%= @project.time_counter hours %>
             <%# </p> %>
           <p>Deadline: <%= @project.deadline %> </p>

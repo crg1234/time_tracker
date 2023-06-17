@@ -65,7 +65,6 @@ num_dummy_projects.times do
   )
 end
 
-
 num_dummy_tasks = 70
 tasks = []
 # start_time_defined = 0
