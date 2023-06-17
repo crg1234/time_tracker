@@ -35,8 +35,8 @@ class ClientsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  def destroy
 
+  def destroy
     @client = Client.find(params[:id])
     @client.destroy
     redirect_to dashboard_path, notice: 'Client was successfully deleted.'
