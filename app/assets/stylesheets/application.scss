@@ -6,6 +6,8 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
+@import "flatpickr/dist/flatpickr";
+@import "flatpickr/dist/themes/airbnb";
 
 // Your CSS partials
 @import "components/index";
@@ -39,4 +41,3 @@ p {
 a {
   color: #CAD3C8;
 }
-

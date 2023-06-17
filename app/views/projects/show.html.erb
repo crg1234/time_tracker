@@ -105,7 +105,10 @@
       <div class="modal-body">
         <%= simple_form_for [@project, @invoice] do |f| %>
           <%# <%= f.input :invoice_number %>
-          <%= f.input :payment_deadline %>
+          <%= f.input :payment_deadline, as: :string,
+            wrapper_html: { class: "mb-4" },
+            label_html: { class: "form-label text-secondary fw-bold" },
+            input_html: { data: { controller: "flatpickr" } } %>
           <%= f.button :submit %>
         <% end %>
       </div>
