@@ -9,9 +9,18 @@ class InvoicesController < ApplicationController
 
     @tasks.each do |task|
       @invoice.billing_amount = 0
-      @invoice.billing_amount += task.amount_to_bill
+      if task.amount_to_bill.nil?
+        @invoice.billing_amount
+      else
+        @invoice.billing_amount += task.amount_to_bill
+      end
+
       @total_time_on_invoice = 0
-      @total_time_on_invoice += task.time_log
+      if task.time_log.nil?
+        @total_time_on_invoice
+      else
+       @total_time_on_invoice += task.time_log
+      end
     end
 
     respond_to do |format|
