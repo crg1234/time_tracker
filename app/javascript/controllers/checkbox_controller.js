@@ -37,7 +37,7 @@ export default class extends Controller {
   }
 
   completeTask() {
-    this.status = true
+    // this.status = true
     this.taskCompletedValue = true
     console.log("the box is checked")
     console.log(`identifier ${this.taskIdValue}`)
@@ -62,8 +62,9 @@ export default class extends Controller {
   // }
 
   uncompleteTask() {
-    this.status = false
+    // this.status = false
     this.taskCompletedValue = false
+    this.checkboxTarget.checked = false
     console.log("the box is unchecked")
 
     const formData = new FormData()
