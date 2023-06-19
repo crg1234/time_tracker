@@ -36,8 +36,27 @@
       <div class="tab-content" id="tabContent">
 
         <div class="tab-pane show <%="active" unless params.has_key?(:tab)%>" id="home" role="tabpanel" aria-labelledby="home-tab">
+
           <h1 class="mb-5 h2">Hi <%= current_user.first_name.capitalize %>, welcome to your Dashboard</h1>
-          <%= render 'charts' %>
+
+          <div class="chart-container d-flex justify-content-around">
+
+            <div class="col-sm-5">
+              <div>
+                <%= bar_chart Task.group(:title).sum(:amount_to_bill), height: "50vh" %>
+              </div>
+            </div>
+
+            </br>
+
+            <div class="col-sm-5">
+              <div>
+                <%= line_chart Task.group_by_day(:created_at).count, height: "50vh" %>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
         <div class="tab-pane fade <%="active" if params[:tab] == "customers-tab" %>" id="customers" role="tabpanel" aria-labelledby="customers-tab">
