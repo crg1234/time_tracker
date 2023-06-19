@@ -14,7 +14,11 @@
         <tr>
           <td><%= link_to project.name, project_path(project) %></td>
           <td><%= project.client.company_name %></td>
+         <% if project.deadline.nil? %>
           <td><%= project.deadline %></td>
+         <% else %>
+          <td><%= project.deadline.strftime("%a, %d %b %Y") %></td>
+          <% end %>
           <td><%= project.time_counter %></td>
         </tr>
       <% end %>
