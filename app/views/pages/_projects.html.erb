@@ -1,21 +1,23 @@
-<table class="table table-hover table-dark">
-  <thead>
-    <tr>
-      <th scope="col">PROJECT NAME</th>
-      <th scope="col">CLIENT</th>
-      <th scope="col">DEADLINE</th>
-      <th scope="col">TIME COUNTER</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
+<div style="background-color: white; padding: 1px; border-radius: 10px;">
+  <table class="table table-hover table-dark" id="all-tables">
+    <thead>
       <tr>
-        <td><%= link_to project.name, project_path(project) %></td>
-        <td><%= project.client.company_name %></td>
-        <td><%= project.deadline %></td>
-        <td><%= project.time_counter %></td>
+        <th id="left-angle" scope="col">PROJECT NAME</th>
+        <th scope="col">CLIENT</th>
+        <th scope="col">DEADLINE</th>
+        <th id="right-angle" scope="col">TIME COUNTER</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%= link_to project.name, project_path(project) %></td>
+          <td><%= project.client.company_name %></td>
+          <td><%= project.deadline %></td>
+          <td><%= project.time_counter %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
