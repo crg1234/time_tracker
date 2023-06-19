@@ -3,7 +3,7 @@
   client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"] )
 
   system_msg = "You are a helpful assistant"
-  question = "Please give me a tip about to do #{task.title} more efficiently"
+  question = "Please give me a tip about to do #{@task.title} more efficiently"
 
   response = client.chat(
     parameters: {
@@ -13,7 +13,10 @@
           { role: "user", content: question }
         ], # Required.
         temperature: 0.7,
+        max_tokens: 2000,
     })
 
-  response.dig("choices", 0, "message", "content")
+  # response.dig("choices", 0, "message", "content")
+
+  @task.hint = response.dig("choices", 0, "message", "content")
   %>

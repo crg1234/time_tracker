@@ -69,7 +69,13 @@
       <%# </div> %>
 
       <div class="col-sm-12 text-center mt-5 p-10">
-        <p style="font-size: 20px;"> <%= render "api_hint", task: @task %> </p>
+        <p style="font-size: 20px;">
+          <% if @task.hint.nil? %>
+            <%= render "api_hint", task: @task %>
+          <% else %>
+            <%= @task.hint %>
+          <% end %>
+        </p>
       </div>
 
     </div>
