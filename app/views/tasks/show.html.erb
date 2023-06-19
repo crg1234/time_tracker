@@ -68,9 +68,15 @@
         <%= render "api_image", task: @task %>
       <%# </div> %>
 
-      <div class="col-sm-12 text-center mt-5 p-10">
-        <p style="font-size: 20px;"> <%= render "api_hint", task: @task %> </p>
+      <div class="col-sm-1"></div>
+
+      <div class="col-sm-10 text-center mt-5 p-10">
+        <p style="font-size: 20px;">
+          <%= @task.hint %>
+        </p>
       </div>
+
+      <div class="col-sm-1"></div>
 
     </div>
 
