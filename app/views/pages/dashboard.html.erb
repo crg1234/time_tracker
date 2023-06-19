@@ -39,6 +39,10 @@
 
           <h1 class="mb-5 h2">Hi <%= current_user.first_name.capitalize %>, welcome to your Dashboard</h1>
 
+          <div id="summary-money-billed">
+            <h1>Total Billed: €<%= @total_billing_amount %></h1>
+          </div>
+
           <div class="chart-container d-flex justify-content-around">
 
             <div class="col-sm-5">
