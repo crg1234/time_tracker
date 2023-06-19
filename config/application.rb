@@ -25,3 +25,7 @@ module TimeTracker
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
+def default_url_options
+  { host: ENV["DOMAIN"] || "localhost:3000" }
+end
