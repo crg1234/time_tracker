@@ -13,29 +13,29 @@
           <li class="nav-item active d-none">
             <%# <%= link_to "Home", dashboard_path, class: "nav-link" -> USED D-NONE TO HIDE HOME LINK. LOGO LINKS TO DASHBOARD%>
           </li>
+
           <li class="nav-item dropdown">
 
-          <a href="#" class="avatar-large" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, height: 40, width: 40, crop: :fill, style:"border-radius: 50%;" %>
-              <% else %>
-              <%# <img class="avatar-large" alt="avatar-large" src="/app/assets/images/logout.png" /> %>
-              <%= image_tag "logout.png"%>
-              <% end %>
-          </a>
+            <a href="#" class="avatar-large" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, height: 40, width: 40, crop: :fill, style:"border-radius: 50%;" %>
+                <% else %>
+                <%# <img class="avatar-large" alt="avatar-large" src="/app/assets/images/logout.png" /> %>
+                <%= image_tag "logout.png"%>
+                <% end %>
+            </a>
 
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "dropdown-item" %>
-          </div>
-        <% else %>
-            <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </li>
-        <% end %>
-        </div>
-        </li>
-        </li>
+
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+          </li>
+
+          <% else %>
+              <li class="nav-item">
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              </li>
+          <% end %>
       </ul>
     </div>
   </div>
