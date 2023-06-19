@@ -37,16 +37,20 @@
                 <%= link_to task_path(task) do %>
 
                   <div class="card-project-task p-3">
-                    <p class="text-center pb-5"><strong><%= task.title.capitalize %></strong></>
-
-                    <p class="text-left d-none"><%= task.description.capitalize %></p>
-                    <p class="text-left">Hourly Rate: €<%= task.billing_rate.round(0) %></p>
-                    <p class="text-left"><i class="fas fa-stopwatch fa-2x me-1"></i>
-                      <%= Time.at(task.time_log/1000).utc.strftime("%H:%M:%S") %>
-                    </p>
-                    <p class="text-left"><i class="fas fa-euro-sign fa-2x me-3"></i>
-                        <%= task.amount_to_bill ? task.amount_to_bill.round(2) : "0.00" %>
-                    </p>
+                    <div>
+                      <%# <p class="text-center"><%= render "api_image", task: @task %>
+                      <%# </p> %>
+                      <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize %></strong></p>
+                    </div>
+                    <div>
+                      <p class="text-left">Hourly Rate: €<%= task.billing_rate.round(0) %></p>
+                      <p class="text-left"><i class="fas fa-stopwatch fa-2x me-1"></i>
+                        <%= Time.at(task.time_log/1000).utc.strftime("%H:%M:%S") %>
+                      </p>
+                      <p class="text-left"><i class="fas fa-euro-sign fa-2x me-3"></i>
+                          <%= task.amount_to_bill ? task.amount_to_bill.round(2) : "0.00" %>
+                      </p>
+                    </div>
 
                 <% end %>
 
@@ -87,7 +91,6 @@
       <div class="modal-body">
         <%= simple_form_for [@project, @task] do |f| %>
           <%= f.input :title %>
-          <%= f.input :description %>
           <%= f.input :billing_rate %>
           <%= f.button :submit %>
         <% end %>
