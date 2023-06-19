@@ -1,6 +1,8 @@
 require 'open-uri'
 require 'json'
 require 'faker'
+require "csv"
+
 
 
 puts "Cleaning up database..."
@@ -54,10 +56,8 @@ num_dummy_clients.times do
   )
 end
 
-
-require "csv"
-
 filepath = "db/projects-tasks.csv"
+projects = []
 
 CSV.foreach(filepath) do |row|
   name = row[0]
@@ -65,6 +65,15 @@ CSV.foreach(filepath) do |row|
   project.client = clients.sample
   p project
   project.save!
+  projects << project
+  3.times do|n|
+    title = row[n]
+    task = Task.new(title: row[n], description: "Done", billing_rate: rand(550.9..1010.9), start_time: Faker::Time.forward(days: 1, period: :morning), end_time:   Faker::Time.forward(days: 1, period: :evening), project_id:project.id)
+    task.project = project
+    p task
+    task.save!
+  end
+
 end
 
 # num_dummy_projects = 40
@@ -77,15 +86,6 @@ end
 #     client: clients.sample
 #   )
 # end
-
-
-CSV.foreach(filepath) do |row|
-  name = row[0]
-  task = Tasks.new(title: row[1,2,3], description: "Done", billing_rate: rand(1.1..100.9), start_time: Faker::Time.forward(days: 1, period: :morning),    end_time:   Faker::Time.forward(days: 1, period: :evening),)
-  task.project = projects.each
-  p task
-  tasks.save!
-end
 
 # num_dummy_tasks = 40
 # tasks = []
@@ -110,7 +110,7 @@ invoices = []
 num_dummy_invoices.times do
   invoices << Invoice.create!(
     invoice_number:  Faker::Number.number(digits: 6),
-    billing_amount:  Faker::Number.binary(digits: 3),
+    billing_amount:  Faker::Number.binary(digits: 5),
     payment_deadline: Faker::Date.in_date_period,
     project: projects.sample
   )
