@@ -38,9 +38,9 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-our-dark-grey"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
 
       <div class="tab-content" id="tabContent">
-        <h1 class="h2">Hi <%= current_user.first_name.capitalize %>, welcome to your Dashboard</h1>
 
         <div class="tab-pane show <%="active" unless params.has_key?(:tab)%>" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h1 class="h2">Hi <%= current_user.first_name.capitalize %>, welcome to your Dashboard</h1>
 
           <div class="chart-container d-flex justify-content-around">
 
