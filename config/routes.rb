@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # root "home#index"
 
   get "dashboard", to: "pages#dashboard", as: :dashboard
+  get "learning", to: "pages#learning", as: :learning
   resources :projects, only: [:index, :show] do
     resources :tasks, only: [:new, :create]
     resources :invoices, only: [:new, :create, :show]
