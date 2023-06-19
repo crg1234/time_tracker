@@ -1,4 +1,6 @@
-<p>Invoice Number:  <%= @project.id %></p>
+<div style="font-family: Helvetica;">
+
+<h1>Invoice Number:  <%= @project.id %></h1>
 <p>Billing Amount: €<%= @invoice.billing_amount ? @invoice.billing_amount.round(2) : "0" %></p>
 <p>Payment Deadline: <%= @invoice.payment_deadline.strftime("%d %B %Y") %></p>
 
@@ -16,3 +18,5 @@
 
 <p>User First Name:<%= @user.first_name %></p>
 <p>User Last Name:<%= @user.last_name %></p>
+
+</div>
