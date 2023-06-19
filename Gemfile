@@ -62,6 +62,12 @@ gem "devise"
 # Add OpenAI
 gem "ruby-openai"
 
+# Chartkick
+gem "chartkick"
+
+# Groupdate
+gem "groupdate"
+
 # To not share API KEY ON GITHUB
 gem "dotenv-rails", groups: [:development, :test]
 
