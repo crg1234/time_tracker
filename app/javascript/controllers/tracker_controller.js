@@ -15,7 +15,7 @@ export default class extends Controller {
     this.running = false;
     this.timeTarget.innerText = this.timeFormatter(this.timeLogValue)
     this.billingTarget.innerText = `Amount to Bill: €${parseFloat(this.amountToBillValue).toFixed(2)}`
-    this.billingButtonTarget.innerText = `${parseFloat(this.amountToBillValue).toFixed(2)}`
+    this.billingButtonTarget.innerText = `Amount to Bill: €${parseFloat(this.amountToBillValue).toFixed(2)}`
     console.log(this.amountToBillValue)
     console.log(this.billingRateValue);
     // console.log(this.timeTarget);
@@ -34,13 +34,13 @@ export default class extends Controller {
 
   start() {
     this.running = true
-    this.buttonTarget.innerText = "STOP"
+    this.buttonTarget.innerText = "STOP TRACKING YOUR TIME"
     this.interval = setInterval(this.timer, 1000) // in milliseconds
   }
 
   stop() {
     this.running = false
-    this.buttonTarget.innerText = "START"
+    this.buttonTarget.innerText = "START TRACKING YOUR TIME"
     clearInterval(this.interval)
     this.updateBilling()
 
@@ -64,7 +64,7 @@ export default class extends Controller {
     // console.log(this.billingRateValue)
     this.amountToBillValue = ((this.billingRateValue / 3600) * (this.timeLogValue / 1000)) // to bill by the second and to convert milliseconds to seconds
     this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue}` // to bill hourly rate by second
-    this.billingButtonTarget.innerText = `${parseFloat(this.amountToBillValue).toFixed(2)}` // to bill hourly rate by second
+    this.billingButtonTarget.innerText = `Amount to Bill: €${parseFloat(this.amountToBillValue).toFixed(2)}` // to bill hourly rate by second
   }
 
   timer = () => {

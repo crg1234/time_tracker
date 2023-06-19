@@ -1,9 +1,0 @@
-<img src="
-  <%= require "openai"
-
-     client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"] )
-
-     response = client.images.generate(parameters: { prompt: "Black and White Photograph of Brad Pitt doing #{task.title} without words or letters", size: "256x256" })
-
-     response.dig("data", 0, "url")
-  %>" alt="Image of <%= "#{task.title}" %>">
