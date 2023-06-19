@@ -39,7 +39,7 @@ class Task < ApplicationRecord
       return read_attribute(:image_url)
     else
       client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"] )
-      response = client.images.generate(parameters: { prompt: "Black and White Photograph of Brad Pitt doing #{task.title} without words or letters", size: "256x256" })
+      response = client.images.generate(parameters: { prompt: "Black and White Photograph of Brad Pitt doing #{title} without words or letters", size: "256x256" })
       new_image_url = response.dig("data", 0, "url")
       self.update_columns(image_url: new_image_url)
       return new_image_url
