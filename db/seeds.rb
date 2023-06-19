@@ -54,34 +54,56 @@ num_dummy_clients.times do
   )
 end
 
-num_dummy_projects = 40
-projects = []
-num_dummy_projects.times do
-  projects << Project.create!(
-    name:         Faker::Team.name,
-    deadline:     Faker::Date.in_date_period,
-    time_counter: Faker::Number.decimal(l_digits: 2),
-    client: clients.sample
-  )
+
+require "csv"
+
+filepath = "db/projects-tasks.csv"
+
+CSV.foreach(filepath) do |row|
+  name = row[0]
+  project = Project.new(name: row[0], deadline: Faker::Date.in_date_period, time_counter: Faker::Number.decimal(l_digits: 2),)
+  project.client = clients.sample
+  p project
+  project.save!
 end
 
-num_dummy_tasks = 70
-tasks = []
-# start_time_defined = 0
-url = "https://dummyjson.com/todos"
-task_serialized = URI.open(url).read
-task_json = JSON.parse(task_serialized)
+# num_dummy_projects = 40
+# project_array = []
+# num_dummy_projects.times do
+#   projects << Project.create!(
+#     name:         project_array.sample,
+#     deadline:     Faker::Date.in_date_period,
+#     time_counter: Faker::Number.decimal(l_digits: 2),
+#     client: clients.sample
+#   )
+# end
 
-num_dummy_tasks.times do
-  tasks << Task.create!(
-    title: task_json["todos"].sample["todo"],
-    description: "Done",
-    billing_rate: rand(1.1..100.9),
-    start_time: Faker::Time.forward(days: 1, period: :morning),
-    end_time:   Faker::Time.forward(days: 1, period: :evening),
-    project: projects.sample
-  )
+
+CSV.foreach(filepath) do |row|
+  name = row[0]
+  task = Tasks.new(title: row[1,2,3], description: "Done", billing_rate: rand(1.1..100.9), start_time: Faker::Time.forward(days: 1, period: :morning),    end_time:   Faker::Time.forward(days: 1, period: :evening),)
+  task.project = projects.each
+  p task
+  tasks.save!
 end
+
+# num_dummy_tasks = 40
+# tasks = []
+# # start_time_defined = 0
+# url = "https://dummyjson.com/todos"
+# task_serialized = URI.open(url).read
+# task_json = JSON.parse(task_serialized)
+
+# num_dummy_tasks.times do
+#   tasks << Task.create!(
+#     title: task_json["todos"].sample["todo"],
+#     description: "Done",
+#     billing_rate: rand(1.1..100.9),
+#     start_time: Faker::Time.forward(days: 1, period: :morning),
+#     end_time:   Faker::Time.forward(days: 1, period: :evening),
+#     project: projects.sample
+#   )
+# end
 
 num_dummy_invoices = 80
 invoices = []
