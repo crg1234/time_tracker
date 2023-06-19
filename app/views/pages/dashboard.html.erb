@@ -18,6 +18,7 @@
            <%= simple_form_for @client do |f| %>
               <%= f.input :first_name %>
               <%= f.input :last_name %>
+              <%= f.input :company_name %>
               <%= f.input :email %>
               <%= f.input :phone_number %>
               <%= f.input :billing_address %>
@@ -49,7 +50,9 @@
           <div class="d-flex justify-content-between">
             <h1>Your clients</h1>
             <div>
-              <button type="button" class="btn btn-outline-secondary create-client-link " data-bs-toggle="modal" data-bs-target="#addPopUp" > ➕ &nbspAdd Client</button>
+              <button type="button" class="btn btn-outline-secondary create-client-link " data-bs-toggle="modal" data-bs-target="#addPopUp" >
+              <i class="fa-solid fa-plus fa-2xl" style="color: #c7c7c7;"></i>
+              </button>
             </div>
           </div>
             <%= render 'clients', clients: @clients%>
