@@ -1,0 +1,15 @@
+<div class="chart-container d-flex justify-content-around">
+  <div class="col-sm-5">
+    <div>
+      <%= bar_chart Task.group(:title).sum(:amount_to_bill), height: "50vh" %>
+    </div>
+  </div>
+
+  </br>
+
+  <div class="col-sm-5">
+    <div>
+      <%= line_chart Task.group_by_day(:created_at).count, height: "50vh" %>
+    </div>
+  </div>
+</div>

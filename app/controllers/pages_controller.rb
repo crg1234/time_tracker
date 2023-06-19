@@ -10,4 +10,7 @@ class PagesController < ApplicationController
     @projects = current_user.projects
     @my_invoices = Invoice.where(project: current_user.projects)
   end
+
+  def learning
+  end
 end

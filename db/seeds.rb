@@ -1,6 +1,8 @@
 require 'open-uri'
 require 'json'
 require 'faker'
+require "csv"
+
 
 
 puts "Cleaning up database..."
@@ -54,41 +56,61 @@ num_dummy_clients.times do
   )
 end
 
-num_dummy_projects = 40
+filepath = "db/projects-tasks.csv"
 projects = []
-num_dummy_projects.times do
-  projects << Project.create!(
-    name:         Faker::Team.name,
-    deadline:     Faker::Date.in_date_period,
-    time_counter: Faker::Number.decimal(l_digits: 2),
-    client: clients.sample
-  )
+
+CSV.foreach(filepath) do |row|
+  name = row[0]
+  project = Project.new(name: row[0], deadline: Faker::Date.in_date_period, time_counter: Faker::Number.decimal(l_digits: 2),)
+  project.client = clients.sample
+  p project
+  project.save!
+  projects << project
+  3.times do|n|
+    title = row[n]
+    task = Task.new(title: row[n], description: "Done", billing_rate: rand(550.9..1010.9), start_time: Faker::Time.forward(days: 1, period: :morning), end_time:   Faker::Time.forward(days: 1, period: :evening), project_id:project.id)
+    task.project = project
+    p task
+    task.save!
+  end
+
 end
 
-num_dummy_tasks = 70
-tasks = []
-# start_time_defined = 0
-url = "https://dummyjson.com/todos"
-task_serialized = URI.open(url).read
-task_json = JSON.parse(task_serialized)
+# num_dummy_projects = 40
+# project_array = []
+# num_dummy_projects.times do
+#   projects << Project.create!(
+#     name:         project_array.sample,
+#     deadline:     Faker::Date.in_date_period,
+#     time_counter: Faker::Number.decimal(l_digits: 2),
+#     client: clients.sample
+#   )
+# end
 
-num_dummy_tasks.times do
-  tasks << Task.create!(
-    title: task_json["todos"].sample["todo"],
-    description: "Done",
-    billing_rate: rand(1.1..100.9),
-    start_time: Faker::Time.forward(days: 1, period: :morning),
-    end_time:   Faker::Time.forward(days: 1, period: :evening),
-    project: projects.sample
-  )
-end
+# num_dummy_tasks = 40
+# tasks = []
+# # start_time_defined = 0
+# url = "https://dummyjson.com/todos"
+# task_serialized = URI.open(url).read
+# task_json = JSON.parse(task_serialized)
+
+# num_dummy_tasks.times do
+#   tasks << Task.create!(
+#     title: task_json["todos"].sample["todo"],
+#     description: "Done",
+#     billing_rate: rand(1.1..100.9),
+#     start_time: Faker::Time.forward(days: 1, period: :morning),
+#     end_time:   Faker::Time.forward(days: 1, period: :evening),
+#     project: projects.sample
+#   )
+# end
 
 num_dummy_invoices = 80
 invoices = []
 num_dummy_invoices.times do
   invoices << Invoice.create!(
     invoice_number:  Faker::Number.number(digits: 6),
-    billing_amount:  Faker::Number.binary(digits: 3),
+    billing_amount:  Faker::Number.binary(digits: 5),
     payment_deadline: Faker::Date.in_date_period,
     project: projects.sample
   )
