@@ -42,18 +42,19 @@
 
         <div class="tab-pane show <%="active" unless params.has_key?(:tab)%>" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-          <div class="chart-container d-flex">
+          <div class="chart-container d-flex justify-content-around">
 
-            <div class="col-sm-6">
+            <div class="col-sm-5">
               <div>
-                <%# <%= pie_chart Client.group(:first_name).count %>
-                <%= line_chart Task.group_by_day(:created_at).count %>
+                <%= bar_chart Task.group(:title).sum(:amount_to_bill), height: "50vh" %>
               </div>
             </div>
 
-            <div class="col-sm-6">
+            </br>
+
+            <div class="col-sm-5">
               <div>
-                <%= line_chart Task.group_by_day(:created_at).count %>
+                <%= line_chart Task.group_by_day(:created_at).count, height: "50vh" %>
               </div>
             </div>
 
