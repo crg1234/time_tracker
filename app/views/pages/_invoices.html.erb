@@ -17,7 +17,7 @@
         <td><%= link_to invoice.invoice_number, invoice_path(invoice) %></td>
         <td><%= invoice.project.client.company_name %></td>
         <td><%= invoice.project.name %></td>
-        <td><%= invoice.payment_deadline %></td>
+        <td><%= invoice.payment_deadline.strftime("%a, %d %b %Y")%></td>
         <td>€<%= invoice.billing_amount %></td>
         <td><%= link_to "Create PDF", invoice_path(invoice, format: :pdf) %></td>
       </tr>
