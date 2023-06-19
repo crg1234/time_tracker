@@ -5,7 +5,11 @@
       data-checkbox-task-completed-value="<%= @task.completed %>"
       data-checkbox-task-id-value="<%= @task.id %>">
     <div class="form-check mt-3 text-light">
-      <input id="checkbox-completed" type="checkbox" class="form-check-input" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+      <% if @task.completed %>
+        <input id="checkbox-completed" type="checkbox" checked="true" class="form-check-input" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+      <% else %>
+        <input id="checkbox-completed" type="checkbox" class="form-check-input" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+      <% end %>
       <label for="checkbox-completed">Mark as completed</label>
     </div>
   </div>
@@ -31,7 +35,7 @@
           <p class="d-none" data-tracker-target="billing">Amount to Bill: €<%= @task.amount_to_bill %></p>
       </div>
 
-      <div class="col-sm-6 text-center">
+      <div id="taskwatch" class="col-sm-6 text-center">
         <h3 id="stopWatchIcon"><i class="fas fa-stopwatch fa-3x"></i></h3>
         <div>
           <h1 id="timer" data-tracker-target="time" class="display-3">
@@ -45,7 +49,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 text-center">
+      <div id="taskmoney" class="col-sm-6 text-center">
         <h3 id="euroIcon"><i class="fas fa-euro-sign fa-3x"></i></h3>
         <div>
           <h1 data-tracker-target="billingButton" class="display-3">
@@ -55,9 +59,17 @@
       </div>
 
       <div class="col-sm-12 text-center">
-        <button class="btn btn-light" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
+        <button class="btn btn-light btn-lg" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
           START
         </button>
+      </div>
+
+      <div class="col-sm-6 text-center mt-5">
+        <%= render "api_image", task: @task %>
+      </div>
+
+      <div class="col-sm-6 text-left mt-5 pe-5">
+        <p style="font-size: 20px;"> <%= render "api_hint", task: @task %> </p>
       </div>
 
     </div>

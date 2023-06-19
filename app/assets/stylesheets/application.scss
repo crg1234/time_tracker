@@ -6,6 +6,8 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
+@import "flatpickr/dist/flatpickr";
+@import "flatpickr/dist/themes/airbnb";
 
 // Your CSS partials
 @import "components/index";
@@ -21,21 +23,21 @@ a:hover {
 
 h1 {
   color: #CAD3C8;
- }
+}
 
 
- h2 {
+h2 {
   color: #CAD3C8;
- }
+}
 
- h3 {
+h3 {
   color: #CAD3C8;
- }
+}
 
 p {
   color: #CAD3C8;
- }
- a {
-  color: #CAD3C8;
- }
+}
 
+a {
+  color: #CAD3C8;
+}

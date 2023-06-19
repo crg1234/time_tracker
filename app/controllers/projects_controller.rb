@@ -24,7 +24,8 @@ class ProjectsController < ApplicationController
     @tasks = @project.tasks
     @invoices = @project.invoices
     @client = @project.client
-    @invoice = @project.invoices.last
+    @latest_invoice = @project.invoices.last
+    @invoice = Invoice.new
   end
 
   private

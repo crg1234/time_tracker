@@ -1,25 +1,25 @@
-<table class="table mb-2 mt-2 table-hover table-dark">
-  <thead>
-    <tr>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Company Name</th>
-      <th scope="col">Billing Addrss</th>
-      <th scope="col">Phone Number</th>
-    </tr>
-    </thead>
+<div style="background-color: white; padding: 1px; border-radius: 10px;">
+  <table class="table table-hover table-dark" id="all-tables">
+    <thead>
+      <tr>
+        <th id="left-angle" scope="col">COMPANY NAME</th>
+        <th scope="col">CLIENT NAME</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">BILLING ADDRESS</th>
+        <th id="right-angle" scope="col">Phone Number</th>
+      </tr>
+      </thead>
 
-  <tbody>
-  <% clients.each do |client| %>
-    <tr>
-        <td><%= link_to client.first_name, client_path(client) %></td>
-        <td><%= client.last_name %></td>
-        <td><%= client.email %></td>
-        <td><%= client.company_name %></td>
-        <td><%= client.billing_address %></td>
-        <td><%= client.phone_number %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+    <tbody>
+    <% clients.each do |client| %>
+      <tr>
+          <td id="bottom-left"><%= link_to client.company_name, client_path(client) %></td>
+          <td><%= client.first_name %> <%= client.last_name %></td>
+          <td><%= client.email %></td>
+          <td><%= client.billing_address %></td>
+          <td><%= client.phone_number %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -9,18 +9,47 @@
           <div class="btn-toolbar mb-2 mb-md-0 d-flex justify-content-end">
             <div class="btn-group me-2">
               <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#newProjectPopUp">Add Project</button>
-              <%= link_to 'Edit', edit_client_path(@client), :class => "btn btn-outline-secondary" %>
+              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editPopUp">Edit</button>
+
               <%= link_to  'Delete', client_path(@client),  data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this client?' }, :class => "btn btn-outline-secondary" %>
             </div>
           </div>
         </div>
       </div>
+      <div class="container border-bottom">
+        <h2><b>Company: </b><%= @client.company_name %></h2>
+        <p><b>Full name: </b>  <%= @client.last_name %></p>
+        <p><b>Email: </b><%= @client.email %></p>
+        <p><b>Phone number: </b><%= @client.phone_number %></p>
+        <p><b>Billing address: </b><%= @client.billing_address %></p>
+      </div>
+      <div style="margin-top: 20px;">
+        <% unless @client.projects.empty? %>
+          <div style="background-color: white; padding: 1px; border-radius: 10px;">
+            <table class="table table-hover table-dark" id="all-tables">
+              <thead>
+                <tr>
+                  <th id="left-angle" scope="col">PROJECT NAME</th>
+                  <th scope="col">CLIENT</th>
+                  <th scope="col">DEADLINE</th>
+                  <th id="right-angle" scope="col">TIME COUNTER</th>
+                </tr>
+              </thead>
 
-      <h2><b>Company: </b><%= @client.company_name %></h2>
-      <p><b>Full name: </b>  <%= @client.last_name %></p>
-      <p><b>Email: </b><%= @client.email %></p>
-      <p><b>Phone number: </b><%= @client.phone_number %></p>
-      <p><b>Billing address: </b><%= @client.billing_address %></p>
+              <tbody>
+                <% @projects.each do |project| %>
+                  <tr>
+                    <td><%= link_to project.name, project_path(project) %></td>
+                    <td><%= project.client.company_name %></td>
+                    <td><%= project.deadline %></td>
+                    <td><%= project.time_counter %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </div>
 
     </main>
   </div>
@@ -38,7 +67,11 @@
             <div class="rounded p-1 w-100">
               <%= simple_form_for [@client, @project] do |f| %>
               <%= f.input :name %>
-              <%= f.input :deadline %>
+              <%# <%= f.input :deadline %>
+              <%= f.input :deadline, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label_html: { class: "form-label text-secondary fw-bold" },
+                input_html: { data: { controller: "flatpickr" } } %>
               <%= f.submit class: 'btn btn-success' %>
               <% end %>
             </div>
@@ -50,26 +83,27 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        <%# <%= link_to new_client_path, class: "create-client-link" do %>
-        <%# <span class="plus-symbol">➕</span> %>
-        <%# <% end %>
-          <%# <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+<div class="modal fade" id="editPopUp" tabindex="-1" aria-labelledby="editPopUpLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Client</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="rounded p-1 w-100">
+           <%= simple_form_for @client do |f| %>
+              <%= f.input :first_name %>
+              <%= f.input :last_name %>
+              <%= f.input :email %>
+              <%= f.input :phone_number %>
+              <%= f.input :billing_address %>
+              <%= f.submit class: "btn btn-success" %>
+            <% end %>
           </div>
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            This week
-          </button> %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,17 @@ export default class extends Controller {
     // console.log(this.checkboxTarget.checked)
     console.log(this.taskCompletedValue)
 
+
     this.authenticityTokenValue = document.getElementsByName("csrf-token")[0].content;
+  }
+
+  updateCheckbox() {
+    if (this.taskCompletedValue) {
+      this.checkboxTarget.checked = true
+      this.toggle()
+    } else {
+      this.toggle()
+    }
   }
 
   toggle() {
@@ -27,7 +37,7 @@ export default class extends Controller {
   }
 
   completeTask() {
-    this.status = true
+    // this.status = true
     this.taskCompletedValue = true
     console.log("the box is checked")
     console.log(`identifier ${this.taskIdValue}`)
@@ -52,8 +62,9 @@ export default class extends Controller {
   // }
 
   uncompleteTask() {
-    this.status = false
+    // this.status = false
     this.taskCompletedValue = false
+    this.checkboxTarget.checked = false
     console.log("the box is unchecked")
 
     const formData = new FormData()
