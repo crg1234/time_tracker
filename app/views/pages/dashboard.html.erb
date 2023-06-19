@@ -1,4 +1,4 @@
- <div class="container-fluid">
+<div class="container-fluid">
 
 
 <%# <%= link_to new_client_path, class: "create-client-link" do %>
@@ -38,12 +38,28 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-our-dark-grey"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
 
       <div class="tab-content" id="tabContent">
+        <h1 class="h2">Hi <%= current_user.first_name.capitalize %>, welcome to your Dashboard</h1>
 
         <div class="tab-pane show <%="active" unless params.has_key?(:tab)%>" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <h1 class="h2">Hi <%= current_user.first_name.capitalize %>, welcome to your Dashboard</h1>
-          <div class="col-sm-6">
-            <div class="tenor-gif-embed" data-postid="18740708" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/the-best-is-yet-to-come-frank-sinatra-the-best-is-yet-to-come-song-something-best-lies-ahead-something-best-will-happen-gif-18740708">The Best Is Yet To Come Frank Sinatra GIF</a>from <a href="https://tenor.com/search/the+best+is+yet+to+come-gifs">The Best Is Yet To Come GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>        </div>
+
+          <div class="chart-container d-flex">
+
+            <div class="col-sm-6">
+              <div>
+                <%# <%= pie_chart Client.group(:first_name).count %>
+                <%= line_chart Task.group_by_day(:created_at).count %>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div>
+                <%= line_chart Task.group_by_day(:created_at).count %>
+              </div>
+            </div>
+
           </div>
+
+        </div>
 
         <div class="tab-pane fade <%="active" if params[:tab] == "customers-tab" %>" id="customers" role="tabpanel" aria-labelledby="customers-tab">
           <div class="d-flex justify-content-between">
