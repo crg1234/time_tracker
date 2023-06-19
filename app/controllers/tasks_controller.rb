@@ -11,7 +11,9 @@ class TasksController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    @task = @project.tasks.create(task_params)
+    @task = @project.tasks.new(task_params)
+    @task.image_url = "https://placehold.co/256x256"
+    @task.save
     redirect_to project_path(@project)
   end
 
@@ -25,6 +27,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :billing_rate, :start_time, :end_time, :time_log, :amount_to_bill, :completed)
+    params.require(:task).permit(:title, :description, :billing_rate, :start_time, :end_time, :time_log, :amount_to_bill, :completed, :image_url, :hint)
   end
 end
