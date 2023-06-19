@@ -2,6 +2,10 @@ require "openai"
 
 class Task < ApplicationRecord
   belongs_to :project
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :billing_rate, presence: true
+
 
   def hint
     if read_attribute(:hint).present?
