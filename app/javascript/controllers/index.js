@@ -16,5 +16,5 @@ application.register("hello", HelloController)
 import TrackerController from "./tracker_controller"
 application.register("tracker", TrackerController)
 
-import StatusInvoicesController from "./status_invoices_controller_controller"
+import StatusInvoicesController from "./status_invoices_controller"
 application.register("status-invoices", StatusInvoicesController)
