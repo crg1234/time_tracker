@@ -4,6 +4,7 @@
   border-radius: 10px;
   margin-bottom: 0px;
   margin-top: 0px;
+  border-color: #cad3c887;
 }
 
 #all-tables thead tr:first-child td:first-child {
@@ -37,3 +38,17 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
+#all-tables > thead > tr > th {
+  border-top: none;
+  background-color: #0f1318;
+  padding: 15px;
+}
+
+#all-tables > tbody > tr > td {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #2C3A47;
+}
+
+
