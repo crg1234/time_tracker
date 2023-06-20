@@ -36,9 +36,14 @@
 
                 <%= link_to task_path(task) do %>
 
-                  <div class="card-project-task p-3">
+                  <%# <div class="card-project-task p-3"> %>
+                  <div class="styled-receipt p-3">
                     <div>
+                    <% if task.title.length > 23 %>
+                      <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize.first(23) %>...</strong></p>
+                    <% else %>
                       <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize %></strong></p>
+                    <% end %>
                     </div>
                     <div>
                       <p class="text-left">Hourly Rate: €<%= task.billing_rate.round(0) %></p>
@@ -56,13 +61,13 @@
                       data-checkbox-task-completed-value="<%= task.completed %>"
                       data-checkbox-task-id-value="<%= task.id %>"
                     >
-                      <div class="form-check mt-3 text-light">
+                      <div class="form-check mt-3 text-light p-0">
                         <% if task.completed %>
-                          <input id="checkbox-completed" type="checkbox" checked="true" class="form-check-input" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+                          <input id="checkbox-completed" type="checkbox" checked="true" class="toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
                         <% else %>
-                          <input id="checkbox-completed" type="checkbox" class="form-check-input" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+                          <input id="checkbox-completed" type="checkbox" class="toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
                         <% end %>
-                        <label for="checkbox-completed">Mark as completed</label>
+                        <label for="checkbox-completed">Completed</label>
                       </div>
                       </div>
                   </div>
