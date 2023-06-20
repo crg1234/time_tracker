@@ -19,7 +19,8 @@
           <tr data-controller="status-invoices"
             data-status-invoices-status-value="<%= invoice.status %>"
             data-status-invoices-invoice-sent-value="<%= invoice.invoice_sent %>"
-            data-status-invoices-invoice-id-value="<%= invoice.id %>">
+            data-status-invoices-invoice-id-value="<%= invoice.id %>"
+            >
               <td><%= link_to invoice.invoice_number, invoice_path(invoice) %></td>
               <td><%= invoice.project.client.company_name %></td>
               <td><%= invoice.project.name %></td>
@@ -28,11 +29,11 @@
               <% if invoice.status == false && invoice.invoice_sent == false %>
               <td><button class="button btn-status pastel-red" data-status-invoices-target="colorButton">Pending</button></td>
               <% elsif invoice.invoice_sent == true && invoice.status == false %>
-              <td><button class="button btn-status pastel-orange">Sent</button></td>
+              <td><button class="button btn-status pastel-orange" data-status-invoices-target="colorButton">Sent</button></td>
               <% elsif invoice.status == true %>
-              <td><button class="button btn-status pastel-green">Paid</button></td>
+              <td><button class="button btn-status pastel-green" data-status-invoices-target="colorButton">Paid</button></td>
               <% end %>
-              <td data-action="change->status-invoices#toggle"><%= link_to "Create PDF", invoice_path(invoice, format: :pdf) %></td>
+              <td data-action="click->status-invoices#clickInvoiceDownload" data-status-invoices-target="downloadInvoiceButton"><%= link_to "Create PDF", invoice_path(invoice, format: :pdf) %></td>
           </tr>
         <% end %>
       </tbody>

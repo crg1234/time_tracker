@@ -55,14 +55,22 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def update
+    @invoice = Invoice.find(params[:id])
+    @invoice.update(invoice_params)
+    head :no_content
+  end
+
   def update_invoice_sent
     @invoice = Invoice.find(params[:id])
     @invoice.invoice_sent == true
     @invoice.save
   end
 
+  private
+
   def invoice_params
-    params.require(:invoice).permit(:invoice_number, :billing_amount, :payment_deadline, :project_id)
+    params.require(:invoice).permit(:invoice_number, :billing_amount, :payment_deadline, :project_id, :invoice_sent, :status)
   end
 
 end
