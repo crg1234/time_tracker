@@ -1,5 +1,4 @@
 <div class="container-fluid">
-
   <div class="modal fade" id="addPopUp" tabindex="-1" aria-labelledby="addPopUpLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -39,6 +38,38 @@
 
           <h1 class="mb-5 h2">Hi <%= current_user.first_name.capitalize %>, welcome to your Dashboard</h1>
 
+      <div class="container">
+      <div class="row">
+          <div class="col-md-4 col-xl-3">
+              <div class="card bg-chart order-card">
+                  <div class="chart">
+                      <h6 class="m-b-20">Orders Received</h6>
+                      <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>486</span></h2>
+                      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-4 col-xl-3">
+              <div class="chart-card-display bg-chart order-card">
+                  <div class="chart">
+                      <div>
+                      <%= bar_chart Task.group(:created_at).sum(:amount_to_bill) %>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-4 col-xl-3">
+              <div class="card bg-chart order-card">
+                  <div class="chart">
+                      <h6 class="m-b-20">Orders Received</h6>
+                      <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>486</span></h2>
+                      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                  </div>
+              </div>
+          </div>
+      </div>
             <div class="container d-flex">
 
               <div class="summary-card col-sm-6">
