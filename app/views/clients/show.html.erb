@@ -73,13 +73,13 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="rounded p-1 w-100">
+            <div class="rounded p-1 w-100" data-controller="flatpickr">
               <%= simple_form_for [@client, @project] do |f| %>
               <%= f.input :name %>
               <%= f.input :deadline, as: :string,
                 wrapper_html: { class: "mb-4" },
                 label_html: { class: "form-label text-secondary fw-bold" },
-                input_html: { data: { controller: "flatpickr" } } %>
+                input_html: { data: { flatpickr_target: "projectDate" } } %>
               <%= f.submit class: 'btn btn-outline-secondary' %>
               <% end %>
             </div>
