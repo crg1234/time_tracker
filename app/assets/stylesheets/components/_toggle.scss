@@ -1,6 +1,5 @@
 .tag-item {
-  display: inline-block;
-}
+  display: inline-block;}
 
 .toggle {
   position: left-align;
@@ -12,7 +11,10 @@
 .toggle + label {
   position: relative;
   display: inline-block;
-  padding-left: 40px;
+  padding-left: 50px;
+  color: #0f1318;
+  margin-bottom: 50px;
+
 }
 
 .toggle + label::before {
