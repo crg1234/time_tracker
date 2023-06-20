@@ -43,19 +43,21 @@
             <h1>Total Billed: €<%= @total_billing_amount %></h1>
           </div>
 
+          <%# NOTE: I have added d-none tag to charts so they don't display %>
+
           <div class="chart-container d-flex justify-content-around">
 
-            <div class="col-sm-5">
+            <div class="col-sm-5 d-none">
               <div>
-                <%= bar_chart Project.group(:name).sum(:amount_to_bill), height: "50vh" %>
+                <%= bar_chart Project.group(:name).sum(:total_time_log), height: "50vh" %>
               </div>
             </div>
 
             </br>
 
-            <div class="col-sm-5">
+            <div class="col-sm-5 d-none">
               <div>
-                <%= line_chart Task.group_by_day(:created_at).count, height: "50vh" %>
+                <%= bar_chart Task.group(:title).sum(:amount_to_bill), height: "50vh" %>
               </div>
             </div>
 
