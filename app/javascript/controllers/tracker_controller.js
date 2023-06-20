@@ -35,12 +35,16 @@ export default class extends Controller {
   start() {
     this.running = true
     this.buttonTarget.innerText = "STOP TRACKING YOUR TIME"
+    this.buttonTarget.classList.remove("btn-outline-primary")
+    this.buttonTarget.classList.add("btn-outline-danger")
     this.interval = setInterval(this.timer, 1000) // in milliseconds
   }
 
   stop() {
     this.running = false
     this.buttonTarget.innerText = "START TRACKING YOUR TIME"
+    this.buttonTarget.classList.remove("btn-outline-danger")
+    this.buttonTarget.classList.add("btn-outline-primary")
     clearInterval(this.interval)
     this.updateBilling()
 
