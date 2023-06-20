@@ -68,7 +68,7 @@ export default class extends Controller {
     // console.log(this.billingRateValue)
     this.amountToBillValue = ((this.billingRateValue / 3600) * (this.timeLogValue / 1000)) // to bill by the second and to convert milliseconds to seconds
     this.billingTarget.innerText = `Amount to Bill: €${this.amountToBillValue}` // to bill hourly rate by second
-    this.billingButtonTarget.innerText = `Amount to Bill: €${parseFloat(this.amountToBillValue).toFixed(2)}` // to bill hourly rate by second
+    this.billingButtonTarget.innerText = `Amount to Bill: €${parseFloat(this.amountToBillValue).toFixed(0)}` // to bill hourly rate by second
   }
 
   timer = () => {
