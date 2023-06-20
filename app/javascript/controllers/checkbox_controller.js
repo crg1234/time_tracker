@@ -14,7 +14,6 @@ export default class extends Controller {
     // console.log(this.checkboxTarget.checked)
     console.log(this.taskCompletedValue)
 
-
     this.authenticityTokenValue = document.getElementsByName("csrf-token")[0].content;
   }
 
