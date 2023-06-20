@@ -14,7 +14,6 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to project_path(@project)
     else
-      raise
       render :new, status: :unprocessable_entity
     end
   end
