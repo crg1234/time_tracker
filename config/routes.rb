@@ -13,12 +13,13 @@ Rails.application.routes.draw do
     resources :invoices, only: [:new, :create, :show]
   end
 
-
   resources :tasks, only: [:show, :create, :update]
   resources :invoices, only: [:show]
 
   resources :clients do
     resources :projects, only: [:new, :create]
   end
+
+  resources :invoices, only: [:update]
 
 end
