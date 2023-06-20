@@ -39,8 +39,8 @@
                   <%# <div class="card-project-task p-3"> %>
                   <div class="styled-receipt p-3">
                     <div>
-                    <% if task.title.length > 23 %>
-                      <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize.first(23) %>...</strong></p>
+                    <% if task.title.length > 25 %>
+                      <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize.first(25) %>...</strong></p>
                     <% else %>
                       <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize %></strong></p>
                     <% end %>
@@ -64,7 +64,7 @@
                         <% if task.completed %>
                           <input id="checkbox-completed" type="checkbox" checked="true" class="toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
                         <% else %>
-                          <input id="checkbox-completed" type="checkbox" class="toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+                          <input id="checkbox-completed" type="checkbox" class="toggle"" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
                         <% end %>
                         <label for="checkbox-completed">Completed</label>
                       </div>
