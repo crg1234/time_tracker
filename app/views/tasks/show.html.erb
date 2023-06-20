@@ -6,9 +6,9 @@
   data-checkbox-task-id-value="<%= @task.id %>">
   <div class="form-check mt-3 text-light p-0">
     <% if @task.completed %>
-      <input id="checkbox-completed" type="checkbox" checked="true" class="light_toggle" data-checkbox-target="checkbox" data-action="change->checkbox#light_toggle">
+      <input id="checkbox-completed" type="checkbox" checked="true" class="light_toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
     <% else %>
-      <input id="checkbox-completed" type="checkbox" class="light_toggle" data-checkbox-target="checkbox" data-action="change->checkbox#light_toggle">
+      <input id="checkbox-completed" type="checkbox" class="light_toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
     <% end %>
     <label for="checkbox-completed">Completed</label>
   </div>
