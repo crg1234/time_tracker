@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @task = @project.tasks.new(task_params)
-    @task.image_url = "https://placehold.co/256x256"
+    # @task.image_url = "https://placehold.co/256x256"
     @task.save
     redirect_to project_path(@project)
   end
