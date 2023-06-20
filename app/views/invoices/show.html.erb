@@ -25,6 +25,9 @@
         <div>
           <p>From: <%= @user.first_name %> <%= @user.last_name %></p>
           <p><%= @user.email %></p>
+          <p>Bank: <%= @user.bank_name %></p>
+          <p>Number account: <%= @user.bank_account_number %></p>
+          <p>IBAN: <%= @user.bank_iban %></p>
         </div>
         <div>
           <p>To:&nbsp<%= @client.company_name %></p>
