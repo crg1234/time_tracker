@@ -24,7 +24,7 @@ class Invoice < ApplicationRecord
         billing_amount += task.amount_to_bill
       end
     end
-    return billing_amount
+    return billing_amount.round(2)
   end
 
   def total_time_amount
