@@ -43,37 +43,33 @@
 
               <div class="summary-card col-sm-6">
                 <div id="summary-money-billed">
-                  <h1 style="font-size: 50px; text-primary">Total Billed: €<%= @total_billing_amount.round(0) %></h1>
+                  <h1>Total Billed: €<%= @total_billing_amount.round(0) %></h1>
                 </div>
 
-                </br>
-
                 <div id="summary-money-billed">
-                  <h3>Payment Received: €<%= @total_billing_amount.round(0) %></h3>
+                  <h1>Payment Received: €<%= @total_billing_amount.round(0) %></h1>
                 </div>
 
                 <%# TODO: Update math on payments outstanding %>
 
                 <div id="summary-money-billed">
-                  <h3>Payments Outstanding: €<%= @total_billing_amount.round(0) - @total_billing_amount.round(0) %></h3>
+                  <h1>Payments Outstanding: €<%= @total_billing_amount.round(0) - @total_billing_amount.round(0) %></h1>
                 </div>
               </div>
 
-              <div class="summary-card col-sm-6 mb-5">
+              <div class="summary-card col-sm-6">
                 <div id="invoices-sent">
-                  <h1 style="font-size: 50px; text-primary">Invoices Sent: <%= @count_invoices %></h1>
+                  <h1>Invoices Sent: <%= @count_invoices %></h1>
                 </div>
 
-                </br>
-
                 <div id="invoices-sent">
-                  <h3>Invoices Paid: <%= @count_invoices %></h3>
+                  <h1>Invoices Paid: <%= @count_invoices %></h1>
                 </div>
 
                 <%# TODO: Update math on payments outstanding %>
 
                 <div id="invoices-sent">
-                  <h3>Unpaid Invoices: <%= @count_invoices - @count_invoices %></h3>
+                  <h1>Unpaid Invoices: <%= @count_invoices - @count_invoices %></h1>
                 </div>
               </div>
 
@@ -93,7 +89,7 @@
             <h1 class="mb-4">Your clients</h1>
             <div>
               <button type="button" class="btn btn-outline-secondary create-client-link " data-bs-toggle="modal" data-bs-target="#addPopUp" >
-              <i class="fa-solid fa-plus fa-lg" style="color: #c7c7c7;"></i>&nbsp&nbsp Client
+              <i class="fa-solid fa-plus fa-2xl" style="color: #c7c7c7;"></i>
               </button>
             </div>
           </div>
