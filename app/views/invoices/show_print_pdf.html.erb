@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 <p>Invoice Number:  <%= @project.id %></p>
  <p>Billing Amount: €<%= @invoice.billing_amount ? @invoice.billing_amount.round(2) : "0" %></p>
+=======
+<div style="font-family: Helvetica;">
+
+<h1>Invoice Number:  <%= @project.id %></h1>
+<p>Billing Amount: €<%= @invoice.billing_amount ? @invoice.billing_amount.round(2) : "0" %></p>
+>>>>>>> master
 <p>Payment Deadline: <%= @invoice.payment_deadline.strftime("%d %B %Y") %></p>
 
  <p>Project Name: <%= @project.name ? @project.name : "" %></p>
@@ -14,5 +21,12 @@
 <p>Tasks Title <%= @tasks.first ? @tasks.first.title : "No Tasks" %></p>
  <p>Tasks Description <%= @tasks.first ? @tasks.first.description : "No Tasks" %></p>
 
+<<<<<<< HEAD
  <p>User First Name:<%= @user.first_name %></p>
  <p>User Last Name:<%= @user.last_name %></p>
+=======
+<p>User First Name:<%= @user.first_name %></p>
+<p>User Last Name:<%= @user.last_name %></p>
+
+</div>
+>>>>>>> master

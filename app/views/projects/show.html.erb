@@ -38,8 +38,6 @@
 
                   <div class="card-project-task p-3">
                     <div>
-                      <%# <p class="text-center"><%= render "api_image", task: @task %>
-                      <%# </p> %>
                       <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize %></strong></p>
                     </div>
                     <div>
@@ -74,9 +72,7 @@
           <% end %>
         <% end %>
       </div>
-
     </main>
-
 </div>
 
 
@@ -85,7 +81,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">New Task</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <div class="modal-body">

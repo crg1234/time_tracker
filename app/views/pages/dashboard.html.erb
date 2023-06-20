@@ -5,7 +5,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Add Client</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -38,6 +38,10 @@
         <div class="tab-pane show <%="active" unless params.has_key?(:tab)%>" id="home" role="tabpanel" aria-labelledby="home-tab">
 
           <h1 class="mb-5 h2">Hi <%= current_user.first_name.capitalize %>, welcome to your Dashboard</h1>
+
+          <div id="summary-money-billed">
+            <h1>Total Billed: €<%= @total_billing_amount %></h1>
+          </div>
 
           <div class="chart-container d-flex justify-content-around">
 
