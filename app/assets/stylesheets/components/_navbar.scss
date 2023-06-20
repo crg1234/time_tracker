@@ -18,7 +18,23 @@
 }
 
 .nav-link:hover {
-  color: #2C3A47;
+  color: #cad3c8;
+  background-color: rgba(44, 58, 71,0.3);
+  border-radius: 3px;
+  text-align: start;
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #cad3c8;
+  background-color: rgba(44, 58, 71,0.7);
+  border-radius: 3px;
+  text-align: start;
+  width: 100%;
+}
+
+.nav-link i {
+  color: #cad3c8;
 }
 
 .nav-item-dropdown {
