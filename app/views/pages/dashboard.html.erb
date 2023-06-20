@@ -43,33 +43,37 @@
 
               <div class="summary-card col-sm-6">
                 <div id="summary-money-billed">
-                  <h1>Total Billed: €<%= @total_billing_amount.round(0) %></h1>
+                  <h1 style="font-size: 50px; text-primary">Total Billed: €<%= @total_billing_amount.round(0) %></h1>
                 </div>
 
+                </br>
+
                 <div id="summary-money-billed">
-                  <h1>Payment Received: €<%= @total_billing_amount.round(0) %></h1>
+                  <h3>Payment Received: €<%= @total_billing_amount.round(0) %></h3>
                 </div>
 
                 <%# TODO: Update math on payments outstanding %>
 
                 <div id="summary-money-billed">
-                  <h1>Payments Outstanding: €<%= @total_billing_amount.round(0) - @total_billing_amount.round(0) %></h1>
+                  <h3>Payments Outstanding: €<%= @total_billing_amount.round(0) - @total_billing_amount.round(0) %></h3>
                 </div>
               </div>
 
-              <div class="summary-card col-sm-6">
+              <div class="summary-card col-sm-6 mb-5">
                 <div id="invoices-sent">
-                  <h1>Invoices Sent: <%= @count_invoices %></h1>
+                  <h1 style="font-size: 50px; text-primary">Invoices Sent: <%= @count_invoices %></h1>
                 </div>
 
+                </br>
+
                 <div id="invoices-sent">
-                  <h1>Invoices Paid: <%= @count_invoices %></h1>
+                  <h3>Invoices Paid: <%= @count_invoices %></h3>
                 </div>
 
                 <%# TODO: Update math on payments outstanding %>
 
                 <div id="invoices-sent">
-                  <h1>Unpaid Invoices: <%= @count_invoices - @count_invoices %></h1>
+                  <h3>Unpaid Invoices: <%= @count_invoices - @count_invoices %></h3>
                 </div>
               </div>
 
