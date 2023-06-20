@@ -81,25 +81,6 @@
                  <p style="font-size: 200px; text-primary"><%= Time.at(@total_time_logged/1000).utc.strftime("%H:%M:%S") %></p>
               </div>
             </div>
-          <%# NOTE: I have added d-none tag to charts so they don't display %>
-
-          <div class="chart-container d-flex justify-content-around">
-
-            <div class="col-sm-5 d-none">
-              <div>
-                <%= bar_chart Project.group(:name).sum(:total_time_log), height: "50vh" %>
-              </div>
-            </div>
-
-            </br>
-
-            <div class="col-sm-5 d-none">
-              <div>
-                <%= bar_chart Task.group(:title).sum(:amount_to_bill), height: "50vh" %>
-              </div>
-            </div>
-
-          </div>
 
         </div>
 
