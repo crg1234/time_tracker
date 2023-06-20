@@ -1,50 +1,97 @@
-<<<<<<< HEAD
-// .top-container{
-//   width: 600px;
-//   display:flex;
-//   flex-direction:row;
+.pdf-top-container{
+  width: 600px;
+  display:flex;
+  flex-direction:row;
 
-// }
-// h1{
-//   text-align:center;
-//   margin-bottom: 40px
-// }
-// .container {
-//   max-width: 45%;
-//   margin: 0 auto;
-//   background-color: #fff;
-//   padding: 30px;
-//    border-radius: 5px;
-//    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-//   .top1{
-//   position:absolute;
-//   right: 10px;
-//   margin-right: 450px;
-//   padding: 0px;
-// }
-// }
+}
+#logo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+#logo img {
+  width: 90px;
+}
 
-// .top{
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
 
-//   margin-right: 100px;
-//   padding: 0px;
-// }
+table tr:nth-child(2n-1) td {
+  background: #F5F5F5;
+}
 
-//   .label {
-//     font-weight: bold;
-//     color: gray;
-//   }
-// table{
-//   margin-top: 30px;
-// }
-// th {
-//   padding-right: 42px ;
-// }
-// td {
-//   padding-right: 20px ;
-//   text-align: center;
-// }
-=======
+table th,
+table td {
+  text-align: center;
+}
+
+table th {
+  padding: 5px 20px;
+  color: #5D6975;
+  border-bottom: 1px solid #C1CED9;
+  white-space: nowrap;
+  font-weight: normal;
+}
+table td.grand {
+  border-top: 1px solid #5D6975;
+  padding-right: 0;
+}
+table td.total {
+  font-size: 1.2em;
+
+}
+.pdf-text {
+    // text-align:center;
+    // margin-bottom: 40px
+    border-top: 1px solid  #5D6975;
+    border-bottom: 1px solid  #5D6975;
+    color: #5D6975;
+    font-size: 2.4em;
+    line-height: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 20px 0;
+    // background: url(dimension.png);
+}
+
+.pdf-container {
+  max-width: 45%;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+   border-radius: 5px;
+   box-shadow: 0 2px 5px rgba(120, 116, 116, 0.1);
+  .top1{
+  position:absolute;
+  right: 10px;
+  margin-right: 450px;
+  padding: 0px;
+}
+}
+
+.top{
+
+  margin-right: 100px;
+  padding: 0px;
+}
+
+  .label {
+    font-weight: bold;
+    color: grey;
+  }
+table{
+  margin-top: 30px;
+}
+th {
+  padding-right: 42px ;
+}
+td {
+  padding-right: 20px ;
+  text-align: center;
+}
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap');
 
@@ -56,4 +103,3 @@ $headers-font: 'Oxygen', sans-serif;
   font-family: $body-font;
   color: blue;
 }
->>>>>>> master
