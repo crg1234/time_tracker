@@ -35,20 +35,20 @@
 
         </br>
         </br>
-        <h3 style="" class="text-danger">Time Tracker Tip:</h3>
+        <h3 class="text-danger">Time Tracker Tip:</h3>
         <p style="font-size: 20px;">
           <%= @task.hint %>
         </p>
       </div>
 
       <div class="col-sm-8 text-center">
-        <button class="btn btn-outline-primary btn-lg" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
+        <button class="btn btn-outline-primary btn-lg zoom" style="font-size: 40px;" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
           START TRACKING YOUR TIME
         </button>
 
         </br>
         </br>
-          <div id="taskwatch" class="text-center">
+          <div id="taskwatch" class="text-center zoom">
             <%# <h3 id="stopWatchIcon"><i class="fas fa-stopwatch fa-3x"></i></h3> %>
             <div>
               <p id="timer" data-tracker-target="time" class="display-1" style="font-size: 200px;">
