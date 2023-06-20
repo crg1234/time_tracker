@@ -40,7 +40,7 @@
                   <div class="styled-receipt p-3">
                     <div style= "border-bottom: 1px dashed #2C3A47;">
                     <% if task.title.length > 23 %>
-                      <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize.first(23) %>...</strong></p>
+                      <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize.first(21) %>...</strong></p>
                     <% else %>
                       <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize %></strong></p>
                     <% end %>
