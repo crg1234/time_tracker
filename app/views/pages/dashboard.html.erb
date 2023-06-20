@@ -39,23 +39,63 @@
 
           <h1 class="mb-5 h2">Hi <%= current_user.first_name.capitalize %>, welcome to your Dashboard</h1>
 
-          <div id="summary-money-billed">
-            <h1>Total Billed: €<%= @total_billing_amount %></h1>
-          </div>
+            <div class="container d-flex">
+
+              <div class="summary-card col-sm-6">
+                <div id="summary-money-billed">
+                  <h1>Total Billed: €<%= @total_billing_amount.round(0) %></h1>
+                </div>
+
+                <div id="summary-money-billed">
+                  <h1>Payment Received: €<%= @total_billing_amount.round(0) %></h1>
+                </div>
+
+                <%# TODO: Update math on payments outstanding %>
+
+                <div id="summary-money-billed">
+                  <h1>Payments Outstanding: €<%= @total_billing_amount.round(0) - @total_billing_amount.round(0) %></h1>
+                </div>
+              </div>
+
+              <div class="summary-card col-sm-6">
+                <div id="invoices-sent">
+                  <h1>Invoices Sent: <%= @count_invoices %></h1>
+                </div>
+
+                <div id="invoices-sent">
+                  <h1>Invoices Paid: <%= @count_invoices %></h1>
+                </div>
+
+                <%# TODO: Update math on payments outstanding %>
+
+                <div id="invoices-sent">
+                  <h1>Unpaid Invoices: <%= @count_invoices - @count_invoices %></h1>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row my-5">
+              <div id="summary-time-logged col-sm-12 text-center">
+                <h1>Total Time Logged:</h1>
+                 <p style="font-size: 200px; text-primary"><%= Time.at(@total_time_logged/1000).utc.strftime("%H:%M:%S") %></p>
+              </div>
+            </div>
+          <%# NOTE: I have added d-none tag to charts so they don't display %>
 
           <div class="chart-container d-flex justify-content-around">
 
-            <div class="col-sm-5">
+            <div class="col-sm-5 d-none">
               <div>
-                <%= bar_chart Task.group(:title).sum(:amount_to_bill), height: "50vh" %>
+                <%= bar_chart Project.group(:name).sum(:total_time_log), height: "50vh" %>
               </div>
             </div>
 
             </br>
 
-            <div class="col-sm-5">
+            <div class="col-sm-5 d-none">
               <div>
-                <%= line_chart Task.group_by_day(:created_at).count, height: "50vh" %>
+                <%= bar_chart Task.group(:title).sum(:amount_to_bill), height: "50vh" %>
               </div>
             </div>
 

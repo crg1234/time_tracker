@@ -12,11 +12,29 @@ class PagesController < ApplicationController
 
     @my_invoices = Invoice.where(project: current_user.projects)
 
-    @total_billing_amount = 0
 
-    @invoices.each do |invoice|
+    # Total billed on dashboard
+    @total_billing_amount = 0
+    @my_invoices.each do |invoice|
       @total_billing_amount += invoice.billing_amount
     end
+
+    # Payment received on dashboard
+
+    # Total Time Logged on dashboard
+    @total_time_logged = 0
+    @projects.each do |project|
+      @total_time_logged += project.total_amount_time
+    end
+
+    # Invoices sent on dashboard
+    @invoices_array = []
+    @my_invoices.each do |invoice|
+      @invoices_array << invoice
+    end
+
+    @count_invoices = @invoices_array.length
+
   end
 
   def learning
