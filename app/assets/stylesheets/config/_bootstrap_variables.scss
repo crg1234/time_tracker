@@ -11,7 +11,7 @@ $body-bg:                $light-gray;
 $font-size-base:         1rem;
 
 // Colors
-$body-color: #2C3A47;
+$body-color: #1b1e1f;
 $primary:    #58B19F;
 $secondary:  #CAD3C8;
 $success:    #458d7b;
@@ -26,4 +26,9 @@ $border-radius-sm: 5px;
 
 // Override other variables below!
 
-$table-dark: #2C3A47;
+$table-dark: #28272a;
+
+body {
+  margin: 0;
+  background-color: #1b1e1f;
+}
