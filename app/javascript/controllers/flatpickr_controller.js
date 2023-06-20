@@ -3,10 +3,8 @@ import flatpickr from "flatpickr";
 
 // Connects to data-controller="flatpickr"
 export default class extends Controller {
-  static targets = ["projectDate"]
-
   connect() {
-    flatpickr(this.projectDateTarget, {
+    new flatpickr(this.element, {
       // enableTime: true,
       altInput: true,
       altFormat: "F j, Y",

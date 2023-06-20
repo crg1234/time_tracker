@@ -38,6 +38,7 @@
 
                   <%# <div class="card-project-task p-3"> %>
                   <div class="styled-receipt p-3">
+
                     <div style= "border-bottom: 1px dashed #2C3A47;">
                     <% if task.title.length > 23 %>
                       <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize.first(23) %>...</strong></p>
@@ -45,6 +46,7 @@
                       <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize %></strong></p>
                     <% end %>
                     </div>
+
                     <div>
                       <p class="text-left pt-3">Hourly Rate: €<%= task.billing_rate.round(0) %></p>
                       <p class="text-left"><i class="fas fa-stopwatch fa-2x me-1"></i>
@@ -69,6 +71,8 @@
                         <label for="checkbox-completed">Completed</label>
                       </div>
                     </div>
+
+
                   </div>
 
               </div>
