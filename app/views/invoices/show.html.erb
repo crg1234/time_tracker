@@ -52,7 +52,6 @@
               <div class="card-invoice-task d-flex justify-content-between align-items-center">
                 <div class="card-invoice-task-info">
                   <h2><%= task.title %></h2>
-                  <p><%= task.description %></p>
                 </div>
                 <div>
                   <p>€<%= task.billing_rate ? task.billing_rate.round(2) : "€0" %>&nbsp per hour</p>
@@ -66,8 +65,8 @@
       </div>
       <div class="d-flex align-items-right justify-content-end">
         <div>
-          <h1> Total: €<%= @invoice.billing_amount ? @invoice.billing_amount.round(2) : "0" %></h1>
-          <p>Total Time spent: <%= @total_time_on_invoice ? Time.at(@total_time_on_invoice/1000).utc.strftime("%H:%M:%S") : "00:00:00" %></p>
+          <h1> Total: €<%= @invoice.total_billing_amount ? @invoice.total_billing_amount.round(2) : "0" %></h1>
+          <p>Total Time spent: <%= @invoice.total_time_amount ? Time.at(@invoice.total_time_amount / 1000).utc.strftime("%H:%M:%S") : "00:00:00" %></p>
         </div>
       </div>
     </main>
