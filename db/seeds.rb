@@ -68,9 +68,9 @@ CSV.foreach(filepath) do |row|
   projects << project
   3.times do|n|
     title = row[n]
-    task = Task.new(title: row[n], description: "Done", billing_rate: rand(550.9..1010.9), start_time: Faker::Time.forward(days: 1, period: :morning), end_time:   Faker::Time.forward(days: 1, period: :evening), project_id:project.id)
+    task = Task.new(time_log: Faker::Number.between(from: 1000*60*20, to: 1000*60*67), created_at: Faker::Time.backward,title: row[n], description: "Done", billing_rate: rand(550.9..1010.9), start_time: Faker::Time.forward(days: 1, period: :morning), end_time:   Faker::Time.forward(days: 1, period: :evening), project_id:project.id)
     task.project = project
-    p task
+    task.amount_to_bill = task.billing_rate*task.time_log/1000/60/60
     task.save!
   end
 

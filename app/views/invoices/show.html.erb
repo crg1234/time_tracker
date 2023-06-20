@@ -1,5 +1,5 @@
  <div class="container-fluid">
-   <a href="/clients/<%= @client.id %>"><- Back to Clients</a>
+   <a href="/projects/<%= @invoice.project_id %>"> <- Back to Project</a>
 
   <div class="row">
 
@@ -16,7 +16,9 @@
         <div>
           <div class="btn-toolbar mb-2 mb-md-0 d-flex justify-content-end">
             <div class="btn-group me-2">
-              <%= link_to "Create PDF", invoice_path(@invoice, format: :pdf), :class => "btn btn-outline-secondary" %>
+              <%= link_to invoice_path(@invoice, format: :pdf), :class => "btn btn-outline-secondary" do %>
+              <i class="fa-regular fa-file-pdf fa-lg"></i><span>PDF</span>
+              <% end %>
               <%# <% simple_form_for(@invoice) do |f| %>
               <%# <% f.input :status == true %>
               <%# <%= f.submit "MARK AS PAID"%>

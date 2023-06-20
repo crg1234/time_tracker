@@ -22,7 +22,7 @@
         <p><%= @client.phone_number %></p>
         <p><%= @client.billing_address %></p>
       </div>
-      <div class="col-md-6" style="margin-top: 20px;">
+      <div class="col-md-12" style="margin-top: 20px;">
         <% unless @client.projects.empty? %>
           <div style="background-color: #cad3c887; padding: 1px; border-radius: 10px;">
             <table class="table table-hover table-dark" id="all-tables">
@@ -30,7 +30,8 @@
                 <tr>
                   <th id="left-angle" scope="col">PROJECT NAME</th>
                   <th scope="col">DEADLINE</th>
-                  <th id="right-angle" scope="col">TIME COUNTER</th>
+                  <th scope="col">TOTAL TIME SPENT</th>
+                  <th id="right-angle" scope="col">AMOUNT TO BILL</th>
                 </tr>
               </thead>
 
@@ -39,7 +40,18 @@
                   <tr>
                     <td><%= link_to project.name, project_path(project) %></td>
                     <td><%= project.deadline %></td>
-                    <td><%= project.time_counter %></td>
+
+                    <% if project.total_amount_time.nil? %>
+                      <td>00:00:00</td>
+                    <% else %>
+                      <td><%= Time.at(project.total_amount_time/1000).utc.strftime("%H:%M:%S") %></td>
+                    <% end %>
+
+                    <% if project.total_amount_bill.nil? %>
+                      <td>€0</td>
+                    <% else %>
+                      <td>€<%= project.total_amount_bill.round(2) %></td>
+                    <% end %>
                   </tr>
                 <% end %>
               </tbody>
@@ -61,13 +73,13 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="rounded p-1 w-100">
+            <div class="rounded p-1 w-100" data-controller="flatpickr">
               <%= simple_form_for [@client, @project] do |f| %>
               <%= f.input :name %>
               <%= f.input :deadline, as: :string,
                 wrapper_html: { class: "mb-4" },
                 label_html: { class: "form-label text-secondary fw-bold" },
-                input_html: { data: { controller: "flatpickr" } } %>
+                input_html: { data: { flatpickr_target: "projectDate" } } %>
               <%= f.submit class: 'btn btn-outline-secondary' %>
               <% end %>
             </div>

@@ -5,7 +5,8 @@
         <th id="left-angle" scope="col">PROJECT NAME</th>
         <th scope="col">CLIENT</th>
         <th scope="col">DEADLINE</th>
-        <th id="right-angle" scope="col">TIME COUNTER</th>
+        <th scope="col">TOTAL TIME SPENT</th>
+        <th id="right-angle" scope="col">AMOUNT TO BILL</th>
       </tr>
     </thead>
 
@@ -14,12 +15,23 @@
         <tr>
           <td><%= link_to project.name, project_path(project) %></td>
           <td><%= project.client.company_name %></td>
-         <% if project.deadline.nil? %>
-          <td><%= project.deadline %></td>
-         <% else %>
-          <td><%= project.deadline.strftime("%a, %d %b %Y") %></td>
+          <% if project.deadline.nil? %>
+            <td><%= project.deadline %></td>
+          <% else %>
+            <td><%= project.deadline.strftime("%a, %d %b %Y") %></td>
           <% end %>
-          <td><%= project.time_counter %></td>
+
+          <% if project.total_amount_time.nil? %>
+            <td>00:00:00</td>
+          <% else %>
+            <td><%= Time.at(project.total_amount_time/1000).utc.strftime("%H:%M:%S") %></td>
+          <% end %>
+
+          <% if project.total_amount_bill.nil? %>
+            <td>€0</td>
+          <% else %>
+            <td>€<%= project.total_amount_bill.round(2) %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
