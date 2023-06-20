@@ -29,7 +29,7 @@
         <h2><%= @task.title.upcase %></h2>
         <%# <h2>Description: <%= @task.description</h2> %>
 
-        <h3>Billing Rate: €<%= @task.billing_rate.round(0) %> per hour</h3>
+        <h3>€<%= @task.billing_rate.round(0) %> / hour</h3>
         <h3 class="d-none" data-tracker-target="billing">Amount to Bill: €<%= @task.amount_to_bill %></h3>
         <h3 data-tracker-target="billingButton" class="text-primary">Amount to Bill: €<%= @task.amount_to_bill %></h3>
 
