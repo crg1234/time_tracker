@@ -1,22 +1,130 @@
-<div style="font-family: Helvetica;">
+<%# <div style="font-family: Helvetica;"> %>
 
-<h1>Invoice Number:  <%= @project.id %></h1>
-<p>Billing Amount: €<%= @invoice.billing_amount ? @invoice.billing_amount.round(2) : "0" %></p>
-<p>Payment Deadline: <%= @invoice.payment_deadline.strftime("%d %B %Y") %></p>
+<%# <h1>Invoice Number:  <%= @project.id %></h1>
+<%# <p>Billing Amount: €<%= @invoice.billing_amount ? @invoice.billing_amount.round(2) : "0" %></p>
+<%# <p>Payment Deadline: <%= @invoice.payment_deadline.strftime("%d %B %Y") %></p>
 
-<p>Project Name: <%= @project.name ? @project.name : "" %></p>
-<p>Project Deadline: <%= @project.deadline ? @project.deadline.strftime("%d %B %Y") : "" %></p>
-<p>Time Counter: <%= @total_time_on_invoice ? Time.at(@total_time_on_invoice/1000).utc.strftime("%H:%M:%S") : "00:00:00" %></p>
+ <%# <p>Project Name: <%= @project.name ? @project.name : "" %></p>
+ <%# <p>Project Deadline: <%= @project.deadline ? @project.deadline.strftime("%d %B %Y") : "" %></p>
+ <%# <p>Time Counter: <%= @total_time_on_invoice ? Time.at(@total_time_on_invoice/1000).utc.strftime("%H:%M:%S") : "00:00:00" %></p>
 
-<p>Client First Name: <%= @client.first_name  %></p>
-<p>Client Last Name: <%= @client.last_name  %></p>
-<p>Client Email: <%= @client.email %></p>
-<p>Client: <%= @client.billing_address %></p>
+ <%# <p>Client First Name: <%= @client.first_name  %></p>
+<%# <p>Client Last Name: <%= @client.last_name  %></p>
+ <%# <p>Client Email: <%= @client.email %></p>
+ <%# <p>Client: <%= @client.billing_address %></p>
 
-<p>Tasks Title <%= @tasks.first ? @tasks.first.title : "No Tasks" %></p>
-<p>Tasks Description <%= @tasks.first ? @tasks.first.description : "No Tasks" %></p>
+<%# <p>Tasks Title <%= @tasks.first ? @tasks.first.title : "No Tasks" %></p>
+ <%# <p>Tasks Description <%= @tasks.first ? @tasks.first.description : "No Tasks" %></p>
 
-<p>User First Name:<%= @user.first_name %></p>
-<p>User Last Name:<%= @user.last_name %></p>
+<%# <p>User First Name:<%= @user.first_name %></p>
+<%# <p>User Last Name:<%= @user.last_name %></p>
 
+<%# </div> %>
+<%# <head>
+    <meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag "application" -%>
+   <%# </head>  %>
+
+<div class="pdf-container">
+<div id="logo">
+        <%= wicked_pdf_image_tag 'logo2.jpg' %>
+      </div>
+  <h1 class= "pdf-text">Invoice</h1>
+    <div class ="pdf-top-container" >
+      <div class= "top">
+        <p><span class="label">Client First Name: </span> <span class="value"><%= @client.first_name  %></span></p>
+        <p><span class="label">Client Last Name: </span> <span class="value"><%= @client.last_name  %></span></p>
+        <p><span class="label">Client Email: </span> <span class="value"><%= @client.email %></span></p>
+        <p><span class="label">Client: </span> <span class="value"><%= @client.billing_address %></span></p>
+      </div>
+      <div class="top1">
+        <p><span class="label">Invoice Number:</span> <span class="value"><%= @project.id %></span></p>
+        <p><span class="label">Payment Deadline: </span> <span class="value"><%= @invoice.payment_deadline.strftime("%d %B %Y") %></span></p>
+        <p><span class="label">User First Name:</span> <span class="value"><%= @user.first_name %></span></p>
+        <p><span class="label">User Last Name:</span> <span class="value"><%= @user.last_name %></span></p>
+      </div>
+   </div>
+  <table>
+ 	<thead>
+    <tr>
+      <div class ="header">
+        <th>
+          <p><span class="label">Project Name </span></p>
+        </th>
+        <th>
+          <p><span class="label">Tasks Title </span></p>
+        </th>
+        <th>
+          <p><span class="label">Tasks Description </span></p>
+        </th>
+        <th>
+          <p><span class="label">Time Counter  </span></p>
+        </th>
+        <th>
+          <p><span class="label">Billing Amount  €</span></p>
+        </th>
+      </div>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+      <td>
+        <p><span class="value"><%= @project.name ? @project.name : "" %></span></p>
+      </td>
+      <td>
+        <p><span class="value"><%= @tasks.first ? @tasks.first.title : "No Tasks" %></span></p>
+      </td>
+      <td>
+        <p><span class="value"><%= @tasks.first ? @tasks.first.description : "No Tasks" %></span></p>
+      </td>
+      <td>
+        <p><span class="value"><%= @total_time_on_invoice ? Time.at(@total_time_on_invoice/1000).utc.strftime("%H:%M:%S") : "00:00:00" %></span></p>
+      </td>
+      <td>
+        <p><span class="value"><%= @invoice.billing_amount ? @invoice.billing_amount.round(2) : "0" %></span></p>
+      </td>
+    </tr>
+
+     <tr>
+        <td>
+          <p><span class="value">Time Tracker</span></p>
+        </td>
+        <td>
+          <p><span class="value">Food recipi</span></p>
+        </td>
+        <td>
+          <p><span class="value">xyz</span></p>
+        </td>
+        <td>
+          <p><span class="value">500</span></p>
+        </td>
+        <td>
+          <p><span class="value">1000</span></p>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p><span class="value">Time Tracker</span></p>
+        </td>
+        <td>
+          <p><span class="value">Food recipi</span></p>
+        </td>
+        <td>
+          <p><span class="value">xyz</span></p>
+        </td>
+        <td>
+          <p><span class="value">500</span></p>
+        </td>
+        <td>
+          <p><span class="value">1000</span></p>
+        </td>
+      </tr>
+      <tr>
+<tr>
+            <td colspan="4" class="grand total">Total Billing Amount</td>
+            <td class="grand total"> €00.00</td>
+          </tr>
+</tbody>
+</table>
 </div>

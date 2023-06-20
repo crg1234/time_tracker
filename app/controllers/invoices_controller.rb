@@ -29,8 +29,10 @@ class InvoicesController < ApplicationController
         render pdf: "My Invoice", # filename
                template: "invoices/show_print_pdf",
                formats: [:html],
-               disposition: :inline,
-               layout: 'pdf'
+              #  disposition: :inline,
+               layout: 'pdf',
+               page_size: 'A4',
+               encoding:"UTF-8"
       end
     end
 
