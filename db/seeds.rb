@@ -53,7 +53,8 @@ num_dummy_clients.times do
     phone_number: Faker::PhoneNumber.cell_phone_with_country_code,
     company_name: Faker::Company.name,
     billing_address:Faker::Address.full_address,
-    user: users.sample
+    user: users.sample,
+    image_url: client_images.pop
   )
 end
 
