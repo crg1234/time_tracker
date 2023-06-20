@@ -81,3 +81,31 @@ tbody tr:nth-child(odd) {
 tbody tr:nth-child(even) {
   background-color: #28272a;
 }
+
+.btn-status {
+  border-radius: 40px;
+  border: 2px solid #000;
+  font-weight: 800;
+  font-size: 0.6rem;
+  padding: .3rem .5rem;
+  text-align: center;
+  width: 60px;
+}
+
+.pastel-red {
+  background: #FFDFDF;
+  border-color: #B40000;
+  color: #702929;
+}
+
+.pastel-orange {
+  background: #FCDAC5;
+  border-color: #E9610C;
+  color: #C2510A;
+}
+
+.pastel-green {
+  background: #D1EFCC;
+  border-color: #008100;
+  color: #112F0C;
+}

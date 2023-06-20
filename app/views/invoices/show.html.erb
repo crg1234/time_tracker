@@ -19,6 +19,11 @@
               <%= link_to invoice_path(@invoice, format: :pdf), :class => "btn btn-outline-secondary" do %>
               <i class="fa-regular fa-file-pdf fa-lg"></i><span>PDF</span>
               <% end %>
+              <%# <% simple_form_for(@invoice) do |f| %>
+              <%# <% f.input :status == true %>
+              <%# <%= f.submit "MARK AS PAID"%>
+              <%# <% end %>
+              <%# <% ADD A SUBMIT BUTTON HERE TO "MARK AS PAID" AND CHANGE STATUS %>
             </div>
           </div>
         </div>
