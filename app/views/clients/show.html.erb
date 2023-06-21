@@ -4,14 +4,13 @@
     <%= render 'shared/sidebarshowpages'%>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 mb-3 border-bottom">
-        <h1 class="h2"><%= @client.company_name %> </h1>
+        <div class="d-flex">
+          <h1 class="h2 mx-2 mb-0"><%= @client.company_name %> </h1>
+        </div>
         <div>
           <div class="btn-toolbar mb-2 mb-md-0 d-flex justify-content-end">
             <div class="btn-group me-2">
-              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#newProjectPopUp"> <i class="fa-solid fa-plus fa-lg" style="color: #c7c7c7;"></i>&nbsp&nbspProject</button>
-              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editPopUp">Edit</button>
-
-              <%= link_to  'Delete', client_path(@client),  data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this client?' }, :class => "btn btn-outline-secondary" %>
+              <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#newProjectPopUp"> <i class="fa-solid fa-plus fa-lg" style="color: #EAB543;"></i>&nbsp&nbspProject</button>
             </div>
           </div>
         </div>
@@ -22,11 +21,17 @@
             <img src="<%= @client.image_url %>" alt="Client Profile Photo" style="height: 150px;">
         </div>
 
-        <div class="col-9 ps-3">
-          <p style="font-size: 24px;"><%= @client.first_name %> <%= @client.last_name %></p>
-          <p><%= @client.email %></p>
-          <p><%= @client.phone_number %></p>
-          <p><%= @client.billing_address %></p>
+        <div class="col-9 ps-3 d-flex justify-content-between align-items-end">
+          <div>
+            <p style="font-size: 24px;"><%= @client.first_name %> <%= @client.last_name %></p>
+            <p><%= @client.email %></p>
+            <p><%= @client.phone_number %></p>
+            <p><%= @client.billing_address %></p>
+          </div>
+          <div class="btn-group mx-5px my-3">
+            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#editPopUp">Edit</button>
+            <%= link_to 'Delete', client_path(@client),  data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this client?' }, :class => "btn btn-outline-light" %>
+          </div>
         </div>
 
       </div>
