@@ -1,28 +1,28 @@
-<nav id="sidebarMenu" class="mt-1 col-md-1 col-lg-1 d-md-block bg-our-grey sidebar collapse">
+<nav id="sidebarMenu" class="col-lg-1 d-md-block bg-our-grey sidebar collapse">
   <div class="position-sticky pt-3">
     <ul class="nav flex-column">
 
-      <li class="nav-item py-1" style="font-size:18px">
+      <li class="nav-item py-1" style="font-size:32px">
         <button class="nav-link <%="active" unless params.has_key?(:tab)%>" id="home-tab" data-bs-toggle="pill" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
-        <i class="fa-solid fa-gauge fa-lg" style="color: #CAD3C8;"></i>
+        <i class="fa-solid fa-gauge fa-lg zoom" style="color: #CAD3C8;"></i>
         </button>
       </li>
 
-      <li class="nav-item py-1" style="font-size:18px">
+      <li class="nav-item py-1" style="font-size:32px">
         <button class="nav-link <%="active" if params[:tab] == "customers-tab"%>" id="customers-tab" data-bs-toggle="pill" data-bs-target="#customers" type="button" role="tab" aria-controls="customers" aria-selected="true">
-          <i class="fa-solid fa-user-group fa-lg" style="color: #8980E9;"></i>
+          <i class="fa-solid fa-user-group fa-lg zoom" style="color: #8980E9;"></i>
         </button>
       </li>
 
-      <li class="nav-item py-1" style="font-size:18px">
+      <li class="nav-item py-1" style="font-size:32px">
         <button class="nav-link <%="active" if params[:tab] == "projects-tab"%>" id="projects-tab" data-bs-toggle="pill" data-bs-target="#projects" type="button" role="tab" aria-controls="projects" aria-selected="false">
-          <i class="fa-solid fa-list-check fa-lg" style="color: #EAB543;"></i>
+          <i class="fa-solid fa-list-check fa-lg zoom" style="color: #EAB543;"></i>
         </button>
       </li>
 
-      <li class="nav-item py-1" style="font-size:18px">
+      <li class="nav-item py-1" style="font-size:32px">
         <button class="nav-link <%="active" if params[:tab] == "invoices-tab"%>" id="invoices-tab" data-bs-toggle="pill" data-bs-target="#invoices" type="button" role="tab" aria-controls="invoices" aria-selected="false">
-          <i class="fa-solid fa-file-invoice fa-lg" style="color: #55E6C1;"></i>
+          <i class="fa-solid fa-file-invoice fa-lg zoom" style="color: #55E6C1;"></i>
         </button>
       </li>
 
