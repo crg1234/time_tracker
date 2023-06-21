@@ -22,10 +22,6 @@
             </div>
 
             <div class="btn-group me-2">>
-              <%# <%= simple_form_for(@invoice) do |f| %>
-              <%# <% f.input :status, :value => invoice.update_invoice %>
-              <%# <%= f.submit class: "btn-group me-2" %>
-              <%# <% end %>
               <%= link_to update_status_path(@invoice), class: "btn btn-outline-secondary" do %>
               <i class="fa-solid fa-check fa-lg"></i><span> Mark as paid</span>
               <% end %>
