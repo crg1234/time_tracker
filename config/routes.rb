@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "pages#dashboard", as: :dashboard
   get "learning", to: "pages#learning", as: :learning
+
+  post "invoices/:id/update_invoice_status", to: "invoices#update_invoice_status", as: :update_status
+
   resources :projects, only: [:index, :show] do
     resources :tasks, only: [:new, :create]
     resources :invoices, only: [:new, :create, :show]

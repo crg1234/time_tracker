@@ -51,6 +51,14 @@ class InvoicesController < ApplicationController
     @invoice.save
   end
 
+  def update_invoice_status
+    @invoice = Invoice.find(params[:id])
+    @invoice.status = true
+    # @invoice.save!
+    if @invoice.save
+      redirect_to dashboard_path
+    end
+  end
   private
 
   def invoice_params
