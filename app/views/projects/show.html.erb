@@ -34,7 +34,7 @@
       <% unless @tasks.first.nil? %>
         <div class="row">
           <% @project.tasks.each do |task| %>
-            <div class="col-3">
+            <div class="col-3 mb-3">
               <div>
 
                 <%= link_to task_path(task) do %>
