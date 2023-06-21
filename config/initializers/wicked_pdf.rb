@@ -15,6 +15,9 @@ WickedPdf.config = {
   #   or
   # exe_path: Gem.bin_path('wkhtmltopdf-binary', 'wkhtmltopdf')
 
+  exe_path: Gem.bin_path('wkhtmltopdf-heroku', 'wkhtmltopdf-linux-amd64'),
+
+
   # Needed for wkhtmltopdf 0.12.6+ to use many wicked_pdf asset helpers
   enable_local_file_access: true,
 
