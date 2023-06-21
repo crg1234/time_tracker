@@ -41,11 +41,11 @@
       <div class="container">
       <div class="row">
           <div class="col-md-4 col-xl-3">
-              <div class="card bg-chart order-card">
+              <div class="chart-card-display bg-chart order-card">
                   <div class="chart">
-                      <h6 class="m-b-20">Orders Received</h6>
-                      <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>486</span></h2>
-                      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                    <div>
+                      <%= area_chart Task.group_by_month(:created_at).sum(:amount_to_bill) %>
+                      </div>
                   </div>
               </div>
           </div>
@@ -54,21 +54,20 @@
               <div class="chart-card-display bg-chart order-card">
                   <div class="chart">
                       <div>
-                      <%= bar_chart Task.group(:created_at).sum(:amount_to_bill) %>
+                      <%= bar_chart Task.group_by_quarter(:created_at).sum(:amount_to_bill) %>
                       </div>
                   </div>
               </div>
           </div>
 
           <div class="col-md-4 col-xl-3">
-              <div class="card bg-chart order-card">
+              <div class="chart-card-display bg-chart order-card">
                   <div class="chart">
-                      <h6 class="m-b-20">Orders Received</h6>
-                      <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>486</span></h2>
-                      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                      <div>
+                         <%= column_chart Task.group_by_day_of_week(:created_at, format: "%a").count %>
+                      </div>
                   </div>
               </div>
-          </div>
       </div>
             <div class="container d-flex">
 
@@ -76,10 +75,10 @@
 
                 <div class="dashboard-card"
                 id="summary-money-billed"
-                style="background-color: rgba(65, 241, 253, 0.2); border-color: rgba(65, 241, 253, 1);">
-                  <h1>Total Billed: €<%= @total_billing_amount.round(0) %></h1>
-                  <h1>Payment Received: €<%= @total_billing_amount.round(0) %></h1>
-                  <h1>Payments Outstanding: €<%= @total_billing_amount.round(0) - @total_billing_amount.round(0) %></h1>
+                style="background-color: rgba(85, 230, 193, 0.2); border-color: rgba(85, 230, 193, 1);">
+                  <h2>Total Billed: €<%= @total_billing_amount.round(0) %></h2>
+                  <h2>Payment Received: €<%= @total_billing_amount.round(0) %></h2>
+                  <h2>Payments Outstanding: €<%= @total_billing_amount.round(0) - @total_billing_amount.round(0) %></h2>
                 </div>
               </div>
 
@@ -87,15 +86,15 @@
 
                 <div class="dashboard-card"
                 id="summary-money-billed"
-                style="background-color: rgba(143, 0, 255, 0.2); border-color: rgba(143, 0, 255, 1)">
-                  <h1>Invoices Sent: <%= @count_invoices %></h1>
-                  <h1>Invoices Paid: <%= @count_invoices %></h1>
-                  <h1>Unpaid Invoices: <%= @count_invoices - @count_invoices %></h1>
+                style="background-color: rgba(179,55,113, 0.2); border-color: rgba(179,55,113, 1)">
+                  <h2>Invoices Sent: <%= @count_invoices %></h2>
+                  <h2>Invoices Paid: <%= @count_invoices %></h2>
+                  <h2>Unpaid Invoices: <%= @count_invoices - @count_invoices %></h2>
                 </div>
               </div>
             </div>
             <div class="dashboard-card" id="summary-time-logged col-sm-12 text-center"
-            style="background-color: rgba(255, 0, 0, 0.2); border-color: rgba(255, 0, 0, 1);">
+            style="background-color: rgba(51,102,204, 0.2); border-color: rgba(51,102,204, 1);">
               <h1>Total Time Logged:<%= Time.at(@total_time_logged/1000).utc.strftime("%H:%M:%S") %></h1>
             </div>
           </div>
