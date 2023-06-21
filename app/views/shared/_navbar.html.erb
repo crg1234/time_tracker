@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse mt-2 me-2" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <%# <%= link_to "Home", root_path, class: "nav-link" %>
         <% if user_signed_in? %>
@@ -19,7 +19,7 @@
 
             <a href="#" class="avatar-large" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% if current_user.photo.attached? %>
-                <%= cl_image_tag current_user.photo.key, height: 40, width: 40, crop: :fill, style:"border-radius: 50%;" %>
+                <%= cl_image_tag current_user.photo.key, height: 56, width: 56, crop: :fill, style:"border-radius: 50%;" %>
                 <% else %>
                 <%# <img class="avatar-large" alt="avatar-large" src="/app/assets/images/logout.png" /> %>
                 <%= image_tag "logout.png"%>
@@ -39,5 +39,6 @@
           <% end %>
       </ul>
     </div>
+
   </div>
 </div>
