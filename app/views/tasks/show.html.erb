@@ -1,6 +1,5 @@
 <div class="ms-5 mb-5">
-  <a href="/projects/<%= @task.project_id %>"> <- Back to Project</a>
-
+<%= link_to "Back", project_path(@task.project_id), class: "btn btn-outline-info btn-sm" %>
   <div data-controller="checkbox"
   data-checkbox-task-completed-value="<%= @task.completed %>"
   data-checkbox-task-id-value="<%= @task.id %>">
