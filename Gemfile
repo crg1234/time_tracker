@@ -5,8 +5,9 @@ ruby "3.1.2"
 
 gem 'faker'
 gem 'wicked_pdf'
-gem "wkhtmltopdf-binary", group: :development
-gem "wkhtmltopdf-heroku", group: :production
+gem "wkhtmltopdf-binary", group: [:development, :production]
+# gem 'wkhtmltopdf-binary', group: :production
+# gem "wkhtmltopdf-heroku", group: :production
 
 gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
