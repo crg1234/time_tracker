@@ -21,10 +21,14 @@
               <% end %>
             </div>
 
-            <div class="btn-group me-2">>
-              <%= link_to update_status_path(@invoice), class: "btn btn-outline-secondary" do %>
-              <i class="fa-solid fa-check fa-lg"></i><span> Mark as paid</span>
-              <% end %>
+            <div class="btn-group me-2" data-controller="paid"
+            data-paid-status-value="<%= @invoice.status %>"
+            data-paid-invoice-sent-value="<%= @invoice.invoice_sent %>"
+            data-paid-invoice-id-value="<%= @invoice.id %>">
+
+              <%# <button class="btn btn-outline-secondary" data-action="click->paid#clickMarkButton"><i class="fa-solid fa-check fa-lg"></i><span> Mark as paid</span></button> %>
+                <%# <%= link_to update_status_path(@invoice), class: "btn btn-outline-secondary" do %>
+              <button class="btn btn-outline-secondary" data-action="click->paid#clickMarkButton" data-paid-target="updateMarkButton"><i class="fa-solid fa-check fa-lg"></i><span> Mark as paid</span></button>
             </div>
 
           </div>

@@ -56,7 +56,7 @@ class InvoicesController < ApplicationController
     @invoice.status = true
     # @invoice.save!
     if @invoice.save
-      redirect_to dashboard_path
+      redirect_to invoice_path(@invoice)
     end
   end
   private
