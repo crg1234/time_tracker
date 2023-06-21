@@ -18,88 +18,53 @@
       </td>
       </tbody>
    </table>
-  <table class="bottom-table">
- 	<thead>
-    <tr>
-      <div class ="header">
-        <th>
-          <p><span class="label">Project Name </span></p>
-        </th>
-        <th>
-          <p><span class="label">Tasks Title </span></p>
-        </th>
-        <th>
-          <p><span class="label">Tasks Description </span></p>
-        </th>
-        <th>
-          <p><span class="label">Time Counter  </span></p>
-        </th>
-        <th>
-          <p><span class="label">Billing Amount  €</span></p>
-        </th>
-      </div>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-      <td>
-        <p><span class="value"><%= @project.name ? @project.name : "" %></span></p>
-      </td>
-      <td>
-        <p><span class="value"><%= @tasks.first ? @tasks.first.title : "No Tasks" %></span></p>
-      </td>
-      <td>
-        <p><span class="value"><%= @tasks.first ? @tasks.first.description : "No Tasks" %></span></p>
-      </td>
-      <td>
-        <p><span class="value"><%= @total_time_on_invoice ? Time.at(@total_time_on_invoice/1000).utc.strftime("%H:%M:%S") : "00:00:00" %></span></p>
-      </td>
-      <td>
-        <p><span class="value"><%= @invoice.billing_amount ? @invoice.billing_amount.round(2) : "0" %></span></p>
-      </td>
-    </tr>
-
-     <tr>
-        <td>
-          <p><span class="value">Time Tracker</span></p>
-        </td>
-        <td>
-          <p><span class="value">Food recipi</span></p>
-        </td>
-        <td>
-          <p><span class="value">xyz</span></p>
-        </td>
-        <td>
-          <p><span class="value">500</span></p>
-        </td>
-        <td>
-          <p><span class="value">1000</span></p>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <p><span class="value">Time Tracker</span></p>
-        </td>
-        <td>
-          <p><span class="value">Food recipi</span></p>
-        </td>
-        <td>
-          <p><span class="value">xyz</span></p>
-        </td>
-        <td>
-          <p><span class="value">500</span></p>
-        </td>
-        <td>
-          <p><span class="value">1000</span></p>
-        </td>
-      </tr>
-      <tr>
-<tr>
-            <td colspan="3" class="grand total"></td>
-            <td colspan="1" class="grand total">Total Billing Amount</td>
-            <td colspan="1" class="grand total"> €00.00</td>
-          </tr>
-</tbody>
-</table>
+    <table class="bottom-table">
+      <thead>
+        <tr>
+          <div class ="header">
+            <th>
+              <p><span class="label">Project Name </span></p>
+            </th>
+            <th>
+              <p><span class="label">Tasks Title </span></p>
+            </th>
+            <th>
+              <p><span class="label">Tasks Description </span></p>
+            </th>
+            <th>
+              <p><span class="label">Time Counter  </span></p>
+            </th>
+            <th>
+              <p><span class="label">Billing Amount  €</span></p>
+            </th>
+          </div>
+        </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td>
+         <p><span class="value"><%= @project.name ? @project.name : "" %></span></p>
+          </td>
+          <td>
+            <p><span class="value"><%= task.title %></span></p>
+          </td>
+          <td>
+            <p><span class="value"><%= task.description %></span></p>
+          </td>
+          <td>
+            <p><span class="value"><%= task.time_log ? Time.at(task.time_log/1000).utc.strftime("%H:%M:%S") : "00:00:00" %></p>
+          </td>
+          <td>
+            <p><span class="value"><%= task.amount_to_bill ? task.amount_to_bill.round(2) : "0.00" %></p>
+          </td>
+        </tr>
+      <% end %>
+        <tr>
+          <td colspan="3" class="grand total"></td>
+          <td colspan="1" class="grand total">Total Billing Amount</td>
+          <td colspan="1" class="grand total"> €<%= @invoice.total_billing_amount ? @invoice.total_billing_amount.round(2) : "0" %></td>
+        </tr>
+    </tbody>
+  </table>
 </div>
