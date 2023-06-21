@@ -1,5 +1,4 @@
 <div class="container-fluid">
-  <a href="/clients/<%= @client.id %>"> <- Back to Client</a>
   <div class="row">
 
     <%= render 'shared/sidebarshowpages'%>
@@ -9,7 +8,9 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 mb-3 border-bottom">
         <div>
           <h1 class="h2" style="margin-bottom: 20px;"><%= @project.name %></h1>
-          <h3><%= @client.company_name %> - <%= @client.first_name  %> <%= @client.last_name %></h3>
+          <%= link_to client_path(@client) do %>
+           <h3><%= @client.company_name %> - <%= @client.first_name  %> <%= @client.last_name %></h3>
+          <% end %>
           <%# <p>Total time: <%= @project.time_counter hours %>
             <%# </p> %>
           <p>Deadline: <%= @project.deadline %> </p>
