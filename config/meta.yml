@@ -1,5 +1,5 @@
 meta_name: "Time Tracker"
 meta_title: "Time Tracker - Make every second count."
 meta_description: "With Time Tracker, your time working will be counted effectively and your invoices will be created automatically"
-meta_image: "freelancer.jpg" # should exist in `app/assets/images/`
+meta_image: "freelancer_resized.jpg" # should exist in `app/assets/images/`
 twitter_account: "@time_tracker"
