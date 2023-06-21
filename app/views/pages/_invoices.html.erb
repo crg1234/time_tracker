@@ -33,7 +33,7 @@
               <td><%= invoice.project.name %></td>
               <td><%= invoice.payment_deadline.strftime("%a, %d %b %Y")%></td>
               <td>€<%= invoice.total_billing_amount %></td>
-              <td data-action="click->status-invoices#clickInvoiceDownload" data-status-invoices-target="downloadInvoiceButton"><%= link_to "Create PDF", invoice_path(invoice, format: :pdf) %></td>
+              <td data-action="click->status-invoices#clickInvoiceDownload" data-status-invoices-target="downloadInvoiceButton"><%= link_to "Create PDF", invoice_path(invoice, format: :pdf), target: :_blank %></td>
 
           </tr>
         <% end %>
