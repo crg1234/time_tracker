@@ -1,0 +1,25 @@
+<div class="modal fade" id="addPopUp" tabindex="-1" aria-labelledby="addPopUpLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Client</h1>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="rounded p-1 w-100">
+            <%= simple_form_for @client do |f| %>
+                <%= f.input :first_name %>
+                <%= f.input :last_name %>
+                <%= f.input :company_name %>
+                <%= f.input :email %>
+                <%= f.input :phone_number %>
+                <%= f.input :billing_address %>
+                <%= f.submit class: "btn btn-outline-secondary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
