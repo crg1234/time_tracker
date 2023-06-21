@@ -86,11 +86,14 @@
               <div class="summary-card col-sm-6">
 
                 <div class="dashboard-card"
+
                 id="summary-money-billed"
                 style="background-color: rgba(143, 0, 255, 0.2); border-color: rgba(143, 0, 255, 1)">
                   <h1>Invoices Sent: <%= @count_invoices %></h1>
                   <h1>Invoices Paid: <%= @count_invoices %></h1>
+                <% unless @invoice.nil? %>
                   <h1>Unpaid Invoices: <%= @count_invoices - @count_invoices %></h1>
+                <% end %>
                 </div>
               </div>
             </div>
