@@ -18,11 +18,11 @@
         <div>
           <div class="btn-toolbar mb-2 mb-md-0 d-flex justify-content-end">
             <div class="me-2 ">
-              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#newTaskPopUp"><i class="fa-solid fa-plus" style="color: #B33771; width: 40px;"></i>Task</button>
+              <button type="button" class="btn btn-outline-danger zoom" data-bs-toggle="modal" data-bs-target="#newTaskPopUp"><i class="fa-solid fa-plus" style="color: #B33771; width: 40px;"></i>Task</button>
               <% if @latest_invoice.nil? %>
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#newInvoicePopUp"><i class="fa-solid fa-plus" style="color: #55E6C1;"></i>&nbsp&nbspInvoice</button>
+                <button type="button" class="btn btn-outline-success zoom" data-bs-toggle="modal" data-bs-target="#newInvoicePopUp"><i class="fa-solid fa-plus" style="color: #55E6C1;"></i>&nbsp&nbspInvoice</button>
               <% else %>
-                <%= link_to invoice_path(@latest_invoice), :class => "btn btn-outline-success" do %>
+                <%= link_to invoice_path(@latest_invoice), :class => "btn btn-outline-success zoom" do %>
                   <i class="fa-solid fa-plus" style="color: #55E6C1;"></i>&nbsp&nbspInvoice
                   <% end %>
               <% end %>
