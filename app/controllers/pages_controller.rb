@@ -22,10 +22,12 @@ class PagesController < ApplicationController
     # Payment received on dashboard
 
     # Total Time Logged on dashboard
-    @total_time_logged = 0
-    @projects.each do |project|
-      @total_time_logged += project.total_amount_time
-    end
+    # unless project.total_amount_time.nil? do
+      @total_time_logged = 0
+      @projects.each do |project|
+        @total_time_logged += project.total_amount_time
+      end
+    # end
 
     # Invoices sent on dashboard
     @invoices_array = []
@@ -34,7 +36,6 @@ class PagesController < ApplicationController
     end
 
     @count_invoices = @invoices_array.length
-
   end
 
   def learning
