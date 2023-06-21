@@ -61,6 +61,15 @@ class InvoicesController < ApplicationController
     @invoice.save
   end
 
+  def update_invoice_status
+    @invoice = Invoice.find(params[:id])
+    @invoice.status = true
+    # @invoice.save!
+    if @invoice.save
+      redirect_to dashboard_path
+    end
+  end
+
   def invoice_params
     params.require(:invoice).permit(:invoice_number, :billing_amount, :payment_deadline, :project_id)
   end

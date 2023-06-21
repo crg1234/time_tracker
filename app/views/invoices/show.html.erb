@@ -17,14 +17,20 @@
           <div class="btn-toolbar mb-2 mb-md-0 d-flex justify-content-end">
             <div class="btn-group me-2">
               <%= link_to invoice_path(@invoice, format: :pdf), :class => "btn btn-outline-secondary" do %>
-              <i class="fa-regular fa-file-pdf fa-lg"></i><span>PDF</span>
+              <i class="fa-regular fa-file-pdf fa-lg"></i><span> PDF</span>
               <% end %>
-              <%# <% simple_form_for(@invoice) do |f| %>
-              <%# <% f.input :status == true %>
-              <%# <%= f.submit "MARK AS PAID"%>
-              <%# <% end %>
-              <%# <% ADD A SUBMIT BUTTON HERE TO "MARK AS PAID" AND CHANGE STATUS %>
             </div>
+
+            <div class="btn-group me-2">>
+              <%# <%= simple_form_for(@invoice) do |f| %>
+              <%# <% f.input :status, :value => invoice.update_invoice %>
+              <%# <%= f.submit class: "btn-group me-2" %>
+              <%# <% end %>
+              <%= link_to update_status_path(@invoice), class: "btn btn-outline-secondary" do %>
+              <i class="fa-solid fa-check fa-lg"></i><span> Mark as paid</span>
+              <% end %>
+            </div>
+
           </div>
         </div>
       </div>
