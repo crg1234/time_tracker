@@ -24,12 +24,12 @@
   height: 20px;
   top: 0;
   left: 0;
-  background-color: #CAD3C8;
+  background-color: #787d77;
   border-radius: 50rem;
 }
 
 .light_toggle:checked + label::before {
-  background-color: #55E6C1;
+  background-color: #4ed2b19c;
 }
 
 .light_toggle + label::after {
