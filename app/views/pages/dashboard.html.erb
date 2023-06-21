@@ -110,7 +110,7 @@
 
             <div class="tab-pane fade <%="active" if params[:tab] == "customers-tab" %>" id="customers" role="tabpanel" aria-labelledby="customers-tab">
               <div class="d-flex justify-content-between">
-                <h1 class="mb-5">Your Clients</h1>
+                <h1 class="mb-3">Your Clients</h1>
                 <div>
                   <button type="button" class="btn btn-outline-light create-client-link zoom" data-bs-toggle="modal" data-bs-target="#addPopUp" >
                   <i class="fa-solid fa-plus fa-lg" style="color: #8980E9;"></i>
@@ -122,12 +122,12 @@
             </div>
 
             <div class="tab-pane fade <%="active" if params[:tab] == "projects-tab" %>" id="projects" role="tabpanel" aria-labelledby="projects-tab">
-              <h1 class="mb-5">Your Projects</h1>
+              <h1 class="mb-3">Your Projects</h1>
               <%= render 'projects'%>
             </div>
 
             <div class="tab-pane fade <%="active" if params[:tab] == "invoices-tab" %>" id="invoices" role="tabpanel" aria-labelledby="invoices-tab">
-              <h1 class="mb-5">Your Invoices</h1>
+              <h1 class="mb-3">Your Invoices</h1>
               <%= render 'invoices'%>
             </div>
 
