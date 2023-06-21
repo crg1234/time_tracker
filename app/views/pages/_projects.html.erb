@@ -1,4 +1,4 @@
-<div style="background-color: #cad3c887; padding: 1px; border-radius: 10px;">
+<%# <div style="background-color: #cad3c887; padding: 1px; border-radius: 10px;">
   <table class="table table-hover table-dark" id="all-tables">
     <thead>
       <tr>
@@ -12,28 +12,34 @@
 
     <tbody>
       <% @projects.each do |project| %>
-        <tr>
-          <td><%= link_to project.name, project_path(project) %></td>
+        <%# <tr>
+          <td><%= link_to project.name, project_path(project) %>
+          <%# </td>
           <% if project.deadline.nil? %>
-            <td><%= project.deadline %></td>
-          <% else %>
-            <td><%= project.deadline.strftime("%a, %d %b %Y") %></td>
-          <% end %>
-          <td><%= project.client.company_name %></td>
+            <%# <td><%= project.deadline %>
+            <%# </td> %>
+          <%# <% else %>
+            <%# <td><%= project.deadline.strftime("%a, %d %b %Y") %>
+            <%# </td> %>
+          <%# <% end %>
+          <%# <td><%= project.client.company_name %>
+          <%# </td> %>
 
-          <% if project.total_amount_time.nil? %>
-            <td>00:00:00</td>
+          <%# <% if project.total_amount_time.nil? %>
+            <%# <td>00:00:00</td>
           <% else %>
-            <td><%= Time.at(project.total_amount_time/1000).utc.strftime("%H:%M:%S") %></td>
-          <% end %>
+            <%# <td><%= Time.at(project.total_amount_time/1000).utc.strftime("%H:%M:%S") %>
+            <%# </td> %>
+          <%# <% end %>
 
-          <% if project.total_amount_bill.nil? %>
-            <td>€0</td>
+          <%# <% if project.total_amount_bill.nil? %>
+            <%# <td>€0</td>
           <% else %>
-            <td>€<%= project.total_amount_bill.round(2) %></td>
+            <%# <td>€<%= project.total_amount_bill.round(2) %>
+            <%# </td>
           <% end %>
-        </tr>
+        <%# </tr>
       <% end %>
-    </tbody>
+    <%# </tbody>
   </table>
-</div>
+</div> %>
