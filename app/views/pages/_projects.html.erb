@@ -3,8 +3,8 @@
     <thead>
       <tr>
         <th id="left-angle" scope="col">PROJECT NAME</th>
-        <th scope="col">CLIENT</th>
         <th scope="col">DEADLINE</th>
+        <th scope="col">COMPANY NAME</th>
         <th scope="col">TOTAL TIME SPENT</th>
         <th id="right-angle" scope="col">AMOUNT TO BILL</th>
       </tr>
@@ -14,12 +14,12 @@
       <% @projects.each do |project| %>
         <tr>
           <td><%= link_to project.name, project_path(project) %></td>
-          <td><%= project.client.company_name %></td>
           <% if project.deadline.nil? %>
             <td><%= project.deadline %></td>
           <% else %>
             <td><%= project.deadline.strftime("%a, %d %b %Y") %></td>
           <% end %>
+          <td><%= project.client.company_name %></td>
 
           <% if project.total_amount_time.nil? %>
             <td>00:00:00</td>

@@ -26,32 +26,32 @@
     <div class="row my-5 ms-3">
 
       <div class="col-sm-4 text-left mb-3">
-        <h2><%= @task.title.capitalize %></h2>
+        <h2><%= @task.title.upcase %></h2>
         <%# <h2>Description: <%= @task.description</h2> %>
 
-        <h3>Billing Rate: €<%= @task.billing_rate.round(0) %> per hour</h3>
+        <h3>€<%= @task.billing_rate.round(0) %> / hour</h3>
         <h3 class="d-none" data-tracker-target="billing">Amount to Bill: €<%= @task.amount_to_bill %></h3>
-        <h3 data-tracker-target="billingButton" class="text-primary">Amount to Bill: €<%= @task.amount_to_bill %></h3>
+        <h3 data-tracker-target="billingButton" class="text-primary">Amount to Bill: €<%= @task.amount_to_bill.round(0) %></h3>
 
         </br>
         </br>
-        <p style="font-size: 20px;" class="text-danger">Time Tracker Tip:</p>
-        <p style="font-size: 20px;">
+        <h3 class="text-danger">Time Tracker Tip:</h3>
+        <p style="font-size: 16px;">
           <%= @task.hint %>
         </p>
       </div>
 
       <div class="col-sm-8 text-center">
-        <button class="btn btn-outline-primary btn-lg" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
+        <button class="btn btn-outline-primary btn-lg zoom" style="font-size: 32px;" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
           START TRACKING YOUR TIME
         </button>
 
         </br>
         </br>
-          <div id="taskwatch" class="text-center">
+          <div id="taskwatch" class="text-center zoom">
             <%# <h3 id="stopWatchIcon"><i class="fas fa-stopwatch fa-3x"></i></h3> %>
             <div>
-              <p id="timer" data-tracker-target="time" class="display-1" style="font-size: 200px;">
+              <p id="timer" data-tracker-target="time" class="display-1" style="font-size: 160px;">
                 <%= @task.time_log %>
               </p>
               <div id="controls">

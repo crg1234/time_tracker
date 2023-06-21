@@ -7,22 +7,6 @@ class InvoicesController < ApplicationController
     @client = @project.client
     @user = current_user
 
-    @tasks.each do |task|
-      @invoice.billing_amount = 0
-      if task.amount_to_bill.nil?
-        @invoice.billing_amount
-      else
-        @invoice.billing_amount += task.amount_to_bill
-      end
-
-      @total_time_on_invoice = 0
-      if task.time_log.nil?
-        @total_time_on_invoice
-      else
-       @total_time_on_invoice += task.time_log
-      end
-    end
-
     respond_to do |format|
       format.html
       format.pdf do
@@ -55,6 +39,12 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def update
+    @invoice = Invoice.find(params[:id])
+    @invoice.update(invoice_params)
+    head :no_content
+  end
+
   def update_invoice_sent
     @invoice = Invoice.find(params[:id])
     @invoice.invoice_sent == true
@@ -69,9 +59,10 @@ class InvoicesController < ApplicationController
       redirect_to dashboard_path
     end
   end
+  private
 
   def invoice_params
-    params.require(:invoice).permit(:invoice_number, :billing_amount, :payment_deadline, :project_id)
+    params.require(:invoice).permit(:invoice_number, :billing_amount, :payment_deadline, :project_id, :invoice_sent, :status)
   end
 
 end

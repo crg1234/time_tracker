@@ -28,8 +28,8 @@
         </div>
       </div>
 
-      <div class="row">
-        <% unless @tasks.first.nil? %>
+      <% unless @tasks.first.nil? %>
+        <div class="row">
           <% @project.tasks.each do |task| %>
             <div class="col-3">
               <div>
@@ -41,7 +41,7 @@
 
                     <div style= "border-bottom: 1px dashed #2C3A47;">
                     <% if task.title.length > 23 %>
-                      <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize.first(23) %>...</strong></p>
+                      <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize.first(21) %>...</strong></p>
                     <% else %>
                       <p class="text-left pb-1" style="font-size: 20px;"><strong><%= task.title.capitalize %></strong></p>
                     <% end %>
@@ -61,26 +61,28 @@
 
                     <div data-controller="checkbox"
                       data-checkbox-task-completed-value="<%= task.completed %>"
-                      data-checkbox-task-id-value="<%= task.id %>">
+                      data-checkbox-task-id-value="<%= task.id %>"
+                    >
                       <div class="form-check mt-3 text-light p-0">
                         <% if task.completed %>
-                          <input id="checkbox-completed" type="checkbox" checked="true" class="toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+                          <input id="checkbox-completed" type="checkbox" checked="true" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
                         <% else %>
-                          <input id="checkbox-completed" type="checkbox" class="toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+                          <input id="checkbox-completed" type="checkbox" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
                         <% end %>
-                        <label for="checkbox-completed">Completed</label>
+                        <label for="checkbox-completed">Mark as completed</label>
                       </div>
                     </div>
-
 
                   </div>
 
               </div>
             </div>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+
     </main>
+</div>
 </div>
 
 
