@@ -18,3 +18,6 @@ application.register("tracker", TrackerController)
 
 import StatusInvoicesController from "./status_invoices_controller"
 application.register("status-invoices", StatusInvoicesController)
+
+import PaidController from "./paid_controller"
+application.register("paid", PaidController)
