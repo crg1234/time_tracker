@@ -10,7 +10,7 @@
         <div class="ms-3">
           <%= link_to project_path(@project) do %>
           <h1 id="invoicetitle" class="h2">Invoice #<%= @project.id %></h1>
-            <p>Project Name: <%= @project.name %></p>
+            <p><i class="fa-solid fa-list-check fa-lg zoom"></i>&nbsp&nbspProject Name: <%= @project.name %></p>
           <p><i class="fa-regular fa-calendar"></i> &nbsp Date created: <%= @invoice.created_at.strftime("%d %B %Y")%></p>
           <p><i class="fa-regular fa-calendar"></i> &nbsp Payment Deadline: <%= @invoice.payment_deadline.strftime("%d %B %Y") %></p>
           <% end %>
@@ -29,7 +29,7 @@
             data-paid-invoice-id-value="<%= @invoice.id %>">
             <%# <button class="btn btn-outline-secondary" data-action="click->paid#clickMarkButton"><i class="fa-solid fa-check fa-lg"></i><span> Mark as paid</span></button> %>
             <%# <%= link_to update_status_path(@invoice), class: "btn btn-outline-secondary" do %>
-              <button class="btn btn-outline-secondary" data-action="click->paid#clickMarkButton" data-paid-target="updateMarkButton"><i class="fa-solid fa-check fa-lg"></i><span> Mark as paid</span></button>
+              <button class="btn btn-outline-secondary zoom" data-action="click->paid#clickMarkButton" data-paid-target="updateMarkButton"><i class="fa-solid fa-check fa-lg"></i><span> Mark as paid</span></button>
 
             </div>
 
@@ -41,7 +41,7 @@
           <p>From: <%= @user.first_name %> <%= @user.last_name %></p>
           <p><%= @user.email %></p>
           <p>Bank: <%= @user.bank_name %></p>
-          <p>Number account: <%= @user.bank_account_number %></p>
+          <p>Account Number: <%= @user.bank_account_number %></p>
           <p>IBAN: <%= @user.bank_iban %></p>
         </div>
         <div>
