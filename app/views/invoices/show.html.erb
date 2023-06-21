@@ -1,5 +1,5 @@
  <div class="container-fluid">
-   <a href="/projects/<%= @invoice.project_id %>"> <- Back to Project</a>
+
 
   <div class="row">
 
@@ -9,7 +9,9 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 mb-3 border-bottom">
         <div>
           <h1 class="h2">Invoice #<%= @project.id %></h1>
-          <p>Project Name: <%= @project.name %></p>
+          <%= link_to project_path(@project) do %>
+            <p>Project Name: <%= @project.name %></p>
+          <% end %>
           <p><i class="fa-regular fa-calendar"></i> &nbsp Date created: <%= @invoice.created_at.strftime("%d %B %Y")%></p>
           <p><i class="fa-regular fa-calendar"></i> &nbsp Payment Deadline: <%= @invoice.payment_deadline.strftime("%d %B %Y") %></p>
         </div>
@@ -39,9 +41,11 @@
           <p>IBAN: <%= @user.bank_iban %></p>
         </div>
         <div>
+          <%= link_to client_path(@client) do %>
           <p>To:&nbsp<%= @client.company_name %></p>
           <p><%= @client.first_name %> <%= @client.last_name %></p>
           <p><%= @client.email %></p>
+          <% end %>
           <%# <p>
           <%= @client.billing_address %>
           <%# </p> %>
@@ -51,16 +55,18 @@
         <ul style="padding: 0; list-style: none;" class="border-bottom">
           <% @tasks.each do |task| %>
             <li>
-              <div class="card-invoice-task d-flex justify-content-between align-items-center">
-                <div class="card-invoice-task-info">
-                  <h2><%= task.title %></h2>
+              <%= link_to task_path(task) do %>
+                <div class="card-invoice-task d-flex justify-content-between align-items-center">
+                  <div class="card-invoice-task-info">
+                    <h2><%= task.title %></h2>
+                  </div>
+                  <div>
+                    <p>€<%= task.billing_rate ? task.billing_rate.round(2) : "€0" %>&nbsp per hour</p>
+                    <p>Time spent: <%= task.time_log ? Time.at(task.time_log/1000).utc.strftime("%H:%M:%S") : "00:00:00" %></p>
+                    <p>Total: €<%= task.amount_to_bill ? task.amount_to_bill.round(2) : "0.00" %></p>
+                  </div>
                 </div>
-                <div>
-                  <p>€<%= task.billing_rate ? task.billing_rate.round(2) : "€0" %>&nbsp per hour</p>
-                  <p>Time spent: <%= task.time_log ? Time.at(task.time_log/1000).utc.strftime("%H:%M:%S") : "00:00:00" %></p>
-                  <p>Total: €<%= task.amount_to_bill ? task.amount_to_bill.round(2) : "0.00" %></p>
-                </div>
-              </div>
+              <% end %>
             </li>
           <% end %>
         </ul>
