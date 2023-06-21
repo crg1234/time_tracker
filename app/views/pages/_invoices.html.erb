@@ -1,4 +1,4 @@
-<div>
+<%# <div>
   <div style="background-color: #cad3c887; padding: 1px; border-radius: 10px;">
     <table class="table table-hover table-dark" id="all-tables">
       <thead>
@@ -16,28 +16,36 @@
       <tbody>
         <% @my_invoices.each do |invoice| %>
 
-          <tr data-controller="status-invoices"
-            data-status-invoices-status-value="<%= invoice.status %>"
-            data-status-invoices-invoice-sent-value="<%= invoice.invoice_sent %>"
-            data-status-invoices-invoice-id-value="<%= invoice.id %>"
-            >
-              <td><%= link_to invoice.invoice_number, invoice_path(invoice) %></td>
-              <% if invoice.status == false && invoice.invoice_sent == false %>
-              <td><button class="button btn-status pastel-red" data-status-invoices-target="colorButton">Pending</button></td>
+          <%# <tr data-controller="status-invoices"
+            data-status-invoices-status-value="<%= invoice.status %>
+            <%# " %>
+            <%# data-status-invoices-invoice-sent-value="<%= invoice.invoice_sent %>
+            <%# " %>
+            <%# data-status-invoices-invoice-id-value="<%= invoice.id %>
+            <%# "
+            > %>
+              <%# <td><%= link_to invoice.invoice_number, invoice_path(invoice) %>
+              <%# </td> %>
+              <%# <% if invoice.status == false && invoice.invoice_sent == false %>
+              <%# <td><button class="button btn-status pastel-red" data-status-invoices-target="colorButton">Pending</button></td>
               <% elsif invoice.invoice_sent == true && invoice.status == false %>
-              <td><button class="button btn-status pastel-orange" data-status-invoices-target="colorButton">Sent</button></td>
+              <%# <td><button class="button btn-status pastel-orange" data-status-invoices-target="colorButton">Sent</button></td>
               <% elsif invoice.status == true %>
-              <td><button class="button btn-status pastel-green" data-status-invoices-target="colorButton">Paid</button></td>
+              <%# <td><button class="button btn-status pastel-green" data-status-invoices-target="colorButton">Paid</button></td>
               <% end %>
-              <td><%= invoice.project.client.company_name %></td>
-              <td><%= invoice.project.name %></td>
-              <td><%= invoice.payment_deadline.strftime("%a, %d %b %Y")%></td>
-              <td>€<%= invoice.total_billing_amount %></td>
-              <td data-action="click->status-invoices#clickInvoiceDownload" data-status-invoices-target="downloadInvoiceButton"><%= link_to "Create PDF", invoice_path(invoice, format: :pdf), target: :_blank %></td>
+              <%# <td><%= invoice.project.client.company_name %>
+              <%# </td> %>
+              <%# <td><%= invoice.project.name %>
+              <%# </td> %>
+              <%# <td><%= invoice.payment_deadline.strftime("%a, %d %b %Y")%>
+              <%# </td> %>
+              <%# <td>€<%= invoice.total_billing_amount %>
+              <%# </td> %>
+              <%# <td data-action="click->status-invoices#clickInvoiceDownload" data-status-invoices-target="downloadInvoiceButton"><%= link_to "Create PDF", invoice_path(invoice, format: :pdf), target: :_blank %></td>
 
-          </tr>
+          <%# </tr>
         <% end %>
-      </tbody>
+      <%# </tbody>
     </table>
   </div>
-</div>
+</div> %>

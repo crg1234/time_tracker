@@ -74,4 +74,4 @@ def total_time_amount
       end
     end
     return total_time_on_invoice
-  end
+end

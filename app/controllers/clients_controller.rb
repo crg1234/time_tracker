@@ -7,6 +7,10 @@ class ClientsController < ApplicationController
 
   def index
     @clients = Client.all
+    @client = Client.new
+    @clients = current_user.clients
+    @projects = current_user.projects
+    @invoices = current_user.invoices
   end
 
   def new

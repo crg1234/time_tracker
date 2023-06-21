@@ -3,25 +3,27 @@
     <ul class="nav flex-column">
 
       <li class="nav-item py-1" style="font-size:24px">
-        <%= link_to dashboard_path(tab: "home"), class: "nav-link" do %>
-        <i class="fa-solid fa-gauge fa-lg zoom" style="color: #CAD3C8;"></i>
-        <% end %>
+        <button class="nav-link">
+          <%= link_to dashboard_path do %>
+          <i class="fa-solid fa-gauge fa-lg zoom" style="color: #CAD3C8;"></i>
+          <% end %>
+        </button>
       </li>
 
       <li class="nav-item py-1" style="font-size:24px">
-        <%= link_to dashboard_path(tab: "clients"), class: "nav-link" do %>
+        <%= link_to clients_path, class: "nav-link" do %>
           <i class="fa-solid fa-user-group fa-lg zoom" style="color: #8980E9;"></i>
         <% end %>
       </li>
 
       <li class="nav-item py-1" style="font-size:24px">
-        <%= link_to dashboard_path(tab: "projects"), class: "nav-link" do %>
+        <%= link_to projects_path, class: "nav-link" do %>
           <i class="fa-solid fa-list-check fa-lg zoom" style="color: #EAB543;"></i>
         <% end %>
       </li>
 
       <li class="nav-item py-1" style="font-size:24px">
-        <%= link_to dashboard_path(tab: "invoices-tab"), class: "nav-link" do %>
+        <%= link_to invoices_path, class: "nav-link" do %>
           <i class="fa-solid fa-file-invoice fa-lg zoom" style="color: #55E6C1;"></i>
         <% end %>
       </li>

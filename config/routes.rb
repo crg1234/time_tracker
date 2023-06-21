@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "pages#dashboard", as: :dashboard
   get "learning", to: "pages#learning", as: :learning
+  get "invoices", to: "invoices#index"
+  get "projects", to: "projects#index"
+  get "clients", to: "clients#index"
 
   get "invoices/:id/update_invoice_status", to: "invoices#update_invoice_status", as: :update_status
 
