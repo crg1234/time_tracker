@@ -13,3 +13,4 @@ WickedPdf.config.merge!({
   layout: "pdf.html.erb",
   enable_local_file_access: true
 })
+
