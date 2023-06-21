@@ -1,5 +1,4 @@
 <div class="container-fluid">
-  <a href="/clients/<%= @client.id %>"> <- Back to Client</a>
   <div class="row">
 
     <%= render 'shared/sidebarshowpages'%>
@@ -9,7 +8,9 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 mb-3 border-bottom">
         <div>
           <h1 class="h2" style="margin-bottom: 20px;"><%= @project.name %></h1>
-          <h3><%= @client.company_name %> - <%= @client.first_name  %> <%= @client.last_name %></h3>
+          <%= link_to client_path(@client) do %>
+           <h3><%= @client.company_name %> - <%= @client.first_name  %> <%= @client.last_name %></h3>
+          <% end %>
           <%# <p>Total time: <%= @project.time_counter hours %>
             <%# </p> %>
           <p>Deadline: <%= @project.deadline %> </p>
@@ -37,7 +38,7 @@
                 <%= link_to task_path(task) do %>
 
                   <%# <div class="card-project-task p-3"> %>
-                  <div class="styled-receipt p-3">
+                  <div class="styled-receipt p-3 zoom">
 
                     <div style= "border-bottom: 1px dashed #2C3A47;">
                     <% if task.title.length > 23 %>
@@ -65,11 +66,11 @@
                     >
                       <div class="form-check mt-3 text-light p-0">
                         <% if task.completed %>
-                          <input id="checkbox-completed" type="checkbox" checked="true" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+                          <input id="<%="checkbox-completed#{task.id}"%>" type="checkbox" checked="true" class="toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
                         <% else %>
-                          <input id="checkbox-completed" type="checkbox" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+                          <input id="<%="checkbox-completed#{task.id}"%>" type="checkbox" class="toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
                         <% end %>
-                        <label for="checkbox-completed">Mark as completed</label>
+                        <label for="<%="checkbox-completed#{task.id}"%>">Completed</label>
                       </div>
                     </div>
 
