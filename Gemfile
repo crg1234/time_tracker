@@ -7,7 +7,7 @@ gem 'faker'
 gem 'wicked_pdf'
 gem "wkhtmltopdf-binary", group: :development
 # gem 'wkhtmltopdf-binary', group: :production
-gem "wkhtmltopdf-heroku", group: :production
+gem 'wkhtmltopdf-heroku', '2.12.6.1.pre.jammy', group: :production
 
 gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
