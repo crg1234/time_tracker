@@ -76,17 +76,17 @@
                 <div class="dashboard-card"
                 id="summary-money-billed"
                 style="background-color: rgba(85, 230, 193, 0.2); border-color: rgba(85, 230, 193, 1);">
-                  <h2>Total Billed: €<%= @total_billing_amount.round(0) %></h2>
-                  <h2>Payment Received: €<%= @total_billing_amount.round(0) %></h2>
-                  <h2>Payments Outstanding: €<%= @total_billing_amount.round(0) - @total_billing_amount.round(0) %></h2>
+                  <h2>Total Billed: €</h2>
+                  <h2>Payment Received: €</h2>
+                  <h2>Payments Outstanding: €</h2>
                 </div>
               </div>
 
               <div class="summary-card col-sm-6">
 
                 <div class="dashboard-card"
-                id="summary-money-billed"
-                style="background-color: rgba(179,55,113, 0.2); border-color: rgba(179,55,113, 1)">
+                  id="summary-money-billed"
+                  style="background-color: rgba(179,55,113, 0.2); border-color: rgba(179,55,113, 1)">
                   <h2>Invoices Sent: <%= @count_invoices %></h2>
                   <h2>Invoices Paid: <%= @count_invoices %></h2>
                   <h2>Unpaid Invoices: <%= @count_invoices - @count_invoices %></h2>
@@ -95,9 +95,10 @@
             </div>
             <div class="dashboard-card" id="summary-time-logged col-sm-12 text-center"
             style="background-color: rgba(51,102,204, 0.2); border-color: rgba(51,102,204, 1);">
-              <h1>Total Time Logged:<%= Time.at(@total_time_logged/1000).utc.strftime("%H:%M:%S") %></h1>
+              <h1>Total Time Logged:</h1>
             </div>
           </div>
+        </div>
         </div>
 
 
