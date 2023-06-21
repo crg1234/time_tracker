@@ -1,76 +1,87 @@
-<div class="ms-5 mb-5">
-<%= link_to "Back to Project", project_path(@task.project_id), class: "btn btn-outline-info btn-sm zoom" %>
-  <div data-controller="checkbox"
-  data-checkbox-task-completed-value="<%= @task.completed %>"
-  data-checkbox-task-id-value="<%= @task.id %>">
-  <div class="form-check mt-3 text-light p-0">
-    <% if @task.completed %>
-      <input id="checkbox-completed" type="checkbox" checked="true" class="light_toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
-    <% else %>
-      <input id="checkbox-completed" type="checkbox" class="light_toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
-    <% end %>
-    <label for="checkbox-completed">Completed</label>
-  </div>
-</div>
+<div class="ms-3 mb-3">
 
-<div class="container-fluid d-flex justify-content-center">
+  <div class="container-fluid d-flex justify-content-center">
 
-  <div data-controller="tracker" data-tracker-task-id-value="<%= @task.id %>"
-    data-tracker-time-log-value="<%= @task.time_log %>"
-    data-tracker-authenticity-token-value="<%= form_authenticity_token %>"
-    data-tracker-amount-to-bill-value="<%= @task.amount_to_bill %>"
-    data-tracker-billing-rate-value="<%= @task.billing_rate %>"
-  >
+    <div data-controller="tracker" data-tracker-task-id-value="<%= @task.id %>"
+      data-tracker-time-log-value="<%= @task.time_log %>"
+      data-tracker-authenticity-token-value="<%= form_authenticity_token %>"
+      data-tracker-amount-to-bill-value="<%= @task.amount_to_bill %>"
+      data-tracker-billing-rate-value="<%= @task.billing_rate %>"
+    >
 
-    <div class="row my-5">
+      <div class="row my-5">
 
-      <div class="col-sm-3 text-left">
-        <h2><%= @task.title.upcase %></h2>
-        <%# <h2>Description: <%= @task.description</h2> %>
+        <div class="col-sm-3 text-left">
+          <div class="zoom">
+            <%= link_to project_path(@task.project_id) do %>
+              <h1><%= @task.title.upcase %></h1>
+              <%# <h2>Description: <%= @task.description</h2> %>
+              <h2 data-tracker-target="billingButton" class="text-primary">Amount to Bill: €<%= @task.amount_to_bill %></h2>
 
-        <h3>€<%= @task.billing_rate.round(0) %> / hour</h3>
-        <h3 class="d-none" data-tracker-target="billing">Amount to Bill: €<%= @task.amount_to_bill %></h3>
-        <h3 data-tracker-target="billingButton" class="text-primary">Amount to Bill: €<%= @task.amount_to_bill %></h3>
+              <h3>€<%= @task.billing_rate.round(0) %> / hour</h3>
+              <h3 class="d-none" data-tracker-target="billing">Amount to Bill: €<%= @task.amount_to_bill %></h3>
+            <% end %>
 
-        </br>
-        </br>
-        <h3 class="text-danger">Time Tracker Tip:</h3>
-        <p style="font-size: 16px;">
-          <%= @task.hint %>
-        </p>
-      </div>
-
-      <div class="col-sm-9 text-center">
-        <button class="btn btn-outline-primary btn-lg zoom" style="font-size: 32px;" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
-          START TRACKING YOUR TIME
-        </button>
-
-        </br>
-        </br>
-          <div id="taskwatch" class="text-center zoom">
-            <%# <h3 id="stopWatchIcon"><i class="fas fa-stopwatch fa-3x"></i></h3> %>
-            <div>
-              <p id="timer" data-tracker-target="time" class="display-1" style="font-size: 160px;">
-                <%= @task.time_log %>
-              </p>
-              <div id="controls">
-                <%# <button class="btn btn-light" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
-                  START
-                </button> %>
+            <div data-controller="checkbox"
+              data-checkbox-task-completed-value="<%= @task.completed %>"
+              data-checkbox-task-id-value="<%= @task.id %>">
+              <div class="form-check text-light p-0">
+                <% if @task.completed %>
+                  <input id="checkbox-completed" type="checkbox" checked="true" class="light_toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+                <% else %>
+                  <input id="checkbox-completed" type="checkbox" class="light_toggle" data-checkbox-target="checkbox" data-action="change->checkbox#toggle">
+                <% end %>
+                <label for="checkbox-completed">Completed</label>
               </div>
             </div>
           </div>
 
-        <%# </br>
-        </br>
-          <div id="taskmoney" class="text-center">
-            <h3 id="euroIcon"><i class="fas fa-euro-sign fa-3x"></i></h3>
-            <div>
-              <h1 data-tracker-target="billingButton" class="display-3">
-                <%= @task.amount_to_bill %>
-              <%# </h1>
+          </br>
+          </br>
+          <div class="zoom">
+            <h3 class="text-danger">Time Tracker Tip:</h3>
+            <p style="font-size: 16px;">
+              <%= @task.hint %>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-sm-9 text-center">
+          <button class="btn btn-outline-primary btn-lg zoom" style="font-size: 32px;" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
+            START TRACKING YOUR TIME
+          </button>
+
+          </br>
+          </br>
+            <div id="taskwatch" class="text-center zoom">
+              <%# <h3 id="stopWatchIcon"><i class="fas fa-stopwatch fa-3x"></i></h3> %>
+              <div>
+                <p id="timer" data-tracker-target="time" class="display-1" style="font-size: 160px;">
+                  <%= @task.time_log %>
+                </p>
+                <div id="controls">
+                  <%# <button class="btn btn-light" id="toggle" data-action="click->tracker#toggle" data-tracker-target="button">
+                    START
+                  </button> %>
+                </div>
+              </div>
             </div>
-          </div> %>
+
+          </br>
+          </br>
+
+          <%#
+          <%= link_to "BACK TO #{@task.project.name.upcase} PROJECT", project_path(@task.project_id), class: "btn btn-outline-info btn-sm" %>
+          <%# </br>
+          </br>
+            <div id="taskmoney" class="text-center">
+              <h3 id="euroIcon"><i class="fas fa-euro-sign fa-3x"></i></h3>
+              <div>
+                <h1 data-tracker-target="billingButton" class="display-3">
+                  <%= @task.amount_to_bill %>
+                <%# </h1>
+              </div>
+            </div> %>
 
       </div>
 
