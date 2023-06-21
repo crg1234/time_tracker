@@ -12,7 +12,7 @@
   position: relative;
   display: inline-block;
   padding-left: 50px;
-  color: #CAD3C8;
+  color: white;
 }
 
 .light_toggle + label::before {
@@ -41,7 +41,7 @@
   height: 16px;
   top: 2px;
   left: 2px;
-  background-color: #CAD3C8;
+  background-color: white;
   border-radius: 50%;
   transition: left 0.2s ease;
 }
