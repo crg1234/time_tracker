@@ -1,66 +1,163 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+html {
+  background-image: linear-gradient(
+    to right top,
+    #84e8cf,
+    #B33771,
+    #EAB543,
+    #8980E9,
+    #84e8cf
+  );
+  height: 100%;
+}
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+body {
+  font-family: "Roboto Mono", monospace;
+}
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+.numContainer {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 80px;
+  width: 500px;
+}
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+.num {
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+  background-image: linear-gradient(
+    to right top,
+    #000000,
+    #1e1e1e,
+    #373737,
+    #515151,
+    #6d6d6d
+  );
+  border-radius: 5px;
+  color: white;
+  font-size: 8rem;
+  height: auto;
+  perspective: 1000px;
+  transition: all 0.3s linear;
+  margin-left: -6px;
+  margin-right: -6px;
+  -webkit-box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.4) inset;
+  box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.4) inset;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.space {
+  display: inline-block;
+}
+
+.bit {
+  height: 10px;
+  width: 6px;
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to right top,
+    #000000,
+    #1e1e1e,
+    #373737,
+    #515151,
+    #6d6d6d
+  );
+  display: inline-block;
+  margin-bottom: 39px;
+}
+
+p {
+  margin: 0;
+}
+
+hr {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  border: 1px solid black;
+  border-left: 0 solid white;
+  border-right: 0 solid white;
+}
+
+.day {
+  display: inline-block;
+  font-size: 2em;
+  bottom: 0;
+}
+
+button {
+  margin-top: 20px;
+  background-color: black;
+  border-radius: 5px;
+  padding: 15px 20px;
+  color: white;
+  transition: all 0.6s ease;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+  transform: scale(0.9);
+}
+
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+<body>
+  <div class="numContainer">
+    <div class="bit"></div>
+    <div class="num four">
+      <p>4</p>
+      <hr>
     </div>
+    <div class="bit"></div>
+    <div class="bit"></div>
+    <div class="num five">
+      <p>5</p>
+      <hr>
+    </div>
+    <div class="bit"></div>
+    <div class="bit"></div>
+    <div class="num nine">
+      <p>9</p>
+      <hr>
+    </div>
+    <div class="bit"></div>
+    <p></p>
+    <h2>Time to wake up the IT department - you've reached a 500 error.</h2>
     <p>If you are the application owner check the logs for more information.</p>
   </div>
+
+  <script>
+    function wakeUp() {
+  setTimeout(function() {
+    $(".four").html("<p>5</p><hr>");
+    $(".five").html("<p>0</p><hr>");
+    $(".nine").html("<p>0</p><hr>");
+  }, 2000);
+}
+
+wakeUp();
+
+function reset() {
+  $(".four").html("<p>4</p><hr>");
+  $(".five").html("<p>5</p><hr>");
+  $(".nine").html("<p>9</p><hr>");
+  wakeUp();
+}
+  </script>
 </body>
+
 </html>

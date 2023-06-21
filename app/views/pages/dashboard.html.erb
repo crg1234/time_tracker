@@ -36,7 +36,7 @@
 
         <div class="tab-pane show <%="active" unless params.has_key?(:tab)%>" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-          <h1 class="mb-5 h1">Hi <%= current_user.first_name.capitalize %>, welcome to your Dashboard</h1>
+          <h1 class="mb-5 h1">Hi <%= current_user.first_name.capitalize %>!</h1>
 
       <div class="container">
       <div class="row">
@@ -54,53 +54,52 @@
               <div class="chart-card-display bg-chart order-card">
                   <div class="chart">
                       <div>
-                      <%= area_chart Invoice.group_by_month(:payment_deadline).count, title: "Your payments per month", colors: ["#EAB543", "#EAB543"] %>
+                      <%= bar_chart Task.group(:created_at).sum(:amount_to_bill) %>
                       </div>
                   </div>
               </div>
           </div>
 
-          <div class="col-md-4">
-              <div class="chart-card-display bg-chart order-card">
+          <div class="col-md-4 col-xl-3">
+              <div class="card bg-chart order-card">
                   <div class="chart">
-                      <div>
-                         <%= column_chart Task.group_by_day_of_week(:created_at, format: "%a").count, title: "You work too much!", colors: ["#B33771", "#B33771"] %>
-                      </div>
+                      <h6 class="m-b-20">Orders Received</h6>
+                      <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>486</span></h2>
+                      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
                   </div>
               </div>
+          </div>
       </div>
-            <div class="row mt-4">
+            <div class="container d-flex">
 
               <div class="col-sm-6">
 
                 <div class="dashboard-card"
                 id="summary-money-billed"
-                style="background-color: rgba(137, 128, 233, 0.2); border-color: rgba(137, 128, 233, 1);">
-                  <h2>Total Billed: €</h2>
-                  <h2>Payment Received: €</h2>
-                  <h2>Payments Outstanding: €</h2>
+                style="background-color: rgba(65, 241, 253, 0.2); border-color: rgba(65, 241, 253, 1);">
+                  <h1>Total Billed: €<%= @total_billing_amount.round(0) %></h1>
+                  <h1>Payment Received: €<%= @total_billing_amount.round(0) %></h1>
+                  <h1>Payments Outstanding: €<%= @total_billing_amount.round(0) - @total_billing_amount.round(0) %></h1>
                 </div>
               </div>
 
               <div class="summary-card col-sm-6">
 
                 <div class="dashboard-card"
-                  id="summary-money-billed"
-                  style="background-color: rgba(137, 128, 233, 0.2); border-color: rgba(137, 128, 233, 1)">
-                  <h2>Invoices Sent: <%= @count_invoices %></h2>
-                  <h2>Invoices Paid: <%= @count_invoices %></h2>
-                  <h2>Unpaid Invoices: <%= @count_invoices - @count_invoices %></h2>
+                id="summary-money-billed"
+                style="background-color: rgba(143, 0, 255, 0.2); border-color: rgba(143, 0, 255, 1)">
+                  <h1>Invoices Sent: <%= @count_invoices %></h1>
+                  <h1>Invoices Paid: <%= @count_invoices %></h1>
+                  <h1>Unpaid Invoices: <%= @count_invoices - @count_invoices %></h1>
                 </div>
               </div>
             </div>
           <div class="row mt-4">
             <div class="dashboard-card" id="summary-time-logged col-sm-12 text-center"
-            style="background-color: rgba(137, 128, 233, 0.2); border-color: rgba(137, 128, 233, 1);">
-              <h1>Total Time Logged:</h1>
+            style="background-color: rgba(255, 0, 0, 0.2); border-color: rgba(255, 0, 0, 1);">
+              <h1>Total Time Logged:<%= Time.at(@total_time_logged/1000).utc.strftime("%H:%M:%S") %></h1>
             </div>
           </div>
-          </div>
-        </div>
         </div>
 
 
@@ -108,8 +107,9 @@
           <div class="d-flex justify-content-between">
             <h1 class="mb-4">Your Clients</h1>
             <div>
-              <button type="button" class="btn btn-outline-secondary create-client-link " data-bs-toggle="modal" data-bs-target="#addPopUp" >
-              <i class="fa-solid fa-plus fa-2xl" style="color: #c7c7c7;"></i>
+              <button type="button" class="btn btn-outline-light create-client-link " data-bs-toggle="modal" data-bs-target="#addPopUp" >
+              <i class="fa-solid fa-plus fa-lg" style="color: #8980E9;"></i>
+              <i class="fa-solid fa-user-group fa-lg" style="color: #8980E9;"></i>
               </button>
             </div>
           </div>
