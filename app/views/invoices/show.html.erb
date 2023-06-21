@@ -11,8 +11,8 @@
           <%= link_to project_path(@project) do %>
           <h1 id="invoicetitle" class="h2">Invoice #<%= @project.id %></h1>
             <p>Project Name: <%= @project.name %></p>
-          <p><i class="fa-regular fa-calendar"></i> &nbsp Date created: <%= @invoice.created_at.strftime("%a, %d %b %Y")%></p>
-          <p><i class="fa-regular fa-calendar"></i> &nbsp Payment Deadline: <%= @invoice.payment_deadline.strftime("%a, %d %b %Y") %></p>
+          <p><i class="fa-regular fa-calendar"></i> &nbsp Date created: <%= @invoice.created_at.strftime("%d %B %Y")%></p>
+          <p><i class="fa-regular fa-calendar"></i> &nbsp Payment Deadline: <%= @invoice.payment_deadline.strftime("%d %B %Y") %></p>
           <% end %>
         </div>
         <div>
