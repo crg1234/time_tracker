@@ -90,12 +90,21 @@
 
                       id="summary-money-billed"
                       style="background-color: rgba(137, 128, 233, 0.2); border-color: rgba(137, 128, 233, 1)">
-                        <h2>Invoices Sent: <%= @invoices_sent %></h2>
-                        <h2>Invoices Paid: <%= (@invoices_sent * 0.8).round(0) %></h2>
-                        <h2>Invoices Outsanding: <%= (@invoices_sent * 0.2).round(0) %></h2>
-                      <% unless @invoice.nil? %>
-                        <h2>Unpaid Invoices: <%= @invoices_sent - @invoices_paid %></h2>
-                      <% end %>
+                        <h2>Invoices Sent: <% if @invoices_sent.nil? %>
+                                             <%= 0 %>
+                                           <% else %>
+                                             <%= @invoices_sent %>
+                                           <% end %></h2>
+                        <h2>Invoices Paid: <% if @invoices_sent.nil? %>
+                                             <%= 0 %>
+                                           <% else %>
+                                             <%= (@invoices_sent * 0.8).round(0) %>
+                                           <% end %></h2>
+                        <h2>Invoices Outsanding: <% if @invoices_sent.nil? %>
+                                             <%= 0 %>
+                                           <% else %>
+                                             <%= (@invoices_sent * 0.2).round(0) %>
+                                           <% end %></h2>
                       </div>
                     </div>
                   </div>
