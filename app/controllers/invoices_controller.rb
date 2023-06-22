@@ -102,7 +102,7 @@ class InvoicesController < ApplicationController
 
   def update_invoice_sent
     @invoice = Invoice.find(params[:id])
-    @invoice.invoice_sent == true
+    @invoice.invoice_sent = true
     @invoice.save
   end
 
