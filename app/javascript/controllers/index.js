@@ -21,3 +21,6 @@ application.register("status-invoices", StatusInvoicesController)
 
 import PaidController from "./paid_controller"
 application.register("paid", PaidController)
+
+import HourController from "./hour_controller"
+application.register ("hour", HourController)

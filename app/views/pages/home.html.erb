@@ -1,30 +1,170 @@
-<div
-  class="banner">
+<div class="banner">
+  <!DOCTYPE html>
+  <html>
 
-  <div class="container d-flex justify-content-between">
+    <div class="align-items: center;">
 
-    <div class="col-6 pe-5">
-      <div class="bg-image p-3 text-center shadow-1-strong rounded text-white position-relative"
-        style="background-position: center; height: 60vh; background-size: 100%;
-          background-repeat: no-repeat; background-image: url('<%= image_url("freelancer.jpg")%>');">
-      </div>
+      <div>
+            <%# <div class="bg-image p-3 text-center shadow-1-strong rounded text-white position-relative"
+              style="background-position: center; height: 60vh; background-size: 100%;
+                background-repeat: no-repeat; background-image: url('<%= image_url("freelancer.jpg")%>');">
+            <%# </div> %>
+        <head>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <style>
+
+
+            .numContainer {
+              position: relative;
+              margin: 0 auto;
+              text-align: center;
+              padding-top: 80px;
+            }
+
+            .num {
+              position: relative;
+              display: inline-block;
+              padding: 0 20px;
+              background-image: linear-gradient(
+                to right top,
+                #000000,
+                #1e1e1e,
+                #373737,
+                #515151,
+                #6d6d6d
+              );
+              border-radius: 5px;
+              color: white;
+              font-size: 7rem;
+              height: auto;
+              perspective: 1000px;
+              transition: all 0.3s linear;
+              margin-left: -3px;
+              margin-right: -3px;
+              -webkit-box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.4) inset;
+              box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.4) inset;
+              font-family: "Roboto Condensed", sans-serif;
+            }
+
+            .space {
+              display: inline-block;
+            }
+
+            .bit {
+                height: 10px;
+                width: 6px;
+                border-radius: 25px;
+                background-image: linear-gradient(
+                  to right top,
+                  #000000,
+                  #1e1e1e,
+                  #373737,
+                  #515151,
+                  #6d6d6d
+                );
+                display: inline-block;
+                margin-bottom: 20px;
+                margin-left: 5px;
+                margin-right: 5px;
+              }
+
+            p {
+              margin: 0;
+            }
+
+            hr {
+              position: absolute;
+              bottom: 10px;
+              left: 0;
+              width: 100%;
+              border: 1px solid black;
+              border-left: 0 solid white;
+              border-right: 0 solid white;
+            }
+
+          </style>
+        </head>
+
+        <body>
+
+          <div class="numContainer align-items: center;" data-controller="hour">
+
+            <div class="bit"></div>
+
+            <div class="num one">
+              <p data-hour-target="hour1">1</p>
+              <hr>
+            </div>
+
+             <div class="bit"></div>
+
+            <div class="num four">
+              <p data-hour-target="hour2">4</p>
+              <hr>
+            </div>
+
+            <div class="bit"></div>
+
+
+            <div class="num">
+              <p>:</p>
+              <hr>
+            </div>
+
+            <div class="bit"></div>
+
+            <div class="num two">
+              <p data-hour-target="min1">2</p>
+              <hr>
+            </div>
+
+            <div class="bit"></div>
+
+
+
+            <div class="num five">
+              <p data-hour-target="min2">5</p>
+              <hr>
+            </div>
+
+            <div class="bit"></div>
+
+            <div class="num">
+              <p>:</p>
+              <hr>
+            </div>
+
+            <div class="bit"></div>
+
+            <div class="num two">
+              <p data-hour-target="sec1">4</p>
+              <hr>
+            </div>
+
+            <div class="bit"></div>
+
+
+
+            <div class="num five">
+              <p data-hour-target="sec2">8</p>
+              <hr>
+            </div>
+
+            <div class="bit"></div>
+
+          </div>
     </div>
 
-    <div class="col-6 ps-5">
+    <div class="numContainer text-align: end;">
 
-      </br>
-      </br>
+      <h1 style="font-size: 40px">Time Tracker : make every : second count</h1>
 
-      <h3 class="text-justify">Make every second count.</h3>
-
-      </br>
-      </br>
-
-      <h3 class="text-justify">
+      <%# <h3 class="text-justify">
         With <strong class="h1" style="color: #55E6C1;">Time Tracker</strong>,</br>
         your time working will be <strong class="h1" style="color: #55E6C1;">counted effectively</strong></br>
         and your invoices will be <strong class="h1" style="color: #55E6C1;">created automatically</strong>.
-      </h3>
+      </h3> %>
 
       </br>
 
@@ -36,9 +176,15 @@
 
     </div>
 
-  </div>
+        </body>
+
+      </div>
+
+  </html>
     <%= render "shared/footer" %>
+
 </div>
+
 
 
 <%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
