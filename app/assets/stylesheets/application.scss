@@ -36,9 +36,14 @@ h3 {
 
 p {
   color: white;
-  text-size: 20px;
+  font-size: 20px;
 }
 
 a {
   color: white;
+}
+
+.table-hover tbody tr:hover td {
+  background-color: #D1D119 !important;
+  box-shadow: none !important;
 }

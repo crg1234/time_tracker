@@ -24,7 +24,7 @@
                   <th scope="col">PROJECT</th>
                   <th scope="col">PAYMENT DEADLINE</th>
                   <th scope="col">AMOUNT TO BILL</th>
-                  <th id="right-angle" scope="col">PDF</th>
+                  <th id="right-angle" scope="col"></th>
                 </tr>
 
               </thead>
@@ -40,11 +40,11 @@
                     >
                       <td><%= link_to invoice.invoice_number, invoice_path(invoice) %></td>
                       <% if invoice.status == false && invoice.invoice_sent == false %>
-                      <td><button class="button btn-status pastel-red" data-status-invoices-target="colorButton">Pending</button></td>
+                      <td><button class="button btn-status pastel-red btn-lg ms-3" data-status-invoices-target="colorButton"></button></td>
                       <% elsif invoice.invoice_sent == true && invoice.status == false %>
-                      <td><button class="button btn-status pastel-orange" data-status-invoices-target="colorButton">Sent</button></td>
+                      <td><button class="button btn-status pastel-orange btn-lg ms-3" data-status-invoices-target="colorButton"></button></td>
                       <% elsif invoice.status == true %>
-                      <td><button class="button btn-status pastel-green" data-status-invoices-target="colorButton">Paid</button></td>
+                      <td><button class="button btn-status pastel-green btn-lg ms-3" data-status-invoices-target="colorButton"></button></td>
                       <% end %>
                       <td><%= invoice.project.client.company_name %></td>
                       <td><%= invoice.project.name %></td>

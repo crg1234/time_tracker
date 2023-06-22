@@ -1,13 +1,15 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <a class="navbar-brand" href="/dashboard">
-      <%= image_tag "logowhite.png"%>
+      <%= image_tag "logowhite.png", width: 80, height: 70%>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+
     <div class="collapse navbar-collapse mt-2 me-2" id="navbarSupportedContent">
+    <h3 class="mt-1 me-3"><%= link_to current_user.first_name.capitalize, "/" %></h3>
       <ul class="navbar-nav me-auto">
         <%# <%= link_to "Home", root_path, class: "nav-link" %>
         <% if user_signed_in? %>
