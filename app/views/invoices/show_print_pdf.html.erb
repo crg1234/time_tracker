@@ -5,20 +5,18 @@
     <table class ="pdf-top-container" >
     <tbody>
       <td class= "top">
-        <p><span class="label">Client First Name: </span> <span class="value"><%= @client.first_name  %></span></p>
-        <p><span class="label">Client Last Name: </span> <span class="value"><%= @client.last_name  %></span></p>
-        <p><span class="label">Client Email: </span> <span class="value"><%= @client.email %></span></p>
-        <p><span class="label">Client: </span> <span class="value"><%= @client.billing_address %></span></p>
+        <p><span class="label">Client: </span> <span class="value"><%= @client.first_name  %></span> <span class="value"><%= @client.last_name  %></span></p>
+        <p><span class="value"><%= @client.email %></span></p>
+        <p><span class="value"><%= @client.billing_address %></span></p>
       </td>
       <td class="top1">
         <p><span class="label">Invoice Number:</span> <span class="value"><%= @project.id %></span></p>
         <p><span class="label">Payment Deadline: </span> <span class="value"><%= @invoice.payment_deadline.strftime("%d %B %Y") %></span></p>
-        <p><span class="label">User First Name:</span> <span class="value"><%= @user.first_name %></span></p>
-        <p><span class="label">User Last Name:</span> <span class="value"><%= @user.last_name %></span></p>
+        <p><span class="label">From:</span> <span class="value"><%= @user.first_name %> </span><span class="value"><%= @user.last_name %></span></p>
       </td>
       </tbody>
    </table>
-    <table class="bottom-table">
+    <table class="bottom-table" style=" width: 100%;">
       <thead>
         <tr>
           <div class ="header">
@@ -27,9 +25,6 @@
             </th>
             <th>
               <p><span class="label">Task </span></p>
-            </th>
-            <th>
-              <p><span class="label">Task Description </span></p>
             </th>
             <th>
               <p><span class="label">Time Counter  </span></p>
@@ -50,9 +45,6 @@
             <p><span class="value"><%= task.title %></span></p>
           </td>
           <td>
-            <p><span class="value"><%= task.description %></span></p>
-          </td>
-          <td>
             <p><span class="value"><%= task.time_log ? Time.at(task.time_log/1000).utc.strftime("%H:%M:%S") : "00:00:00" %></p>
           </td>
           <td>
@@ -61,10 +53,17 @@
         </tr>
       <% end %>
         <tr>
-          <td colspan="3" class="grand total"></td>
-          <td colspan="1" class="grand total">Total Billing Amount</td>
-          <td colspan="1" class="grand total"> €<%= @invoice.total_billing_amount ? @invoice.total_billing_amount.round(2) : "0" %></td>
+          <td colspan="2" class="grand total"></td>
+          <td colspan="1" class="grand total">
+          <p><span class="label">Total</span></p>
+          </td>
+          <td colspan="1" class="grand total value"> €<%= @invoice.total_billing_amount ? @invoice.total_billing_amount.round(2) : "0" %></td>
         </tr>
     </tbody>
   </table>
+      <div class="footer">
+        <p><span class="label">Bank:</span> <span class="value"><%= @user.bank_name %></p>
+        <p><span class="label">Account No.:</span> <span class="value"> <%= @user.bank_account_number %></span></p>
+        <p><span class="label">IBAN:</span> <span class="value"><%= @user.bank_iban %></span></p>
+     </div>
 </div>

@@ -24,10 +24,16 @@ table tr:nth-child(2n-1) td {
   background: #F5F5F5;
 }
 
-.bottom-table th,
-.bottom-table td {
+.bottom-table th
+ {
   text-align: center;
 }
+.bottom-table td{
+  text-align: left;
+  padding-left: 40px;
+  padding-right: 0;
+}
+
 
 table th {
   padding: 5px 20px;
@@ -57,6 +63,7 @@ table td.total {
 }
 
 .pdf-container {
+
   margin: 0 auto;
   background-color: #fff;
   padding: 30px;
@@ -72,7 +79,7 @@ table td.total {
 
 }
 .top{
-
+margin-top: 0;
   margin-right: 100px;
   padding: 0px;
 }
@@ -90,4 +97,8 @@ th {
 td {
   padding-right: 20px ;
   text-align: center;
+}
+.footer{
+  margin-top: 70px;
+  margin-bottom: 0;
 }
