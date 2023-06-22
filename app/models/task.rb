@@ -13,7 +13,7 @@ class Task < ApplicationRecord
     else
       client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"] )
       system_msg = "You are a helpful assistant"
-      question = "Please give me a tip of maximum 50 words about how to do #{title} more efficiently"
+      question = "Please give me a tip of maximum 30 words about how to do #{title} more efficiently"
 
       response = client.chat(
         parameters: {
