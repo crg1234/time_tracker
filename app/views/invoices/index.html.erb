@@ -24,7 +24,7 @@
                   <th scope="col">PROJECT</th>
                   <th scope="col">PAYMENT DEADLINE</th>
                   <th scope="col">AMOUNT TO BILL</th>
-                  <th id="right-angle" scope="col">PDF</th>
+                  <th id="right-angle" scope="col"></th>
                 </tr>
 
               </thead>
@@ -50,7 +50,11 @@
                       <td><%= invoice.project.name %></td>
                       <td><%= invoice.payment_deadline.strftime("%a, %d %b %Y")%></td>
                       <td>€<%= invoice.total_billing_amount %></td>
-                      <td data-action="click->status-invoices#clickInvoiceDownload" data-status-invoices-target="downloadInvoiceButton"><%= link_to "Create PDF", invoice_path(invoice, format: :pdf), target: :_blank %></td>
+                      <td>
+                        <%= link_to invoice_path(invoice, format: :pdf), :class => "btn btn-outline-warning zoom", target: :_blank do %>
+                          <i class="fa-regular fa-file-pdf fa-lg"></i><span>  PDF  </span>
+                        <% end %>
+                      </td>
 
                   </tr>
 
