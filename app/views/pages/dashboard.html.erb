@@ -39,39 +39,42 @@
             <div class="container">
               <div class="row">
                   <div class="col-md-4">
+                  <h3 class="text-center">Tasks per month</h3>
                       <div class="chart-card-display bg-chart order-card">
                           <div class="chart">
                             <div>
-                              <%= area_chart Task.group_by_month(:created_at).count, title: "Your tasks per month" %>
+                              <%= area_chart Task.group_by_month(:created_at).count, library: {color: "#FFFFFF"} %>
                             </div>
                           </div>
                       </div>
                   </div>
 
                   <div class="col-md-4">
+                    <h3 class="text-center">nvoicing per month</h3>
                       <div class="chart-card-display bg-chart order-card">
                           <div class="chart">
                               <div>
-                              <%= area_chart Invoice.group_by_month(:payment_deadline).count, colors: ["#EAB543", "#EAB543"], title: "Your invoicing per month" %>
+                              <%= area_chart Invoice.group_by_month(:payment_deadline).count, colors: ["#EAB543", "#EAB543"] %>
                               </div>
                           </div>
                       </div>
                   </div>
 
-                  <div class="col-md-4 col-xl-3">
+                  <div class="col-md-4">
+                  <div class = "row">
+                    <h3 class="text-center">You work too much!</h3>
+                  </div>
                       <div class="chart-card-display bg-chart order-card">
                           <div class="chart">
                               <div>
-                              <%= column_chart Task.group_by_day_of_week(:created_at, format: "%a").count, colors: ["#B33771", "#B33771"], title: "Your work too much!" %>
+                              <%= column_chart Task.group_by_day_of_week(:created_at, format: "%a").count, colors: ["#B33771", "#B33771"] %>
                               </div>
                           </div>
                       </div>
               </div>
-
+              <div class="col">
                 <div class="row mt-4">
-
                    <div class="col-sm-6">
-
                       <div class="dashboard-card"
                       id="summary-money-billed"
                       style="background-color: rgba(137, 128, 233, 0.2); border-color: rgba(137, 128, 233, 1);">
@@ -96,10 +99,13 @@
                       </div>
                     </div>
                   </div>
-                <div class="row mt-4">
-                  <div class="dashboard-card" id="summary-time-logged col-sm-12 text-center"
-                  style="background-color: rgba(137, 128, 233, 0.2); border-color: rgba(137, 128, 233, 1);">
-                    <h2>Total Time Logged: <%= Time.at(@total_time_logged/1000).utc.strftime("%H:%M:%S") %></h2>
+                  <div class="row mt-4">
+                    <div class="col">
+                      <div class="dashboard-card" id="summary-time-logged text-center"
+                      style="background-color: rgba(137, 128, 233, 0.2); border-color: rgba(137, 128, 233, 1);">
+                      <h2>Total Time Logged: <%= Time.at(@total_time_logged/1000).utc.strftime("%H:%M:%S") %></h2>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
