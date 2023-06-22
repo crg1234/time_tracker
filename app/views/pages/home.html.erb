@@ -1,25 +1,27 @@
 <div class="banner">
+
   <!DOCTYPE html>
   <html>
 
     <div class="align-items: center;">
 
-      <div>
-            <%# <div class="bg-image p-3 text-center shadow-1-strong rounded text-white position-relative"
-              style="background-position: center; height: 60vh; background-size: 100%;
-                background-repeat: no-repeat; background-image: url('<%= image_url("freelancer.jpg")%>');">
-            <%# </div> %>
+      <div class="container">
+
         <head>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
           <meta name="viewport" content="width=device-width,initial-scale=1">
           <style>
 
+            html {
+               height: 100%;
+            }
 
             .numContainer {
               position: relative;
               margin: 0 auto;
               text-align: center;
-              padding-top: 80px;
+              margin-top: 80px;
+              width: 100%;
             }
 
             .num {
@@ -45,6 +47,10 @@
               -webkit-box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.4) inset;
               box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.4) inset;
               font-family: "Roboto Condensed", sans-serif;
+            }
+
+            .num p {
+              font-size: 7rem;
             }
 
             .space {
@@ -121,8 +127,6 @@
 
             <div class="bit"></div>
 
-
-
             <div class="num five">
               <p data-hour-target="min2">5</p>
               <hr>
@@ -144,8 +148,6 @@
 
             <div class="bit"></div>
 
-
-
             <div class="num five">
               <p data-hour-target="sec2">8</p>
               <hr>
@@ -154,43 +156,27 @@
             <div class="bit"></div>
 
           </div>
-    </div>
 
-    <div class="numContainer text-align: end;">
+          <div class="numContainer padding-top: 30px;">
 
-      <h1 style="font-size: 40px">Time Tracker : make every : second count</h1>
+            <h1 style="font-size: 40px">Time Tracker : make every : second count</h1>
+            </br>
 
-      <%# <h3 class="text-justify">
-        With <strong class="h1" style="color: #55E6C1;">Time Tracker</strong>,</br>
-        your time working will be <strong class="h1" style="color: #55E6C1;">counted effectively</strong></br>
-        and your invoices will be <strong class="h1" style="color: #55E6C1;">created automatically</strong>.
-      </h3> %>
+            <div>
+              <a href="/learning">
+              <button type="button" class="btn btn-homepage">Learn More </button>
+              </a>
+            </div>
 
-      </br>
-
-      <div>
-        <a href="/learning">
-        <button type="button" class="btn btn-homepage">Learn More </button>
-        </a>
-      </div>
-
-    </div>
+          </div>
 
         </body>
 
       </div>
+    </div>
 
   </html>
+
     <%= render "shared/footer" %>
 
 </div>
-
-
-
-<%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-  <div class="container">
-    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
-  </div>
-</div> %>
