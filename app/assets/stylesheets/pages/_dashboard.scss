@@ -1,25 +1,28 @@
 .container-fluid {
   position: relative;
 
-.btn-round {
-  position: absolute;
-  top: 10px; /* Adjust the top position as needed */
-  right: 10px; /* Adjust the right position as needed */
-  margin-right: 40px;
-  // background-color: #f1f1f1;
+  .btn-round {
+    position: absolute;
+    top: 10px;
+    /* Adjust the top position as needed */
+    right: 10px;
+    /* Adjust the right position as needed */
+    margin-right: 40px;
+    // background-color: #f1f1f1;
     color: #1b1e1f;
-   padding: 9px;
+    padding: 9px;
     border-radius: 50%;
     transition: all 0.3s ease-in-out;
 
     &:hover {
       /* Styles for the button when hovered */
-      background-color: #f1f1f1;
+      // background-color: #f1f1f1;
       border-radius: 50%;
     }
   }
 }
-.tab-content{
+
+.tab-content {
   margin-top: 20px;
 }
 
@@ -52,7 +55,7 @@ table {
 // }
 
 /* line 33, node_modules/bootstrap/scss/_tables.scss */
-.table > :not(caption) > * > * {
+.table> :not(caption)>*>* {
   padding: 0.5rem 0.5rem;
   color: var(--bs-table-color-state, var(--bs-table-color-type, var(--bs-table-color)));
   background-color: var(--bs-table-bg);
@@ -62,11 +65,11 @@ table {
 
 
 thead {
-	background-color: #333;
-	color: #28272a;
-	font-size: 0.875rem;
-	text-transform: uppercase;
-	letter-spacing: 2%;
+  background-color: #333;
+  color: #28272a;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 2%;
 }
 
 .cell-highlight {
@@ -87,25 +90,25 @@ tbody tr:nth-child(even) {
   border: 2px solid #000;
   font-weight: 800;
   font-size: 0.6rem;
-  padding: .3rem .5rem;
+  padding: .5rem .5rem;
   text-align: center;
-  width: 60px;
+  width: 30px;
 }
 
 .pastel-red {
-  background: #FFDFDF;
-  border-color: #B40000;
-  color: #702929;
+  background: #B33771;
+  border-color: #B33771;
+  color: #B33771;
 }
 
 .pastel-orange {
-  background: #FCDAC5;
-  border-color: #E9610C;
-  color: #C2510A;
+  background: #E67E22;
+  border-color: #E67E22;
+  color: #E67E22;
 }
 
 .pastel-green {
-  background: #D1EFCC;
-  border-color: #008100;
-  color: #112F0C;
+  background: #55E6C1;
+  border-color: #55E6C1;
+  color: #55E6C1;
 }
