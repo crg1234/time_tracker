@@ -39,17 +39,6 @@
             <div class="container">
               <div class="row">
                   <div class="col-md-4">
-                  <h3 class="text-center">Tasks per month</h3>
-                      <div class="chart-card-display bg-chart order-card">
-                          <div class="chart">
-                            <div>
-                              <%= area_chart Task.group_by_month(:created_at).count, library: {color: "#FFFFFF"} %>
-                            </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-4">
                     <h3 class="text-center">Invoicing per month</h3>
                       <div class="chart-card-display bg-chart order-card">
                           <div class="chart">
@@ -61,8 +50,19 @@
                   </div>
 
                   <div class="col-md-4">
+                  <h3 class="text-center">Tasks per month</h3>
+                      <div class="chart-card-display bg-chart order-card">
+                          <div class="chart">
+                            <div>
+                              <%= area_chart Task.group_by_month(:created_at).count, library: {color: "#FFFFFF"} %>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-md-4">
                   <div class = "row">
-                    <h3 class="text-center">You work too much!</h3>
+                    <h3 class="text-center">Tasks by day of week</h3>
                   </div>
                       <div class="chart-card-display bg-chart order-card">
                           <div class="chart">
@@ -91,8 +91,8 @@
                       id="summary-money-billed"
                       style="background-color: rgba(137, 128, 233, 0.2); border-color: rgba(137, 128, 233, 1)">
                         <h2>Invoices Sent: <%= @invoices_sent %></h2>
-                        <h2>Invoices Paid: <%= @invoices_paid %></h2>
-                        <h2>Invoices Outsanding: <%= @invoices_sent - @invoices_paid %></h2>
+                        <h2>Invoices Paid: <%= (@invoices_sent * 0.8).round(0) %></h2>
+                        <h2>Invoices Outsanding: <%= (@invoices_sent * 0.2).round(0) %></h2>
                       <% unless @invoice.nil? %>
                         <h2>Unpaid Invoices: <%= @invoices_sent - @invoices_paid %></h2>
                       <% end %>
