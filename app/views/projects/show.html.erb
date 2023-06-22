@@ -7,13 +7,13 @@
     <main class="col-lg-11 ms-sm-auto col-lg-10 px-md-4 mt-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 mb-3 border-bottom">
         <div>
-          <h1 style="margin-bottom: 20px; color: #55E6C1;"><%= @project.name %></h1>
+          <h1 style="margin-bottom: 10px; color: #55E6C1;"><%= @project.name %></h1>
           <%= link_to client_path(@client) do %>
            <h3><%= @client.company_name %> - <%= @client.first_name  %> <%= @client.last_name %></h3>
           <% end %>
           <%# <p>Total time: <%= @project.time_counter hours %>
             <%# </p> %>
-          <p>Deadline: <%= @project.deadline %> </p>
+          <p><i class="fa-regular fa-calendar"></i> Deadline: <%= @project.deadline.strftime("%a, %d %b %Y")%></p>
         </div>
         <div>
           <div class="btn-toolbar mb-2 mb-md-0 d-flex justify-content-end">
