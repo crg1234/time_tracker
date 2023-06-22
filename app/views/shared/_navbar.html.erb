@@ -10,7 +10,7 @@
 
     <div class="collapse navbar-collapse mt-2 me-2" id="navbarSupportedContent">
     <% if user_signed_in? %>
-      <h3 class="mt-1 me-3"><%= link_to current_user.first_name.capitalize, "/" %></h3>
+      <h3 class="mt-1 me-1"><%= link_to current_user.first_name.capitalize, "/" %></h3>
     <<% end %>>
       <ul class="navbar-nav me-auto">
         <%# <%= link_to "Home", root_path, class: "nav-link" %>
