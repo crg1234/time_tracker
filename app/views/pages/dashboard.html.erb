@@ -92,8 +92,8 @@
                       style="background-color: rgba(137, 128, 233, 0.2); border-color: rgba(137, 128, 233, 1)">
                         <h2>Invoices Sent: <%= @invoices_sent %></h2>
                         <h2>Invoices Paid: <%= @invoices_paid %></h2>
-                        <h2>Invoices Outsanding: <%= @invoices_sent - @invoices_paid %></h2>
                       <% unless @invoice.nil? %>
+                        <h2>Invoices Outsanding: <%= @invoices_sent - @invoices_paid %></h2>
                         <h2>Unpaid Invoices: <%= @invoices_sent - @invoices_paid %></h2>
                       <% end %>
                       </div>
