@@ -15,8 +15,8 @@ class Task < ApplicationRecord
     question = "Please give me a tip of maximum 30 words about how to do #{title} more efficiently"
 
      begin
-      response = client.chat(
-          model: "gpt-3.5-turbo-16k", # Required.
+      response = client.chat.completions.create(
+          model: "gpt-3.5-turbo", # Required.
           messages: [
             { role: "system", content: system_msg },
             { role: "user", content: question }
