@@ -8,31 +8,36 @@ class Task < ApplicationRecord
 
 
   def hint
-    if read_attribute(:hint).present?
-      return read_attribute(:hint)
-    else
-      client = OpenAI::Client.new(access_token: ENV["OPENAI_ACCESS_TOKEN"] )
-      system_msg = "You are a helpful assistant"
-      question = "Please give me a tip of maximum 30 words about how to do #{title} more efficiently"
+    return read_attribute(:hint) if read_attribute(:hint).present?
 
+    client = OpenAI::Client.new(access_token: ENV["OPENAI_ACCESS_TOKEN"] )
+    system_msg = "You are a helpful assistant"
+    question = "Please give me a tip of maximum 30 words about how to do #{title} more efficiently"
+
+     begin
       response = client.chat(
-        parameters: {
-            model: "gpt-3.5-turbo-16k", # Required.
-            messages: [
-              { role: "system", content: system_msg },
-              { role: "user", content: question }
-            ], # Required.
-            temperature: 0.7,
-            max_tokens: 2000,
-        })
+          model: "gpt-3.5-turbo-16k", # Required.
+          messages: [
+            { role: "system", content: system_msg },
+            { role: "user", content: question }
+          ], # Required.
+          temperature: 0.7,
+          max_tokens: 150,
+        )
 
-        Rails.logger.info "OpenAI API Response: #{response.inspect}"
+        if response["error"]
+          Rails.logger.error "OpenAI Error: #{response["error"]["message"]}"
+          return "Currently unable to generate a hint. Please try again later."
+        end
 
       # response.dig("choices", 0, "message", "content")
 
       new_hint = response.dig("choices", 0, "message", "content")
-      self.update_columns(hint: new_hint)
+      update_columns(hint: new_hint) if new_hint.present?
       return new_hint
+      rescue => e
+        Rails.logger.error "OpenAI API Error: #{e.message}"
+        "Error retrieving hint: #{e.message}"
     end
   end
 
