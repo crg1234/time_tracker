@@ -26,6 +26,8 @@ class Task < ApplicationRecord
             max_tokens: 2000,
         })
 
+        Rails.logger.info "OpenAI API Response: #{response.inspect}"
+
       # response.dig("choices", 0, "message", "content")
 
       new_hint = response.dig("choices", 0, "message", "content")
