@@ -11,7 +11,7 @@ class Task < ApplicationRecord
     if read_attribute(:hint).present?
       return read_attribute(:hint)
     else
-      client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"] )
+      client = OpenAI::Client.new(access_token: ENV["OPENAI_ACCESS_TOKEN"] )
       system_msg = "You are a helpful assistant"
       question = "Please give me a tip of maximum 30 words about how to do #{title} more efficiently"
 
